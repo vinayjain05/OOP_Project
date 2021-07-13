@@ -4,7 +4,7 @@ Folder Structure to be followed:
 
 Master
 <br>
-  |_____client(Frontend)----src,components,etc.
+  |----client(Frontend)----src,components,etc.
   <br>
   |
   <br>
