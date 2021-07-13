@@ -4,11 +4,11 @@ Folder Structure to be followed:
 
 Master
 <br>
-  |_____client(Frontend)
+  |_____client(Frontend)----src,components,etc.
   <br>
-  |     <br>    |______src
+  |      
   <br>
-  | <br>      |______components ...(folders)
+  | <br>     
   <br>
   |          
   <br>
