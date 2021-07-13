@@ -3,11 +3,12 @@
 Folder Structure to be followed:
 
 Master
+<br>
   |_____client(Frontend)
   <br>
-  |         |______src
+  |     <br>    |______src
   <br>
-  |       |______components ...(folders)
+  | <br>      |______components ...(folders)
   <br>
   |          
   <br>
