@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 24px;
+  }
+  .login {
+    height: 100%;
+    width: 100%;
+    background: rgba(202,239,251,1);
+    opacity: 1;
+    position: absolute;
+  }
+  .bgbox {
+    width: 40%;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    overflow: hidden;
+    top: 5%;
+    bottom: 5%;
+    left: 30%;
+    border: solid rgba(11,57,84,1);
+    border-width: 15px;
+  }
+  .logo{
+      height: 60px;
+      margin-top: 5%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+  }
+  .heading{
+    color: rgba(11,57,84,1);
+    position: relative;
+    padding-top: 5%;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 2.5vw;
+    opacity: 1;
+    text-align: center;
+  }
+  .descr{
+    color: rgba(0,0,0,1);
+    position: relative;
+    padding-top: 2%;
+    font-family: Roboto;
+    font-weight: Thin;
+    font-size: 1.4vw;
+    opacity: 1;
+    text-align: center;
+  }
+  .form{
+    padding-top: 2%;
+  }
+  .form input{
+    position: absolute;
+    left:25%;
+    width: 50%;
+    background-color: #EDEFF2;
+    border: none;
+    padding: 1em;
+    border-radius: 25px;
+    border: 0;
+    font-size: 1vw;
+  }
+  .form button{
+    position: absolute;
+    left:40%;
+    width: 20%;
+    border-radius: 25px;
+    padding: 1em;
+    border:0;
+    background-color: #CAF0Fc;
+    font-size: 1vw;
+  }
+ .form input:focus {
+    background-color: #CAF0Fc;
+    outline: none;
+}
+.or{
+    color: rgba(0,0,0,1);
+    position: relative;
+    padding-top: 10%;
+    padding-bottom: 2%;
+    font-family: Roboto;
+    font-weight: Thin;
+    font-size:24px;
+    font-size: 1vw;
+    opacity: 1;
+    text-align: center;
+  }
+  .google{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background:#4285f4;
+    color:white;
+    border:none; 
+    padding: 0.8em;
+    border-radius:25px;
+  }
+  .back{
+    color: rgb(153, 143, 143);
+    float: left;
+    position:fixed;
+    bottom: 10%;
+    left: 32%;
+  }
