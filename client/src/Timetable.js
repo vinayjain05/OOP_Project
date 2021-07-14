@@ -74,13 +74,15 @@ export default class Timetable extends Component {
               return (
                 <div className={styles.timeSlots}>
                   <div className={styles.timeHead}>
-                    <h3>{i + md}</h3>
+                    <h3>{i + " " + md}</h3>
                   </div>
                   <div className={styles.timeBtns}>
                     <button>{i + ":00 - " + i + ":15"}</button>
                     <button>{i + ":15 - " + i + ":30"}</button>
                     <button>{i + ":30 - " + i + ":45"}</button>
-                    <button>{i + ":45 - " + i + ":00"}</button>
+                    <button>
+                      {i + ":45 - " + String(parseInt(i + 1)) + ":00"}
+                    </button>
                   </div>
                 </div>
               );
