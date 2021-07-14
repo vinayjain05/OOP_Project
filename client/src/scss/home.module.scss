@@ -60,7 +60,7 @@ body {
       left: 25vw;
       border-radius: 8vw 8vw 0 0;
       // background: rgb(26, 61, 75);
-      background: rgb(46, 59, 95); //rgb(231, 231, 231);
+      background: linear-gradient(black, rgb(9, 52, 112)); //rgb(231, 231, 231);
       // background: radial-gradient(
       //   rgb(0, 119, 255),
       //   rgb(20, 93, 128),
@@ -89,33 +89,27 @@ body {
         align-items: center;
         width: 100%;
         // border: 1px solid red;
-
-        button {
-          background: white;
-          padding: 0.8vw;
-          border-radius: 1vw;
-          width: 20%;
-          font-size: 1.3vw;
-          font-weight: bold;
-          border: 0.3vw solid white;
-          cursor: pointer;
+        a {
+          text-decoration: none;
+          color: black;
           &:nth-child(1) {
-            margin-right: 6vw;
+            margin-right: 5vw;
           }
+          button {
+            background: white;
+            padding: 0.6vw;
+            border-radius: 1vw;
+            width: 10vw;
+            font-size: 1.3vw;
+            font-weight: bold;
+            border: 0.3vw solid white;
+            cursor: pointer;
 
-          &:hover {
-            background: rgb(46, 59, 95);
-
-            a {
+            &:hover {
+              background: rgb(46, 59, 95);
               color: white;
+              transition: all 0.1s ease-in-out;
             }
-            transition: all 0.1s ease-in-out;
-          }
-          a {
-            text-decoration: none;
-            color: black;
-            // height: 108%;
-            // width: 105%;
           }
         }
       }

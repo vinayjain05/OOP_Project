@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Special+Elite&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.docDashboard {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.docDashboard .docInfo {
+  flex: 0.22;
+  display: flex;
+  flex-direction: column;
+}
+
+.docDashboard .docInfo .profileCard {
+  position: relative;
+  top: 15vh;
+  left: 10%;
+  height: 40%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.35vw solid black;
+}
+
+.docDashboard .docInfo .profileCard .image {
+  position: relative;
+  width: 40%;
+  height: 50%;
+  top: 1.5vh;
+  border: 0.28vw solid black;
+  transform-origin: center;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.docDashboard .docInfo .profileCard .image .cardImage {
+  position: relative;
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.docDashboard .docInfo .profileCard .info {
+  position: relative;
+  top: 2%;
+  border-radius: 7vw 7vw 0 0;
+  width: 16vw;
+  height: 40vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.docDashboard .docInfo .profileCard .info div {
+  position: relative;
+  top: 10%;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.docDashboard .docInfo .profileCard .info div .nameHead {
+  font-size: 1.7vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.docDashboard .docInfo .profileCard .info div div {
+  left: 0%;
+  top: 1vh;
+  font-size: 0.9vw;
+  margin: 0.3vw;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.docDashboard .aptTab {
+  display: flex;
+  flex: 0.78;
+  flex-direction: column;
+  border: 5px solid green;
+}
+/*# sourceMappingURL=doctorDashboard.module.css.map */

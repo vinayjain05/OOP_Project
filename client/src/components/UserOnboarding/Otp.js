@@ -5,6 +5,12 @@ import styles from "../../css/otp.module.css";
 import logo from "../../svg/logo.png";
 
 export default class Otp extends Component {
+  componentDidMount() {
+    this.props.pageActive(false);
+  }
+  componentWillUnmount() {
+    this.props.pageActive(true);
+  }
   render() {
     return (
       <React.Fragment>

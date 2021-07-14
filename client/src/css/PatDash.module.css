@@ -1,0 +1,15 @@
+.heading{
+    text-align: center;
+    padding-top: 2vw;
+}
+.subheading{
+    padding-top: 1vw;
+    text-align: center;
+}
+.subheading div{
+    padding: 0.3vw;
+}
+
+.container{
+    padding-left: 7vw;
+}

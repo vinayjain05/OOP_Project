@@ -5,6 +5,12 @@ import styles from "../../css/Login.module.css";
 import logo from "../../svg/logo.png";
 
 export default class Login extends Component {
+  componentDidMount() {
+    this.props.pageActive(false);
+  }
+  componentWillUnmount() {
+    this.props.pageActive(true);
+  }
   render() {
     return (
       <React.Fragment>

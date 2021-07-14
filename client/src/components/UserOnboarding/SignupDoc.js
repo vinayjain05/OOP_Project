@@ -5,6 +5,12 @@ import logo from "../../svg/logo.png";
 
 import styles from "../../css/SignupDoc.module.css";
 export default class SignupDoc extends Component {
+  componentDidMount() {
+    this.props.pageActive(false);
+  }
+  componentWillUnmount() {
+    this.props.pageActive(true);
+  }
   render() {
     return (
       <React.Fragment>

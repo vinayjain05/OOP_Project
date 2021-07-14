@@ -5,6 +5,12 @@ import logo from "../../svg/logo.png";
 import styles from "../../css/SignupPat.module.css";
 
 export default class SignupPat extends Component {
+  componentDidMount() {
+    this.props.pageActive(false);
+  }
+  componentWillUnmount() {
+    this.props.pageActive(true);
+  }
   render() {
     return (
       <React.Fragment>
@@ -14,7 +20,7 @@ export default class SignupPat extends Component {
               <img src={logo} className={styles.signuplogo} alt="logo" />
             </div>
             <div className={styles.heading}>Sign-up</div>
-            <div className={styles.descr}>Create your ScheDoc </div>
+            <div className={styles.descr}>Create your ScheDoc</div>
             <div>
               <form class={styles.signupform}>
                 <input

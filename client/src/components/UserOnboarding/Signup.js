@@ -6,6 +6,12 @@ import styles from "../../css/Signup.module.css";
 import { Link } from "react-router-dom";
 
 export default class Signup extends Component {
+  componentDidMount() {
+    this.props.pageActive(false);
+  }
+  componentWillUnmount() {
+    this.props.pageActive(true);
+  }
   render() {
     return (
       <React.Fragment>

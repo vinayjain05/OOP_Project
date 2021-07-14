@@ -5,6 +5,12 @@ import styles from "../../css/home.module.css";
 import { Link } from "react-router-dom";
 
 export default class Home extends Component {
+  componentDidMount() {
+    this.props.pageActive(false);
+  }
+  componentWillUnmount() {
+    this.props.pageActive(true);
+  }
   render() {
     return (
       <React.Fragment>
@@ -21,16 +27,12 @@ export default class Home extends Component {
                 <span>We are here for you!</span>
               </div>
               <div className={styles.loginButtons}>
-                <button>
-                  <Link to="/signup" className={styles.signupbtn}>
-                    Sign up
-                  </Link>
-                </button>
-                <button>
-                  <Link to="/login" className={styles.loginbtn}>
-                    Login
-                  </Link>
-                </button>
+                <Link to="/signup" className={styles.signupbtn}>
+                  <button>Sign up</button>
+                </Link>
+                <Link to="/login" className={styles.loginbtn}>
+                  <button>Login</button>
+                </Link>
               </div>
             </div>
             <div className={styles.curtain}></div>
