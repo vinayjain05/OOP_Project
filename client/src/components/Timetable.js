@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./css/timetable.module.css";
+import styles from "../css/timetable.module.css";
 
 export default class Timetable extends Component {
   state = {

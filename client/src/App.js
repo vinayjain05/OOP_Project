@@ -9,6 +9,7 @@ import DoctorDashboard from "./components/DoctorDashboard/DoctorDashboard";
 import Otp from "./components/UserOnboarding/Otp";
 import SignupDoc from "./components/UserOnboarding/SignupDoc";
 import SignupPat from "./components/UserOnboarding/SignupPat";
+import BookingPage from "./components/BookingPage/Bookingpage";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(true);
@@ -58,6 +59,23 @@ function App() {
               experience: "7 years",
               location: "Apollo, Bangalore",
               doctor: true,
+              pageActive: handleActivePage,
+            }}
+          />
+        )}
+      />
+      <Route
+        path="/booking"
+        exact
+        component={() => (
+          <BookingPage
+            {...{
+              name: "Subrakanta Smith",
+              specialization: "NEUROLOGIST",
+              education: "MBBS, MD in Pulmonology",
+              experience: "7 years",
+              location: "Apollo, Bangalore",
+              doctor: false,
               pageActive: handleActivePage,
             }}
           />

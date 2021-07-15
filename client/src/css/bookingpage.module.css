@@ -1,1 +1,56 @@
-/* No CSS *//*# sourceMappingURL=bookingpage.module.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Special+Elite&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.docDashboard {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.docDashboard .docInfo {
+  flex: 0.22;
+  border: 5px solid #7cdaff;
+  display: flex;
+  flex-direction: column;
+}
+
+.docDashboard .aptTab {
+  display: flex;
+  flex: 0.78;
+  flex-direction: column;
+}
+
+.docDashboard .aptTab .refInfo {
+  position: relative;
+  top: 9%;
+  flex: 0.05;
+  display: flex;
+  justify-content: space-evenly;
+  width: 30%;
+  left: 50vw;
+}
+
+.docDashboard .aptTab .refInfo .colorLegends:nth-child(1) div {
+  background: #39ff39;
+  height: 1vh;
+  margin-right: 0.2vw;
+}
+
+.docDashboard .aptTab .refInfo .colorLegends:nth-child(2) div {
+  background: #eeee00;
+  height: 1vh;
+  margin-right: 0.2vw;
+}
+
+.docDashboard .aptTab .refInfo .colorLegends:nth-child(3) div {
+  background: red;
+  height: 1vh;
+  margin-right: 0.2vw;
+}
+
+.docDashboard .aptTab .refInfo .colorLegends span {
+  margin-right: 2vw;
+  font-weight: bold;
+  font-size: 0.8vw;
+}
+/*# sourceMappingURL=bookingpage.module.css.map */
