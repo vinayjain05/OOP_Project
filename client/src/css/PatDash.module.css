@@ -1,15 +1,31 @@
+.usercard {
+    top:1000px;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+  }
 .heading{
     text-align: center;
     padding-top: 2vw;
+    width: 100%;
 }
 .subheading{
     padding-top: 1vw;
     text-align: center;
+    width: 100%;
 }
 .subheading div{
     padding: 0.3vw;
 }
-
-.container{
-    padding-left: 7vw;
+.text{
+    text-align: center;
 }
+.doccard {
+    top:1000px;
+    display: flex;
+    width: 75vw;
+    height: 70vh;
+    background-color: white;
+    overflow: hidden;
+    scroll-behavior: auto;
+  }

@@ -12,20 +12,27 @@ function Doc_cards({
   alt
 }) {
   return (<React.Fragment>
-    <div className={styles.member}>
-      <div className={styles.img}>
-        <img src={img} alt="Team_image" />
-      </div>
-      <h3>{name}</h3>
-      <div><p className={styles.role}>{role}</p>
-      <p><b>{edu} </b></p>
-      <p>{exp}</p>
-      <p>{loc}</p>
-    </div>
-    
-  <div class={styles.center}>
-    <button>Book appointment</button>
-  </div></div>
+    <div className={styles.profileCard}>
+      <div className={styles.image}>
+        <img
+          src={img}
+          className={styles .cardImage}
+          alt=""
+        />
+        </div>
+         <div className={styles.info}>
+           <div>
+             <h3 className={styles.nameHead}>{name}</h3>
+             <div>{role}</div>
+             <div>{edu}</div>
+             <div>{exp}</div>
+             <div>{loc}</div>
+           </div>
+         </div>
+         <div class={styles.button}>
+           <button>Book appointment</button>
+  </div>
+     </div>
 </React.Fragment>
 
   );
