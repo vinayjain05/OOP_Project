@@ -24,7 +24,7 @@ export default class Timetable extends Component {
       "December",
     ];
     this.state.datetabs.push(
-      new Date(curr.setDate(curr.getDate()))
+      new Date(curr.setDate(curr.getDate() - 1))
         .toUTCString()
         .split(monthNames[curr.getMonth()].slice(0, 3))[0] +
         monthNames[curr.getMonth()].slice(0, 3)

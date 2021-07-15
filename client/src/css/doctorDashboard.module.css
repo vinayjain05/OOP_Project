@@ -23,6 +23,8 @@
   flex-direction: column;
   align-items: center;
   border: 0.35vw solid black;
+  box-shadow: 0px 5px 23px -5px rgba(0, 0, 0, 0.75);
+  border-radius: 2vw;
 }
 
 .docDashboard .docInfo .profileCard .image {
@@ -80,5 +82,39 @@
   display: flex;
   flex: 0.78;
   flex-direction: column;
+}
+
+.docDashboard .aptTab .refInfo {
+  position: relative;
+  top: 9%;
+  flex: 0.05;
+  display: flex;
+  justify-content: space-evenly;
+  width: 30%;
+  left: 50vw;
+}
+
+.docDashboard .aptTab .refInfo .colorLegends:nth-child(1) div {
+  background: #39ff39;
+  height: 1vh;
+  margin-right: 0.2vw;
+}
+
+.docDashboard .aptTab .refInfo .colorLegends:nth-child(2) div {
+  background: #eeee00;
+  height: 1vh;
+  margin-right: 0.2vw;
+}
+
+.docDashboard .aptTab .refInfo .colorLegends:nth-child(3) div {
+  background: red;
+  height: 1vh;
+  margin-right: 0.2vw;
+}
+
+.docDashboard .aptTab .refInfo .colorLegends span {
+  margin-right: 2vw;
+  font-weight: bold;
+  font-size: 0.8vw;
 }
 /*# sourceMappingURL=doctorDashboard.module.css.map */

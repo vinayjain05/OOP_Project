@@ -36,7 +36,20 @@ export default class DoctorDashboard extends Component {
           </div>
           <div className={styles.aptTab}>
             <Timetable />
-            <div className={styles.refInfo}></div>
+            <div className={styles.refInfo}>
+              <div className={styles.colorLegends}>
+                <div></div>
+                <span>Available</span>
+              </div>
+              <div className={styles.colorLegends}>
+                <div></div>
+                <span>Unavailable</span>
+              </div>
+              <div className={styles.colorLegends}>
+                <div></div>
+                <span>Busy</span>
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>

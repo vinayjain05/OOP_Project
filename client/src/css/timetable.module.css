@@ -10,7 +10,7 @@
 
 .timetable .dates {
   top: 7%;
-  flex: 0.1;
+  flex: 0.085;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -67,7 +67,7 @@
   align-items: center;
   overflow: hidden;
   text-align: center;
-  box-shadow: -5px 5px 15px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: -7px 5px 18px -5px rgba(0, 0, 0, 0.75);
   border-radius: 2vw;
   margin: 0.6vw;
   width: 47%;
