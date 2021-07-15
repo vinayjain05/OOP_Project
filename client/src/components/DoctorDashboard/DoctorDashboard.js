@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "../../css/doctorDashboard.module.css";
 import Timetable from "../../Timetable";
+import Card from "../Card";
 
 export default class DoctorDashboard extends Component {
   // constructor(props) {
@@ -15,24 +16,7 @@ export default class DoctorDashboard extends Component {
       <React.Fragment>
         <div className={styles.docDashboard}>
           <div className={styles.docInfo}>
-            <div className={styles.profileCard}>
-              <div className={styles.image}>
-                <img
-                  src="https://picsum.photos/200"
-                  className={styles.cardImage}
-                  alt=""
-                />
-              </div>
-              <div className={styles.info}>
-                <div>
-                  <h3 className={styles.nameHead}>{this.props.name}</h3>
-                  <div>{this.props.specialization}</div>
-                  <div>{this.props.education}</div>
-                  <div>{this.props.experience}</div>
-                  <div>{this.props.location}</div>
-                </div>
-              </div>
-            </div>
+            <Card {...this.props} />
           </div>
           <div className={styles.aptTab}>
             <Timetable />

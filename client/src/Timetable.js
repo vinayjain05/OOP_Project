@@ -57,7 +57,9 @@ export default class Timetable extends Component {
   };
 
   handleMouseEnter = (event) => {
-    event.target.classList.add(styles.mouseover);
+    let val = !event.target.classList.contains(styles.active)
+      ? event.target.classList.add(styles.mouseover)
+      : "";
   };
 
   handleMouseLeave = (event) => {
