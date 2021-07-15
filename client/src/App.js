@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home/home";
 import Login from "./components/UserOnboarding/Login";
@@ -80,7 +80,7 @@ function App() {
               education: "MBBS, MD in Pulmonology",
               experience: "7 years",
               location: "Apollo, Bangalore",
-              doctor: false,
+              doctor: true,
             }}
           />
         )}

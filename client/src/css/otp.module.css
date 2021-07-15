@@ -1,40 +1,31 @@
 * {
     box-sizing: border-box;
   }
-  body {
-    font-size: 24px;
-  }
-  .login {
-    height: 100%;
-    width: 100%;
+  .otp {
+    font-size: 12px;    
+    font-family: Roboto;
     background: rgba(202,239,251,1);
-    opacity: 1;
-    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   .bgbox {
-    width: 40%;
+    width: 30%; min-height: 50%;
+    margin: 10vw;
     background: rgba(255,255,255,1);
-    opacity: 1;
-    position: absolute;
-    overflow: hidden;
-    top: 5%;
-    bottom: 5%;
-    left: 30%;
-    border: solid rgba(11,57,84,1);
-    border-width: 15px;
+    border-radius: 2vw;
+    padding: 1vw;
+    box-shadow: 0.8vw 0.8vw 0.8vw rgba(11,57,84,1);
   }
   .logo{
-      height: 60px;
-      margin-top: 5%;
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
+    height: 5vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
   .heading{
     color: rgba(11,57,84,1);
-    position: relative;
-    padding-top: 5%;
-    font-family: Roboto;
+    padding-top: 1vw;
     font-weight: Bold;
     font-size: 2.5vw;
     opacity: 1;
@@ -42,34 +33,40 @@
   }
   .descr{
     color: rgba(0,0,0,1);
-    position: relative;
-    padding-top: 2%;
-    font-family: Roboto;
+    padding-top: 1vw;
+    padding-left: 1vw;    
+    padding-right: 1vw;
     font-weight: Thin;
     font-size: 1.2vw;
-    opacity: 1;
     text-align: center;
   }
   .form{
-    padding-top: 5%;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
   }
   .form input{
-    position: absolute;
-    left:43%;
-    width: 15%;
+    width: 50%;
     background-color: #EDEFF2;
     border: none;
     padding: 1em;
     border-radius: 25px;
-    border: 0;
-    font-size: 1vw;
+    font-size: 1vw; 
+    display: flex;
+    }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
   .form button{
-    position: absolute;
-    left:40%;
-    width: 20%;
     border-radius: 25px;
-    padding: 1em;
     border:0;
     background-color: #CAF0Fc;
     font-size: 1vw;
@@ -103,7 +100,10 @@
   .back{
     color: rgb(153, 143, 143);
     float: left;
-    position:fixed;
-    bottom: 10%;
-    left: 32%;
+    font-size: 2vw;
   }
+  a{
+    color: rgb(153, 143, 143);
+    text-decoration: none;
+    font-size: 1.2vw;
+    }

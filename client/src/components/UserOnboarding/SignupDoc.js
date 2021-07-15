@@ -2,77 +2,37 @@ import React from "react";
 import { Component } from "react";
 import ReactDOM from "react-dom";
 import logo from "../../svg/logo.png";
+import { Link } from "react-router-dom";
 
 import styles from "../../css/SignupDoc.module.css";
 export default class SignupDoc extends Component {
-  componentDidMount() {
-    this.props.pageActive(false);
-  }
-  componentWillUnmount() {
-    this.props.pageActive(true);
-  }
   render() {
     return (
       <React.Fragment>
         <div className={styles.signup}>
-          <div class={styles.signupbgbox}>
-            <div class={styles.signuplogo}>
-              <img src={logo} class={styles.signuplogo} alt="logo" />
+          <div class={styles.bgbox}>
+            <div class={styles.logo}>
+              <img src={logo} class={styles.logo} alt="logo" />
             </div>
             <div class={styles.heading}>Sign-up</div>
-            <div class={styles.descr}>Create your ScheDoc </div>
+            <div class={styles.descr}>Create your ScheDoc Account as a Doctor </div>
             <div>
-              <form class={styles.signupform}>
-                <input
-                  type="text"
-                  class={styles.hospital}
-                  name="hospital"
-                  placeholder="Specialization"
-                />
-                <br />
-                <br />
-                <input
-                  type="text"
-                  class={styles.years}
-                  name="years"
-                  placeholder="Years of experience"
-                />
-                <br />
-                <br />
-                <input
-                  type="text"
-                  class={styles.edu}
-                  name="edu"
-                  placeholder="Highest Level of Education"
-                />
-                <br />
-                <br />
-                <input
-                  type="text"
-                  class={styles.hospital}
-                  name="hospital"
-                  placeholder="Hospital"
-                />
-                <br />
-                <br />
-                <input
-                  type="text"
-                  class={styles.hospitaladd}
-                  name="hospitaladd"
-                  placeholder="Hospital Address"
-                />
-                <br />
-                <br />
-
-                <button type="button">Login</button>
+              <form class={styles.form}>
+                <div><input type="text"  class={styles.hospital}name="hospital" placeholder="Specialization"/></div>
+                <div><input type="number" class={styles.years} name="years"  placeholder="Years of experience" /></div>
+                <div><input type="text"class={styles.edu} name="edu" placeholder="Highest Level of Education" /></div>
+                <div><input type="text" class={styles.hospital} name="hospital" placeholder="Hospital"  /></div>
+               <div><input type="text" class={styles.hospitaladd} name="hospitaladd" placeholder="Hospital Address" /></div>
+               <div><button><Link to="/patdash" className={styles.button}>Sign up</Link></button></div>
               </form>
             </div>
-            <div className={styles.signupor}>OR</div>
-            <button type="button" class={styles.google}>
-              {" "}
-              Sign up with google
+            <div className={styles.or}>----------------OR----------------</div>
+            <button type="button" className={styles.google}>
+              <Link to="/otp" className={styles.button}>
+                <img  alt="Google sign-in" src="./google.jfif" />
+              </Link>
             </button>
-            <div className={styles.back}> &lt;Back</div>
+            <div className={styles.back}> <Link to="/signup" className={styles.button}>&lt;Back</Link></div>
           </div>
         </div>
       </React.Fragment>
