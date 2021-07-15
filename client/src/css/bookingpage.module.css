@@ -1,25 +1,81 @@
 @import url("https://fonts.googleapis.com/css2?family=Handlee&family=Special+Elite&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-.docDashboard {
+.bookingDashboard {
   display: flex;
   width: 100vw;
   height: 100vh;
 }
 
-.docDashboard .docInfo {
+.bookingDashboard .docInfo {
   flex: 0.22;
   display: flex;
   flex-direction: column;
+  position: relative;
+  background: #205194;
+  color: white;
+  align-items: center;
+  border-radius: 0 1vw 1vw 0;
+  box-shadow: 8px 5px 18px -5px rgba(0, 0, 0, 0.75);
 }
 
-.docDashboard .aptTab {
+.bookingDashboard .bookaptBtn {
+  position: relative;
+  top: 15%;
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.bookingDashboard .bookaptBtn .consultationbtn {
+  background: #06181f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 1vw;
+  padding: 1vw;
+  font-size: 0.8vw;
+}
+
+.bookingDashboard .bookaptBtn .consultationbtn.active {
+  background: white;
+  color: black;
+}
+
+.bookingDashboard .bookaptBtn .consultationbtn:active {
+  animation-name: slotClickAnimation;
+  animation-duration: 0.1s;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-timing-function: ease-in;
+}
+
+.bookingDashboard .bookaptBtn .consultationbtn:hover {
+  transition: 0.1s all ease-in;
+  background: white;
+  transform: scale(1.08);
+  color: black;
+}
+
+.bookingDashboard .bookaptBtn .bookbtn {
+  font-size: 0.9vw;
+  background: #cecece;
+  font-weight: bold;
+  border-radius: 1vw;
+  padding: 1vw;
+  font-size: 0.8vw;
+  color: white;
+}
+
+.bookingDashboard .aptTab {
   display: flex;
   flex: 0.78;
   flex-direction: column;
 }
 
-.docDashboard .aptTab .refInfo {
+.bookingDashboard .aptTab .refInfo {
   position: relative;
   top: 9%;
   flex: 0.05;
@@ -29,27 +85,39 @@
   left: 50vw;
 }
 
-.docDashboard .aptTab .refInfo .colorLegends:nth-child(1) div {
+.bookingDashboard .aptTab .refInfo .colorLegends:nth-child(1) div {
   background: #39ff39;
   height: 1vh;
   margin-right: 0.2vw;
 }
 
-.docDashboard .aptTab .refInfo .colorLegends:nth-child(2) div {
+.bookingDashboard .aptTab .refInfo .colorLegends:nth-child(2) div {
   background: #eeee00;
   height: 1vh;
   margin-right: 0.2vw;
 }
 
-.docDashboard .aptTab .refInfo .colorLegends:nth-child(3) div {
+.bookingDashboard .aptTab .refInfo .colorLegends:nth-child(3) div {
   background: red;
   height: 1vh;
   margin-right: 0.2vw;
 }
 
-.docDashboard .aptTab .refInfo .colorLegends span {
+.bookingDashboard .aptTab .refInfo .colorLegends span {
   margin-right: 2vw;
   font-weight: bold;
   font-size: 0.8vw;
+}
+
+@keyframes slotClickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 /*# sourceMappingURL=bookingpage.module.css.map */

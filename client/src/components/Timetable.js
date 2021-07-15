@@ -4,6 +4,7 @@ import styles from "../css/timetable.module.css";
 export default class Timetable extends Component {
   state = {
     datetabs: [],
+    slots: new Array(48).fill(0),
   };
   componentDidMount() {
     var curr = new Date(); // get current date
@@ -47,11 +48,18 @@ export default class Timetable extends Component {
       });
   }
 
-  handleAvailability = (event) => {
+  handleSlotSelect = (event) => {
     // console.log(event.target);
-    event.target.classList.contains(styles.active)
-      ? event.target.classList.remove(styles.active)
-      : event.target.classList.add(styles.active);
+
+    if (event.target.classList.contains(styles.active)) {
+      let slots = [...this.state.slots];
+      let slotIndex = event.target.value.split;
+      // slots[]
+    }
+    let val = event.target.classList.contains(styles.active)
+      ? [event.target.classList.remove(styles.active)]
+      : [event.target.classList.add(styles.active)];
+
     // event.target.style.backgroundColor =
     //   event.target.style.backgroundColor === "#EEEE00" ? "#39FF39" : "#EEEE00";
   };
@@ -83,14 +91,17 @@ export default class Timetable extends Component {
             })}
           </div>
           <div className={styles.timings}>
-            {Array.from({ length: 10 }, (_, i) => i + 9).map((i) => {
+            {Array.from({ length: 12 }, (_, i) => i + 9).map((i) => {
               i = i % 12;
               let md = "am";
               if (i < 9) md = "pm";
               i = i === 0 ? 12 : i;
 
               return (
-                <div className={styles.timeSlots}>
+                <div
+                  className={styles.timeSlots}
+                  key={`${i} + ":00 - " + ${i} + ":15"`}
+                >
                   <div className={styles.timeHead}>
                     <h3>{i + " " + md}</h3>
                   </div>
@@ -98,28 +109,32 @@ export default class Timetable extends Component {
                     <button
                       onMouseEnter={this.handleMouseEnter}
                       onMouseLeave={this.handleMouseLeave}
-                      onClick={this.handleAvailability}
+                      onClick={this.handleSlotSelect}
+                      key={`${i} + ":00 - " + ${i} + ":15"`}
                     >
                       {i + ":00 - " + i + ":15"}
                     </button>
                     <button
                       onMouseEnter={this.handleMouseEnter}
                       onMouseLeave={this.handleMouseLeave}
-                      onClick={this.handleAvailability}
+                      onClick={this.handleSlotSelect}
+                      key={i + ":15 - " + i + ":30"}
                     >
                       {i + ":15 - " + i + ":30"}
                     </button>
                     <button
                       onMouseEnter={this.handleMouseEnter}
                       onMouseLeave={this.handleMouseLeave}
-                      onClick={this.handleAvailability}
+                      onClick={this.handleSlotSelect}
+                      key={i + ":30 - " + i + ":45"}
                     >
                       {i + ":30 - " + i + ":45"}
                     </button>
                     <button
                       onMouseEnter={this.handleMouseEnter}
                       onMouseLeave={this.handleMouseLeave}
-                      onClick={this.handleAvailability}
+                      onClick={this.handleSlotSelect}
+                      key={i + ":45 - " + i + ":00"}
                     >
                       {i + ":45 - " + String(parseInt(i + 1)) + ":00"}
                     </button>

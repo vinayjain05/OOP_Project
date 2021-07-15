@@ -6,10 +6,11 @@
   font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
+  position: relative;
+  top: 6%;
 }
 
 .timetable .dates {
-  top: 7%;
   flex: 0.085;
   display: flex;
   justify-content: center;
@@ -51,15 +52,16 @@
   position: relative;
   top: 30%;
   font-weight: bold;
-  font-size: 0.85vw;
+  font-size: 0.8vw;
 }
 
 .timetable .timings {
-  top: 8%;
   position: relative;
   flex: 0.9;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .timetable .timings .timeSlots {
@@ -67,16 +69,23 @@
   align-items: center;
   overflow: hidden;
   text-align: center;
+  flex-direction: column;
   box-shadow: -7px 5px 18px -5px rgba(0, 0, 0, 0.75);
   border-radius: 2vw;
   margin: 0.6vw;
-  width: 47%;
-  flex-direction: column;
+  width: 19%;
+  height: 21%;
+}
+
+.timetable .timings .timeSlots:hover {
+  transition: 0.1s all ease-in;
+  transform: scale(1.1);
 }
 
 .timetable .timings .timeSlots .timeHead {
   flex: 1;
   height: 30%;
+  font-size: 0.8vw;
 }
 
 .timetable .timings .timeSlots .timeBtns {
@@ -84,16 +93,19 @@
   flex: 1;
   position: relative;
   justify-content: space-evenly;
-  align-items: center;
-  width: 85%;
-  left: 7.5%;
+  flex-wrap: wrap;
+  top: -12%;
 }
 
 .timetable .timings .timeSlots .timeBtns button {
   font-weight: bold;
-  font-size: 0.85vw;
-  background: #39ff39;
+  font-size: 0.75vw;
+  background: #07b407;
+  color: black;
   cursor: pointer;
+  border-radius: 0.85vw;
+  margin-bottom: 0.3vw;
+  margin-top: 0.3vw;
 }
 
 .timetable .timings .timeSlots .timeBtns button:active {

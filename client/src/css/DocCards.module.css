@@ -1,4 +1,4 @@
- .profileCard {
+/* .profileCard {
   position: relative;
   top: 10vh;
   left: 10%;
@@ -13,8 +13,8 @@
   margin: 1vw;
   padding: 1em;
   background-color: white;
-}
- .profileCard .image {
+} */
+/* .profileCard .image {
   position: relative;
   width: 50%;
   height: 50%;
@@ -24,52 +24,40 @@
   z-index: 1;
   border-radius: 50%;
   overflow: hidden;
-}
+} */
 
-.profileCard .image .cardImage {
+/* .profileCard .image .cardImage {
   position: relative;
   object-fit: fill;
   width: 100%;
   height: 100%;
   padding: 0;
-}
-.profileCard .info {
+} */
+/* .profileCard .info {
   position: relative;
   top: 2%;
   border-radius: 7vw 7vw 0 0;
   width: 16vw;
   height: 40vh;
   font-family: "Roboto", sans-serif;
-}
+} */
 
-.profileCard .info div {
+/* .profileCard .info div {
   position: relative;
   top: 10%;
   text-align: center;
-  text-overflow: ellipsis;
-}
-.profileCard .info div .nameHead {
+  text-overflow: ellipsis; */
+/* } */
+/* .profileCard .info div .nameHead {
   font-size: 1.7vw;
   overflow: hidden;
   text-overflow: ellipsis;
-}
- .profileCard .info div div {
+} */
+/* .profileCard .info div div {
   left: 0%;
   top: 1vh;
   font-size: 0.9vw;
   margin: 0.3vw;
   overflow: hidden;
   font-weight: bold;
-}
-button{
-  border-radius: 25px;
-  border:0;
-  background-color: #060808;
-  font-size: 1vw;
-    background-color: #EDEFF2;
-    border: none;
-    padding: 1em;
-    border-radius: 25px;
-    font-size: 1vw; 
-    display: flex;
-}
+} */

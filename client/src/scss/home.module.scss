@@ -11,6 +11,12 @@ body {
   overflow-x: hidden;
   font-family: "Roboto", sans-serif;
 }
+
+button {
+  border: none;
+  padding: 0.75vw;
+}
+
 .homeContainer {
   width: 100vw;
   height: 100vh;
@@ -106,11 +112,11 @@ body {
             font-weight: bold;
             border: 0.3vw solid white;
             cursor: pointer;
-            p {
-              position: relative;
-              text-align: center;
-              left: 20%;
-            }
+            // p {
+            //   position: relative;
+            //   text-align: center;
+            //   // left: 20%;
+            // }
 
             &:hover {
               background: rgb(46, 59, 95);
@@ -118,11 +124,11 @@ body {
               transition: all 0.1s ease-in-out;
             }
           }
-          &:nth-child(2) {
-            button p {
-              left: 30%;
-            }
-          }
+          // &:nth-child(2) {
+          //   button p {
+          //     left: 30%;
+          //   }
+          // }
         }
       }
     }
