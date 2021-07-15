@@ -9,7 +9,6 @@
 
 .docDashboard .docInfo {
   flex: 0.22;
-  border: 5px solid #7cdaff;
   display: flex;
   flex-direction: column;
 }
