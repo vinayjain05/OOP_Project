@@ -96,8 +96,11 @@
   cursor: pointer;
 }
 
-.timetable .timings .timeSlots .timeBtns button:hover {
-  transition: 0.1s all ease-in;
+.timetable .timings .timeSlots .timeBtns button.active {
+  background: #eeee00;
+}
+
+.timetable .timings .timeSlots .timeBtns button.mouseover {
   background: #eeee00;
 }
 /*# sourceMappingURL=timetable.module.css.map */

@@ -47,6 +47,22 @@ export default class Timetable extends Component {
       });
   }
 
+  handleAvailability = (event) => {
+    // console.log(event.target);
+    event.target.classList.contains(styles.active)
+      ? event.target.classList.remove(styles.active)
+      : event.target.classList.add(styles.active);
+    // event.target.style.backgroundColor =
+    //   event.target.style.backgroundColor === "#EEEE00" ? "#39FF39" : "#EEEE00";
+  };
+
+  handleMouseEnter = (event) => {
+    event.target.classList.add(styles.mouseover);
+  };
+
+  handleMouseLeave = (event) => {
+    event.target.classList.remove(styles.mouseover);
+  };
   render() {
     return (
       <React.Fragment>
@@ -77,10 +93,32 @@ export default class Timetable extends Component {
                     <h3>{i + " " + md}</h3>
                   </div>
                   <div className={styles.timeBtns}>
-                    <button>{i + ":00 - " + i + ":15"}</button>
-                    <button>{i + ":15 - " + i + ":30"}</button>
-                    <button>{i + ":30 - " + i + ":45"}</button>
-                    <button>
+                    <button
+                      onMouseEnter={this.handleMouseEnter}
+                      onMouseLeave={this.handleMouseLeave}
+                      onClick={this.handleAvailability}
+                    >
+                      {i + ":00 - " + i + ":15"}
+                    </button>
+                    <button
+                      onMouseEnter={this.handleMouseEnter}
+                      onMouseLeave={this.handleMouseLeave}
+                      onClick={this.handleAvailability}
+                    >
+                      {i + ":15 - " + i + ":30"}
+                    </button>
+                    <button
+                      onMouseEnter={this.handleMouseEnter}
+                      onMouseLeave={this.handleMouseLeave}
+                      onClick={this.handleAvailability}
+                    >
+                      {i + ":30 - " + i + ":45"}
+                    </button>
+                    <button
+                      onMouseEnter={this.handleMouseEnter}
+                      onMouseLeave={this.handleMouseLeave}
+                      onClick={this.handleAvailability}
+                    >
                       {i + ":45 - " + String(parseInt(i + 1)) + ":00"}
                     </button>
                   </div>

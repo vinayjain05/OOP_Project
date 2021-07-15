@@ -47,7 +47,7 @@ export default class DoctorDashboard extends Component {
               </div>
               <div className={styles.colorLegends}>
                 <div></div>
-                <span>Busy</span>
+                <span>Appointment Scheduled</span>
               </div>
             </div>
           </div>
