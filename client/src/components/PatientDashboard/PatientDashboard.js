@@ -2,12 +2,15 @@ import React from "react";
 import DocCard from "./DocCard";
 import { Component } from "react";
 import { TeamObjOne } from "./Data";
-import styles from "../../css/PatDash.module.css";
+import styles from "../../css/PatientDashboard.module.css";
 
-export default class PatDash extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+export default class PatientDashboard extends Component {
+  componentDidMount() {
+    this.props.pageActive(true);
+  }
+  componentWillUnmount() {
+    this.props.pageActive(false);
+  }
   render() {
     return (
       <React.Fragment>

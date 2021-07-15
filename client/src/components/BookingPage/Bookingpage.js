@@ -3,36 +3,19 @@ import styles from "../../css/bookingpage.module.css";
 import Timetable from "../../Timetable";
 
 export default class BookingPage extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
   componentDidMount() {
-    // let prop = { ...this.props };
-    console.log(this.props.name);
+    this.props.pageActive(true);
   }
+  componentWillUnmount() {
+    this.props.pageActive(false);
+  }
+
   render() {
     return (
       <React.Fragment>
         <div className={styles.docDashboard}>
           <div className={styles.docInfo}>
-            <div className={styles.profileCard}>
-              <div className={styles.image}>
-                <img
-                  src="https://picsum.photos/200"
-                  className={styles.cardImage}
-                  alt=""
-                />
-              </div>
-              <div className={styles.info}>
-                <div>
-                  <h3 className={styles.nameHead}>{this.props.name}</h3>
-                  <div>{this.props.specialization}</div>
-                  <div>{this.props.education}</div>
-                  <div>{this.props.experience}</div>
-                  <div>{this.props.location}</div>
-                </div>
-              </div>
-            </div>
+            <Card {...this.props} />
           </div>
           <div className={styles.aptTab}>
             <Timetable />

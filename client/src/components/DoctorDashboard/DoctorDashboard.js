@@ -4,6 +4,13 @@ import Timetable from "../../Timetable";
 import Card from "../Card";
 
 export default class DoctorDashboard extends Component {
+  componentDidMount() {
+    this.props.pageActive(true);
+  }
+  componentWillUnmount() {
+    this.props.pageActive(false);
+  }
+
   render() {
     return (
       <React.Fragment>

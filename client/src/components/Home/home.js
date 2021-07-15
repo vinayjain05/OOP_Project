@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import { ReactComponent as HomePicture } from "../../svg/homedocs.svg";
-import { ReactComponent as Door } from "../../svg/door1.svg";
+// import { ReactComponent as Door } from "../../svg/door1.svg";
 import styles from "../../css/home.module.css";
 import { Link } from "react-router-dom";
 
 export default class Home extends Component {
-  componentDidMount() {
-    this.props.pageActive(false);
-  }
-  componentWillUnmount() {
-    this.props.pageActive(true);
-  }
   render() {
     return (
       <React.Fragment>
@@ -28,10 +22,14 @@ export default class Home extends Component {
               </div>
               <div className={styles.loginButtons}>
                 <Link to="/signup" className={styles.signupbtn}>
-                  <button>Sign up</button>
+                  <button>
+                    <p>Sign up</p>
+                  </button>
                 </Link>
                 <Link to="/login" className={styles.loginbtn}>
-                  <button>Login</button>
+                  <button>
+                    <p>Login</p>
+                  </button>
                 </Link>
               </div>
             </div>

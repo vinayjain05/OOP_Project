@@ -81,7 +81,7 @@ body {
 
 .homeContainer .board .dias .loginButtons a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .homeContainer .board .dias .loginButtons a:nth-child(1) {
@@ -99,10 +99,20 @@ body {
   cursor: pointer;
 }
 
+.homeContainer .board .dias .loginButtons a button p {
+  position: relative;
+  text-align: center;
+  left: 20%;
+}
+
 .homeContainer .board .dias .loginButtons a button:hover {
   background: #2e3b5f;
   color: white;
   transition: all 0.1s ease-in-out;
+}
+
+.homeContainer .board .dias .loginButtons a:nth-child(2) button p {
+  left: 30%;
 }
 
 .homeContainer .board .curtain {
