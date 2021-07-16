@@ -12,9 +12,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #093470;
+  background: #212c35;
+  color: white;
   align-items: center;
-  box-shadow: 2px 5px 18px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 8px 5px 18px -5px rgba(138, 62, 62, 0.75);
 }
 
 .docDashboard .aptTab {

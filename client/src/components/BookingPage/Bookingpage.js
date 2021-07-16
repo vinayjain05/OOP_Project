@@ -28,6 +28,7 @@ export default class BookingPage extends Component {
           event.target.classList.add(styles.active),
           this.setState({ consultationSelect: event.target.id }),
         ];
+    this.handleTimeSlots(this.state.slots);
   };
 
   handleTimeSlots = (slots) => {
@@ -44,12 +45,19 @@ export default class BookingPage extends Component {
               .classList.remove(styles.slotavailable),
           ]
       : slots.includes(true)
-      ? [
-          document.getElementById("bookbtn").classList.add(styles.active),
-          document
-            .getElementById("mandateinfo")
-            .classList.add(styles.slotavailable),
-        ]
+      ? document
+          .getElementById("videoconsultation")
+          .classList.contains(styles.active) ||
+        document
+          .getElementById("inpersonconsultation")
+          .classList.contains(styles.active)
+        ? [
+            document.getElementById("bookbtn").classList.add(styles.active),
+            document
+              .getElementById("mandateinfo")
+              .classList.add(styles.slotavailable),
+          ]
+        : ""
       : "";
 
     this.setState({ slots: slots });
@@ -81,7 +89,7 @@ export default class BookingPage extends Component {
             </div>
             <div id="mandateinfo" className={styles.madateinfo}>
               <span>&#8727;</span>
-              <p>Please select the type of consultation and a slot</p>
+              <p>Please select the type of consultation and a Book a Slot</p>
             </div>
           </div>
           <div className={styles.aptTab}>

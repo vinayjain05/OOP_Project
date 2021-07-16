@@ -23,7 +23,7 @@ function App() {
     <Router>
       <Route path="/" exact component={() => <Home />} />
 
-      {currentPage === true ? <Navbar /> : ""}
+      {/* {currentPage === true ? <Navbar /> : ""} */}
 
       <Route path="/login" exact component={() => <Login />} />
       <Route path="/signup" exact component={() => <Signup />} />

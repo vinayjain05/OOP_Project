@@ -78,7 +78,7 @@
 }
 
 .bookingDashboard .docInfo .bookaptBtn .bookbtn.active:hover {
-  transition: 0.1s all ease-in;
+  transition: 0.05s all ease-in;
   background: white;
   transform: scale(1.08);
   color: black;
