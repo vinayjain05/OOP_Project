@@ -6,6 +6,7 @@ import Card from "../Card";
 export default class BookingPage extends Component {
   state = {
     consultationSelect: false,
+    slots: new Array(48).fill(0),
   };
   componentDidMount() {
     this.props.pageActive(true);
@@ -29,7 +30,30 @@ export default class BookingPage extends Component {
         ];
   };
 
-  handleTimeSlots = (slot) => {};
+  handleTimeSlots = (slots) => {
+    // console.log(slots);
+    let val = document
+      .getElementById("bookbtn")
+      .classList.contains(styles.active)
+      ? slots.includes(true)
+        ? ""
+        : [
+            document.getElementById("bookbtn").classList.remove(styles.active),
+            document
+              .getElementById("mandateinfo")
+              .classList.remove(styles.slotavailable),
+          ]
+      : slots.includes(true)
+      ? [
+          document.getElementById("bookbtn").classList.add(styles.active),
+          document
+            .getElementById("mandateinfo")
+            .classList.add(styles.slotavailable),
+        ]
+      : "";
+
+    this.setState({ slots: slots });
+  };
   render() {
     return (
       <React.Fragment>
@@ -51,7 +75,13 @@ export default class BookingPage extends Component {
               >
                 In-Person Consultation
               </button>
-              <button className={styles.bookbtn}>Book Appointment</button>
+              <button id="bookbtn" className={styles.bookbtn}>
+                Book Appointment
+              </button>
+            </div>
+            <div id="mandateinfo" className={styles.madateinfo}>
+              <span>&#8727;</span>
+              <p>Please select the type of consultation and a slot</p>
             </div>
           </div>
           <div className={styles.aptTab}>

@@ -34,18 +34,18 @@
 }
 
 .timetable .dates div.active {
-  background: #0e6486;
+  background: #212c35;
   color: white;
-  border-right: 0.2vw solid #0e6486;
-  border-top: 0.2vw solid #0e6486;
+  border-right: 0.2vw solid #212c35;
+  border-top: 0.2vw solid #212c35;
 }
 
 .timetable .dates div:hover {
   transition: 0.1s all ease-in;
-  background: #0e6486;
+  background: #212c35;
   color: white;
-  border-right: 0.2vw solid #0e6486;
-  border-top: 0.2vw solid #0e6486;
+  border-right: 0.2vw solid #212c35;
+  border-top: 0.2vw solid #212c35;
 }
 
 .timetable .dates div span {

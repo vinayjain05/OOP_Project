@@ -6,7 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: -10px 5px 23px 5px rgba(0, 0, 0, 0.75);
+  background: #28373d;
+  box-shadow: -10px 5px 23px 15px black;
   border-radius: 2vw;
 }
 

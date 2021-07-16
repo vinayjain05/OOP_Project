@@ -16,7 +16,7 @@ function App() {
 
   let handleActivePage = (page) => {
     setCurrentPage(page);
-    console.log(page);
+    // console.log(page);
   };
 
   return (

@@ -51,14 +51,20 @@ export default class Timetable extends Component {
   handleSlotSelect = (event) => {
     // console.log(event.target);
 
-    if (event.target.classList.contains(styles.active)) {
-      let slots = [...this.state.slots];
-      let slotIndex = event.target.value.split;
-      // slots[]
-    }
+    // if (event.target.classList.contains(styles.active)) {
+    let slots = [...this.state.slots];
+    slots[event.target.id] = !slots[event.target.id];
+
+    this.props.timeslots(slots);
+    // slots[]
+    // }
     let val = event.target.classList.contains(styles.active)
       ? [event.target.classList.remove(styles.active)]
       : [event.target.classList.add(styles.active)];
+
+    this.setState({
+      slots: slots,
+    });
 
     // event.target.style.backgroundColor =
     //   event.target.style.backgroundColor === "#EEEE00" ? "#39FF39" : "#EEEE00";
@@ -73,35 +79,33 @@ export default class Timetable extends Component {
   handleMouseLeave = (event) => {
     event.target.classList.remove(styles.mouseover);
   };
+
   render() {
     return (
       <React.Fragment>
         <div className={styles.timetable}>
           <div className={styles.dates}>
-            {this.state.datetabs.map((date) => {
+            {this.state.datetabs.map((date, i) => {
               let active = "";
               if (date.split(" ")[1] === String(new Date().getDate())) {
                 active = styles.active;
               }
               return (
-                <div className={active}>
+                <div className={active} key={i} id={`date-${i}`}>
                   <span>{date}</span>
                 </div>
               );
             })}
           </div>
           <div className={styles.timings}>
-            {Array.from({ length: 12 }, (_, i) => i + 9).map((i) => {
+            {Array.from({ length: 12 }, (_, i) => i + 9).map((i, j) => {
               i = i % 12;
               let md = "am";
               if (i < 9) md = "pm";
               i = i === 0 ? 12 : i;
-
+              j = j * 4;
               return (
-                <div
-                  className={styles.timeSlots}
-                  key={`${i} + ":00 - " + ${i} + ":15"`}
-                >
+                <div className={styles.timeSlots} key={i}>
                   <div className={styles.timeHead}>
                     <h3>{i + " " + md}</h3>
                   </div>
@@ -110,7 +114,7 @@ export default class Timetable extends Component {
                       onMouseEnter={this.handleMouseEnter}
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
-                      key={`${i} + ":00 - " + ${i} + ":15"`}
+                      id={j}
                     >
                       {i + ":00 - " + i + ":15"}
                     </button>
@@ -118,7 +122,7 @@ export default class Timetable extends Component {
                       onMouseEnter={this.handleMouseEnter}
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
-                      key={i + ":15 - " + i + ":30"}
+                      id={j + 1}
                     >
                       {i + ":15 - " + i + ":30"}
                     </button>
@@ -126,7 +130,7 @@ export default class Timetable extends Component {
                       onMouseEnter={this.handleMouseEnter}
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
-                      key={i + ":30 - " + i + ":45"}
+                      id={j + 2}
                     >
                       {i + ":30 - " + i + ":45"}
                     </button>
@@ -134,7 +138,7 @@ export default class Timetable extends Component {
                       onMouseEnter={this.handleMouseEnter}
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
-                      key={i + ":45 - " + i + ":00"}
+                      id={j + 3}
                     >
                       {i + ":45 - " + String(parseInt(i + 1)) + ":00"}
                     </button>
