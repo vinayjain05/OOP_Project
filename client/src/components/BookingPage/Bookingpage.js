@@ -7,6 +7,8 @@ export default class BookingPage extends Component {
   state = {
     consultationSelect: false,
     slots: new Array(48).fill(0),
+    value: "",
+    amount: null,
   };
   componentDidMount() {
     this.props.pageActive(true);
@@ -18,14 +20,18 @@ export default class BookingPage extends Component {
   handleBooking = () => {
     let slots = [];
     this.state.slots.forEach((x, index) => {
-      if (x === 1) {
+      if (x == 1) {
         slots.push(index);
       }
     });
+    let consultType =
+      this.state.consultationSelect === "videoconsultation" ? true : false;
+    let amountType = consultType ? 500 : 1000;
+    this.setState({ amount: slots.length * amountType });
+    document.getElementById("bookingmodal").classList.add(styles.active);
     let bookingDetails = {
       doctorID: "",
-      consultationType:
-        this.state.consultationSelect === "videoconsultation" ? true : false,
+      consultationType: consultType,
       slots: slots,
     };
     console.log(bookingDetails);
@@ -77,6 +83,20 @@ export default class BookingPage extends Component {
       : "";
     this.setState({ slots: slots });
   };
+
+  handleMessage = (event) => {
+    if (event.target.value.length > 0)
+      document.getElementById("proceedpayment").classList.add(styles.active);
+    else
+      document.getElementById("proceedpayment").classList.remove(styles.active);
+    this.setState({ value: event.target.value });
+  };
+
+  handleCloseModal = () => {
+    document.getElementById("bookingmodal").classList.remove(styles.active);
+  };
+
+  handleProceedPayment = () => {};
   render() {
     return (
       <React.Fragment>
@@ -120,11 +140,37 @@ export default class BookingPage extends Component {
               </div>
               <div className={styles.colorLegends}>
                 <div></div>
-                <span>Unavailable</span>
+                <span>In progress(unconfirmed)</span>
               </div>
               <div className={styles.colorLegends}>
                 <div></div>
-                <span>Appointment Scheduled</span>
+                <span>Doctor Busy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="bookingmodal" className={styles.bookingModalContainer}>
+          <div className={styles.bookingDetails}>
+            <span className={styles.closebtn} onClick={this.handleCloseModal}>
+              &times;
+            </span>
+            <div className={styles.bookingInfo}>
+              <div> Amount to be Paid: &#8377;: {this.state.amount}</div>
+              <div>
+                <textarea
+                  type="text"
+                  name="message"
+                  autoComplete="off"
+                  required
+                  className={styles.message}
+                  value={this.state.message}
+                  onChange={this.handleMessage}
+                />
+              </div>
+              <div>
+                <button id="proceedpayment" onClick={this.handleProceedPayment}>
+                  Proceed to Payment
+                </button>
               </div>
             </div>
           </div>

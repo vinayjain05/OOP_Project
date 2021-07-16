@@ -68,7 +68,7 @@ export default class DoctorDashboard extends Component {
               </div>
               <div className={styles.colorLegends}>
                 <div></div>
-                <span>Unavailable</span>
+                <span>Busy</span>
               </div>
               <div className={styles.colorLegends}>
                 <div></div>
