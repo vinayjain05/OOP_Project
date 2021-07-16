@@ -46,6 +46,13 @@ export default class Timetable extends Component {
         });
         // console.log(newdate);
       });
+    let currh = new Date().getHours() !== 0 ? new Date().getHours() % 12 : 0;
+    currh = currh === 0 ? 12 : currh;
+    // let timebtns = document
+    //   .getElementsByClassName(styles.timeBtn)
+    //   .forEach((timebtn) => {
+    //     // timebtn.value.split(" -")[0] - currh<0?;
+    //   });
   }
 
   handleSlotSelect = (event) => {
@@ -115,6 +122,7 @@ export default class Timetable extends Component {
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
                       id={j}
+                      className={styles.timeBtn}
                     >
                       {i + ":00 - " + i + ":15"}
                     </button>
@@ -123,6 +131,7 @@ export default class Timetable extends Component {
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
                       id={j + 1}
+                      className={styles.timeBtn}
                     >
                       {i + ":15 - " + i + ":30"}
                     </button>
@@ -131,6 +140,7 @@ export default class Timetable extends Component {
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
                       id={j + 2}
+                      className={styles.timeBtn}
                     >
                       {i + ":30 - " + i + ":45"}
                     </button>
@@ -139,6 +149,7 @@ export default class Timetable extends Component {
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
                       id={j + 3}
+                      className={styles.timeBtn}
                     >
                       {i + ":45 - " + String(parseInt(i + 1)) + ":00"}
                     </button>
