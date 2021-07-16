@@ -4,6 +4,12 @@ import Timetable from "../Timetable";
 import Card from "../Card";
 
 export default class DoctorDashboard extends Component {
+  state = {
+    changeAvailability: false,
+    originalSlots: new Array(48).fill(0),
+    slots: new Array(48).fill(0),
+  };
+
   componentDidMount() {
     this.props.pageActive(true);
   }
@@ -11,6 +17,30 @@ export default class DoctorDashboard extends Component {
     this.props.pageActive(false);
   }
 
+  handleTimeSlots = (slots) => {
+    let val = this.state.originalSlots.map((x, i) => {
+      if (x == slots[i]) return 1;
+    });
+    val = !val.reduce((a, b) => a + b, 0)
+      ? document
+          .getElementById("changeavailabity")
+          .classList.contains(styles.active)
+        ? ""
+        : document
+            .getElementById("changeavailabity")
+            .classList.add(styles.active)
+      : document
+          .getElementById("changeavailabity")
+          .classList.remove(styles.active);
+    this.setState({ slots: slots });
+  };
+
+  handleChangeAvailability = () => {
+    document.getElementById("changeavailabity").classList.remove(styles.active);
+    this.setState((prevState) => {
+      return { originalSlots: prevState.slots };
+    });
+  };
   render() {
     return (
       <React.Fragment>
@@ -22,8 +52,16 @@ export default class DoctorDashboard extends Component {
             </div>
           </div>
           <div className={styles.aptTab}>
-            <Timetable />
+            <Timetable timeslots={this.handleTimeSlots} />
             <div className={styles.refInfo}>
+              <div className={styles.changeAvailability}>
+                <button
+                  id="changeavailabity"
+                  onClick={this.handleChangeAvailability}
+                >
+                  Change Availability
+                </button>
+              </div>
               <div className={styles.colorLegends}>
                 <div></div>
                 <span>Available</span>

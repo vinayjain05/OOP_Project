@@ -18,13 +18,14 @@ export default class BookingPage extends Component {
   handleBooking = () => {
     let slots = [];
     this.state.slots.forEach((x, index) => {
-      if (x === true) {
+      if (x === 1) {
         slots.push(index);
       }
     });
     let bookingDetails = {
       doctorID: "",
-      consultationType: this.state.consultationSelect,
+      consultationType:
+        this.state.consultationSelect === "videoconsultation" ? true : false,
       slots: slots,
     };
     console.log(bookingDetails);
