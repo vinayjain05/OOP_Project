@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import styles from "../../css/bookingpage.module.css";
 import Timetable from "../Timetable";
 import Card from "../Card";
+import BookingModal from "./Bookingmodal";
 
 export default class BookingPage extends Component {
   state = {
     consultationSelect: false,
     slots: new Array(48).fill(0),
-    value: "",
     amount: null,
+    active: false,
   };
   componentDidMount() {
     this.props.pageActive(true);
@@ -27,8 +28,8 @@ export default class BookingPage extends Component {
     let consultType =
       this.state.consultationSelect === "videoconsultation" ? true : false;
     let amountType = consultType ? 500 : 1000;
-    this.setState({ amount: slots.length * amountType });
-    document.getElementById("bookingmodal").classList.add(styles.active);
+    this.setState({ amount: slots.length * amountType, active: true });
+
     let bookingDetails = {
       doctorID: "",
       consultationType: consultType,
@@ -83,20 +84,9 @@ export default class BookingPage extends Component {
       : "";
     this.setState({ slots: slots });
   };
-
-  handleMessage = (event) => {
-    if (event.target.value.length > 0)
-      document.getElementById("proceedpayment").classList.add(styles.active);
-    else
-      document.getElementById("proceedpayment").classList.remove(styles.active);
-    this.setState({ value: event.target.value });
+  handleModalActive = (active) => {
+    this.setState({ active: active });
   };
-
-  handleCloseModal = () => {
-    document.getElementById("bookingmodal").classList.remove(styles.active);
-  };
-
-  handleProceedPayment = () => {};
   render() {
     return (
       <React.Fragment>
@@ -128,7 +118,7 @@ export default class BookingPage extends Component {
             </div>
             <div id="mandateinfo" className={styles.madateinfo}>
               <span>&#8727;</span>
-              <p>Please select the type of consultation and Book a Slot</p>
+              <p>Please select the type of consultation and choose a slot</p>
             </div>
           </div>
           <div className={styles.aptTab}>
@@ -149,32 +139,11 @@ export default class BookingPage extends Component {
             </div>
           </div>
         </div>
-        <div id="bookingmodal" className={styles.bookingModalContainer}>
-          <div className={styles.bookingDetails}>
-            <span className={styles.closebtn} onClick={this.handleCloseModal}>
-              &times;
-            </span>
-            <div className={styles.bookingInfo}>
-              <div> Amount to be Paid: &#8377;: {this.state.amount}</div>
-              <div>
-                <textarea
-                  type="text"
-                  name="message"
-                  autoComplete="off"
-                  required
-                  className={styles.message}
-                  value={this.state.message}
-                  onChange={this.handleMessage}
-                />
-              </div>
-              <div>
-                <button id="proceedpayment" onClick={this.handleProceedPayment}>
-                  Proceed to Payment
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <BookingModal
+          active={this.state.active}
+          modalActive={this.handleModalActive}
+          amount={this.state.amount}
+        />
       </React.Fragment>
     );
   }
