@@ -17,7 +17,7 @@ export default class SignupPat extends Component {
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc as a Patient</div>
             <div>
-              <form class={styles.form}>
+              <form className={styles.form}>
                 <div>
                   <input
                     type="text"

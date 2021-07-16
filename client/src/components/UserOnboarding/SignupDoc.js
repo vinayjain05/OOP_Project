@@ -62,7 +62,7 @@ export default class SignupDoc extends Component {
                 </div>
                 <div>
                   <button>
-                    <Link to="/patdash" className={styles.button}>
+                    <Link to="/docdash" className={styles.button}>
                       Sign up
                     </Link>
                   </button>

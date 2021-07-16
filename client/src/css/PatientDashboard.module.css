@@ -1,9 +1,24 @@
-.usercard {
-    top:1000px;
+.PatientDashboard {
     display: flex;
     width: 100vw;
     height: 100vh;
   }
+.userInfo{
+    background-color: darkblue;
+    color:#fff;
+    padding-top: 4vw;
+    width: 20vw;
+  }
+.app{
+  text-align: center;
+  font-size: 1.3vw;
+  
+}
+  .text{
+    text-align: center;
+    padding-left: 4vw;
+    padding-top: 4vw;
+}
 .heading{
     text-align: center;
     padding-top: 2vw;
@@ -13,19 +28,34 @@
     padding-top: 1vw;
     text-align: center;
     width: 100%;
+    border-radius: 5vw;
+    box-shadow: 0vw 0.8vw 1vw rgb(99, 102, 104);
 }
 .subheading div{
     padding: 0.3vw;
 }
-.text{
-    text-align: center;
-}
+
 .doccard {
-    top:1000px;
-    display: flex;
-    width: 75vw;
-    height: 70vh;
+   margin-top: 1vw;
+   padding-top: -1vw;
+    width: 70vw;
+    height: 60vh;
     background-color: white;
-    overflow: hidden;
-    scroll-behavior: auto;
+    overflow-y: auto;
+  }
+.docInfo{
+  width: 30%;
+  flex-direction: column;
+  display: inline-block;
+  vertical-align: middle;
+
+}
+.doccard::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .doccard {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }

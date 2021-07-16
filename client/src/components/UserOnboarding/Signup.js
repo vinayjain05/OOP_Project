@@ -10,18 +10,18 @@ export default class Signup extends Component {
     return (
       <React.Fragment>
         <div className={styles.signup}>
-          <div class={styles.bgbox}>
-            <div class={styles.logo}>
-              <img src={logo} class={styles.logo} alt="logo" />
+          <div className={styles.bgbox}>
+            <div className={styles.logo}>
+              <img src={logo} className={styles.logo} alt="logo" />
             </div>
-            <div class={styles.heading}>Sign-up</div>
-            <div class={styles.descr}>Create your ScheDoc Account</div>
+            <div className={styles.heading}>Sign-up</div>
+            <div className={styles.descr}>Create your ScheDoc Account</div>
             <div>
-              <form class={styles.form}>
+              <form className={styles.form}>
                 <div>
                   <input
                     type="text"
-                    class={styles.uname}
+                    className={styles.uname}
                     name="uname"
                     placeholder="Username"
                   />
@@ -29,7 +29,7 @@ export default class Signup extends Component {
                 <div>
                   <input
                     type="email"
-                    class={styles.email}
+                    className={styles.email}
                     name="email"
                     placeholder="Email"
                   />
@@ -37,7 +37,7 @@ export default class Signup extends Component {
                 <div>
                   <input
                     type="tel"
-                    class={styles.phone}
+                    className={styles.phone}
                     name="phone"
                     pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                     placeholder="Phone Number"

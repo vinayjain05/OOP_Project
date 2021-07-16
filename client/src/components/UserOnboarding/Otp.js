@@ -31,7 +31,7 @@ export default class Otp extends Component {
                   max="999999"
                 />
                 <button>
-                  <Link to="/patdash" className={styles.button}></Link>
+                  <Link to="/patdash" className={styles.button}>&gt;</Link>
                 </button>
               </form>
             </div>
