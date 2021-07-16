@@ -1,6 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Handlee&family=Special+Elite&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@keyframes slotClickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .bookingDashboard {
   display: flex;
   width: 100vw;

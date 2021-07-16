@@ -15,6 +15,21 @@ export default class BookingPage extends Component {
     this.props.pageActive(false);
   }
 
+  handleBooking = () => {
+    let slots = [];
+    this.state.slots.forEach((x, index) => {
+      if (x === true) {
+        slots.push(index);
+      }
+    });
+    let bookingDetails = {
+      doctorID: "",
+      consultationType: this.state.consultationSelect,
+      slots: slots,
+    };
+    console.log(bookingDetails);
+  };
+
   handleConsultationClick = (event) => {
     let val = this.state.consultationSelect
       ? [
@@ -59,7 +74,6 @@ export default class BookingPage extends Component {
           ]
         : ""
       : "";
-
     this.setState({ slots: slots });
   };
   render() {
@@ -83,13 +97,17 @@ export default class BookingPage extends Component {
               >
                 In-Person Consultation
               </button>
-              <button id="bookbtn" className={styles.bookbtn}>
+              <button
+                id="bookbtn"
+                className={styles.bookbtn}
+                onClick={this.handleBooking}
+              >
                 Book Appointment
               </button>
             </div>
             <div id="mandateinfo" className={styles.madateinfo}>
               <span>&#8727;</span>
-              <p>Please select the type of consultation and a Book a Slot</p>
+              <p>Please select the type of consultation and Book a Slot</p>
             </div>
           </div>
           <div className={styles.aptTab}>

@@ -17,6 +17,9 @@ export default class DoctorDashboard extends Component {
         <div className={styles.docDashboard}>
           <div className={styles.docInfo}>
             <Card {...this.props} />
+            <div className={styles.editProfile}>
+              <button>Edit Profile</button>
+            </div>
           </div>
           <div className={styles.aptTab}>
             <Timetable />
