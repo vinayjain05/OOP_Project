@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres', 
     
 ]
 
@@ -77,8 +78,17 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'SD',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'Schedoc',
+
+        'USER': 'postgres',
+
+        'PASSWORD': '1625',
+
+        'HOST': 'localhost',
+
+        
     }
 }
 

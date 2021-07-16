@@ -1,4 +1,5 @@
-from backend.settings import TIME_ZONE
+from django.contrib.postgres.fields import ArrayField
+
 from django.db import models
 import datetime
 
@@ -23,13 +24,16 @@ class Doctor(User,models.Model):
     degree=models.CharField(max_length=100)
     hospitalName=models.CharField(max_length=100)
     hospitalLocation=models.TextField()
+    bookedSlot=ArrayField(models.IntegerField(default=None),size=48,)
+    patientID=ArrayField(models.IntegerField(default=None),size=48,)
+    bookingType=ArrayField(models.BooleanField(default=False),size=48,)
 
-class Booking(models.Model):
-    date=models.DateField(("Date"), default=datetime.date.today)
-    hour=models.IntegerField()
-    quarter=models.IntegerField()
-    doc=models.ForeignKey(Doctor,on_delete=models.CASCADE)
-    status=models.IntegerField(default=1)
-    patient=models.ManyToManyField(Patient,default=None)
-    type=models.BooleanField(default=True)
+# class Booking(models.Model):
+#     date=models.DateField(("Date"), default=datetime.date.today)
+#     hour=models.IntegerField()
+#     quarter=models.IntegerField()
+#     doc=models.ForeignKey(Doctor,on_delete=models.CASCADE)
+#     status=models.IntegerField(default=1)
+#     patient=models.ManyToManyField(Patient,default=None)
+#     type=models.BooleanField(default=True)
 
