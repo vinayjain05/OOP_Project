@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home/home";
 import Login from "./components/UserOnboarding/Login";
 import Signup from "./components/UserOnboarding/Signup";
-import Navbar from "./components/Navbar";
-// import PatientDashboard from "./components/PatientDashboard/PatientDashboard";
+// import Navbar from "./components/Navbar";
+import PatientDashboard from "./components/PatientDashboard/PatientDashboard";
 import DoctorDashboard from "./components/DoctorDashboard/DoctorDashboard";
 import Otp from "./components/UserOnboarding/Otp";
 import SignupDoc from "./components/UserOnboarding/SignupDoc";
@@ -30,7 +30,7 @@ function App() {
       <Route path="/otp" exact component={() => <Otp />} />
       <Route path="/signupdoc" exact component={() => <SignupDoc />} />
       <Route path="/signuppat" exact component={() => <SignupPat />} />
-      {/* <Route
+      <Route
         path="/patdash"
         exact
         component={() => (
@@ -41,12 +41,12 @@ function App() {
               education: "MBBS, MD in Pulmonology",
               experience: "7 years",
               location: "Apollo, Bangalore",
-              doctor: true,
+              doctor: false,
               pageActive: handleActivePage,
             }}
           />
         )}
-      /> */}
+      />
       <Route
         path="/docdash"
         exact

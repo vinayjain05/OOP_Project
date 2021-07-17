@@ -17,13 +17,16 @@ export default class SignupPat extends Component {
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc as a Patient</div>
             <div>
-              <form class={styles.form}>
+              <form className={styles.form}>
                 <div>
                   <input
                     type="text"
                     className={styles.gender}
                     name="gender"
-                    placeholder="Gender(dropdown)"
+                    placeholder="Gender" 
+                    pattern="M|F|m|f"
+                    title="Please enter M or F"
+                    required
                   />
                 </div>
                 <div>
@@ -32,6 +35,9 @@ export default class SignupPat extends Component {
                     className={styles.age}
                     name="age"
                     placeholder="Age"
+                    pattern="[0-9]{2}"
+                    title="Please enter valid age" 
+                    required                   
                   />
                 </div>
                 <div>
@@ -40,6 +46,7 @@ export default class SignupPat extends Component {
                     className={styles.add}
                     name="add"
                     placeholder="Address"
+                    required
                   />
                 </div>
                 <div>
@@ -48,29 +55,17 @@ export default class SignupPat extends Component {
                     className={styles.hist}
                     name="hist"
                     placeholder="Medical history"
+                    required
                   />
                 </div>
                 <div>
-                  <button>
-                    <Link to="/patdash" className={styles.button}>
+                  <button className={styles.button} >
                       Patient
-                    </Link>
                   </button>
                 </div>
               </form>
             </div>
-            <div className={styles.or}>----------------OR----------------</div>
-            <button type="button" className={styles.google}>
-              <Link to="/otp" className={styles.button}>
-                <img alt="Google sign-in" src="./google.jfif" />
-              </Link>
-            </button>
-            <div className={styles.back}>
-              {" "}
-              <Link to="/signup" className={styles.button}>
-                &lt;Back
-              </Link>
-            </div>
+           
           </div>
         </div>
       </React.Fragment>

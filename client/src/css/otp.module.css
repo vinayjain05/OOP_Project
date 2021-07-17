@@ -97,6 +97,11 @@
     padding: 0.8em;
     border-radius:25px;
   }
+  
+  .google a{
+    background-color: white;
+    
+  }
   .back{
     color: rgb(153, 143, 143);
     float: left;

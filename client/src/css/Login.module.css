@@ -82,7 +82,24 @@
     height: 100%;
 
   }
+  .google a{
+    background-color: white;
+    
+  }
   .back{
     color: rgb(153, 143, 143);
     float: left;
   }
+  
+.facebook{
+  margin-top: 0.8vw;
+  margin-left: 12vw;
+  margin-right: 12vw;
+  display: block;
+  border-radius:1vw;
+  padding: 0;
+}
+.facebook img{
+  width: 100%;
+
+}
