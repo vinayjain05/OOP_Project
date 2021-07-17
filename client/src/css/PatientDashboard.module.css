@@ -1,9 +1,44 @@
-.usercard {
-    top:1000px;
+.docDashboard {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.docDashboard .patInfo {
+  flex: 0.22;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #212c35;
+  color: white;
+  align-items: center;
+  box-shadow: 8px 5px 18px -5px rgba(138, 62, 62, 0.75);
+}
+.card{
+    height: 50%;
+}
+
+.docDashboard .aptTab {
+  display: flex;
+  flex: 0.78;
+  flex-direction: column;
+}
+
+.PatientDashboard {
     display: flex;
     width: 100vw;
     height: 100vh;
   }
+.app{
+  text-align: center;
+  font-size: 1.3vw;
+  
+}
+  .text{
+    text-align: center;
+    padding-left: 4vw;
+    padding-top: 4vw;
+}
 .heading{
     text-align: center;
     padding-top: 2vw;
@@ -13,19 +48,36 @@
     padding-top: 1vw;
     text-align: center;
     width: 100%;
+    border-radius: 5vw;
+    box-shadow: 0vw 0.8vw 1vw rgb(99, 102, 104);
 }
 .subheading div{
     padding: 0.3vw;
+    margin-bottom: -0vw;
 }
-.text{
-    text-align: center;
-}
+
 .doccard {
-    top:1000px;
-    display: flex;
-    width: 75vw;
+   padding-left: 12vw;
+   margin-top: 1vw;
     height: 70vh;
     background-color: white;
-    overflow: hidden;
-    scroll-behavior: auto;
+    overflow-y: auto;
+    
+  }
+.docInfo{
+  width: 30%;
+  padding-top: 2em;
+  flex-direction: column;
+  display: inline-block;
+  align-items: center;
+
+}
+.doccard::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .doccard {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }

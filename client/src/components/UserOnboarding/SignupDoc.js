@@ -6,6 +6,16 @@ import { Link } from "react-router-dom";
 import styles from "../../css/SignupDoc.module.css";
 
 export default class SignupDoc extends Component {
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      email: "",
+      phone:"",
+      password: ""
+    };
+    
+  }
   render() {
     return (
       <React.Fragment>
@@ -26,6 +36,7 @@ export default class SignupDoc extends Component {
                     class={styles.hospital}
                     name="hospital"
                     placeholder="Specialization"
+                    required
                   />
                 </div>
                 <div>
@@ -34,6 +45,7 @@ export default class SignupDoc extends Component {
                     class={styles.years}
                     name="years"
                     placeholder="Years of experience"
+                    required
                   />
                 </div>
                 <div>
@@ -42,6 +54,7 @@ export default class SignupDoc extends Component {
                     class={styles.edu}
                     name="edu"
                     placeholder="Highest Level of Education"
+                    required
                   />
                 </div>
                 <div>
@@ -50,6 +63,7 @@ export default class SignupDoc extends Component {
                     class={styles.hospital}
                     name="hospital"
                     placeholder="Hospital"
+                    required
                   />
                 </div>
                 <div>
@@ -58,10 +72,11 @@ export default class SignupDoc extends Component {
                     class={styles.hospitaladd}
                     name="hospitaladd"
                     placeholder="Hospital Address"
+                    required
                   />
                 </div>
                 <div>
-                  <button>
+                  <button type="submit">
                     <Link to="/patdash" className={styles.button}>
                       Sign up
                     </Link>
@@ -69,18 +84,7 @@ export default class SignupDoc extends Component {
                 </div>
               </form>
             </div>
-            <div className={styles.or}>----------------OR----------------</div>
-            <button type="button" className={styles.google}>
-              <Link to="/otp" className={styles.button}>
-                <img alt="Google sign-in" src="./google.jfif" />
-              </Link>
-            </button>
-            <div className={styles.back}>
-              {" "}
-              <Link to="/signup" className={styles.button}>
-                &lt;Back
-              </Link>
-            </div>
+            
           </div>
         </div>
       </React.Fragment>

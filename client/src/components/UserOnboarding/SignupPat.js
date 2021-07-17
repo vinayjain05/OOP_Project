@@ -59,18 +59,7 @@ export default class SignupPat extends Component {
                 </div>
               </form>
             </div>
-            <div className={styles.or}>----------------OR----------------</div>
-            <button type="button" className={styles.google}>
-              <Link to="/otp" className={styles.button}>
-                <img alt="Google sign-in" src="./google.jfif" />
-              </Link>
-            </button>
-            <div className={styles.back}>
-              {" "}
-              <Link to="/signup" className={styles.button}>
-                &lt;Back
-              </Link>
-            </div>
+           
           </div>
         </div>
       </React.Fragment>

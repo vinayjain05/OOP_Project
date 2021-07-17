@@ -4,7 +4,7 @@ import Home from "./components/Home/home";
 import Login from "./components/UserOnboarding/Login";
 import Signup from "./components/UserOnboarding/Signup";
 import Navbar from "./components/Navbar";
-// import PatientDashboard from "./components/PatientDashboard/PatientDashboard";
+ import PatientDashboard from "./components/PatientDashboard/PatientDashboard";
 import DoctorDashboard from "./components/DoctorDashboard/DoctorDashboard";
 import Otp from "./components/UserOnboarding/Otp";
 import SignupDoc from "./components/UserOnboarding/SignupDoc";
@@ -30,7 +30,7 @@ function App() {
       <Route path="/otp" exact component={() => <Otp />} />
       <Route path="/signupdoc" exact component={() => <SignupDoc />} />
       <Route path="/signuppat" exact component={() => <SignupPat />} />
-      {/* <Route
+       <Route
         path="/patdash"
         exact
         component={() => (
@@ -46,7 +46,7 @@ function App() {
             }}
           />
         )}
-      /> */}
+      /> 
       <Route
         path="/docdash"
         exact
