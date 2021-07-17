@@ -47,40 +47,29 @@ function App() {
         }}
         component={PatientDashboard}
       />
-      <Route
+      <ProtectedRoute
         path="/docdash"
         exact
-        render={() => (
-          <DoctorDashboard
-            {...{
-              name: "Subrakanta Smith",
-              specialization: "NEUROLOGIST",
-              education: "MBBS, MD in Pulmonology",
-              experience: "7 years",
-              userLocation: "Apollo, Bangalore",
-              doctor: true,
-              id: "",
-              pageActive: handleActivePage,
-            }}
-          />
-        )}
+        props={{
+          name: "Subrakanta Smith",
+          specialization: "NEUROLOGIST",
+          education: "MBBS, MD in Pulmonology",
+          experience: "7 years",
+          userLocation: "Apollo, Bangalore",
+          doctor: true,
+          id: "",
+          pageActive: handleActivePage,
+        }}
+        component={DoctorDashboard}
       />
-      <Route
+      <ProtectedRoute
         path="/booking"
         exact
-        render={() => (
-          <BookingPage
-            {...{
-              // name: "Subrakanta Smith",
-              // specialization: "NEUROLOGIST",
-              // education: "MBBS, MD in Pulmonology",
-              // experience: "7 years",
-              // userLocation: "Apollo, Bangalore",
-              doctor: true,
-              pageActive: handleActivePage,
-            }}
-          />
-        )}
+        props={{
+          doctor: true,
+          pageActive: handleActivePage,
+        }}
+        component={BookingPage}
       />
     </Switch>
   );

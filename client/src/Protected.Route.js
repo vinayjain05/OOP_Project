@@ -8,7 +8,7 @@ export default class ProtectedRoute extends Component {
       <Route
         {...this.props.props}
         render={() => {
-          if (Auth.isAuthenticated()) {
+          if (!Auth.isAuthenticated()) {
             // console.log({...props})
             return <this.props.component {...this.props.props} />;
           } else {

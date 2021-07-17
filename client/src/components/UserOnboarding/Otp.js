@@ -26,13 +26,13 @@ export default class Otp extends Component {
               <form className={styles.form}>
                 <input
                   type="text"
-                  placeholder="123456"
+                  placeholder="OTP"
                   pattern="^[0-9]{1,6}$"
-                 title=" Should be 6 digits"
+                  title=" Should be 6 digits"
                   autoComplete="off"
                   required
                 />
-                <button type="submit"className={styles.button}>
+                <button type="submit" className={styles.button}>
                   &gt;
                 </button>
               </form>

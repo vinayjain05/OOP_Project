@@ -37,11 +37,10 @@ class SignupPat extends Component {
     event.preventDefault();
     let userDetails = { ...this.state, isDoctor: false };
     console.log(userDetails);
-    let authenticated = false;
     // await axios
     //   .post("/registeruser", userDetails)
     //   .then((res) => { Auth.login(true);
-    //     this.setState({slots:res.data}).catch((err)=>{console.log(err)})
+    //     this.setState({doctorsDetails:res.data}).catch((err)=>{console.log(err)})
     //     console.log(res.data)});
   };
 
