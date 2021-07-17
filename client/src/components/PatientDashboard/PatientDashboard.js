@@ -19,7 +19,7 @@ export default class PatientDashboard extends Component {
     }),
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.pageActive(true);
     // await axios
     //   .get("/doctorlist")

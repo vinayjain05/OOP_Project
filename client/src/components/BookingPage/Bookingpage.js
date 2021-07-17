@@ -17,36 +17,24 @@ class BookingPage extends Component {
     this.props.pageActive(true);
 
     const loggedInUser = localStorage.getItem("DoctorDetails");
+    let doctorID = null;
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
       console.log(foundUser);
 
       if (typeof this.props.location.doctorDetails !== "undefined") {
-        // await axios
-        //   .post("/doctortt", this.props.location.doctorDetails.id)
-        //   .then((res) => {
-        //     this.setState({slots:res.data})
-        //     console.log(res.data)});
+        doctorID = this.props.location.doctorDetails.id;
         localStorage.setItem(
           "DoctorDetails",
           JSON.stringify(this.props.location.doctorDetails)
         );
         this.setState({ doctorDetails: this.props.location.doctorDetails });
       } else {
-        // await axios
-        //   .post("/doctortt", foundUser.id)
-        //   .then((res) => {
-        //     this.setState({slots:res.data})
-        //     console.log(res.data)});
+        doctorID = foundUser.id;
         this.setState({ doctorDetails: foundUser });
       }
     } else {
-      // await axios
-      //   .post("/doctortt", this.props.location.doctorDetails.id)
-      //   .then((res) => {
-      //     this.setState({slots:res.data})
-      //     console.log(res.data)});
-
+      doctorID = this.props.location.doctorDetails.id;
       if (this.props.location.doctorDetails)
         localStorage.setItem(
           "DoctorDetails",
@@ -54,20 +42,13 @@ class BookingPage extends Component {
         );
       this.setState({ doctorDetails: this.props.location.doctorDetails });
     }
+    // await axios
+    //   .post("/doctortt", doctorID)
+    //   .then((res) => {
+    //     this.setState({slots:res.data})
+    //     console.log(res.data)});
   }
 
-  // componentDidCatch(error, info) {
-  //   // Display fallback UI
-  //   // You can also log the error to an error reporting service
-
-  //   const loggedInUser = localStorage.getItem("DoctorDetails");
-  //   const foundUser = JSON.parse(loggedInUser);
-  //   this.setState({ doctorDetails: foundUser });
-  //   console.log(error, info);
-  // }
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log(this.props.match);
-  // }
   componentWillUnmount() {
     this.props.pageActive(false);
   }
