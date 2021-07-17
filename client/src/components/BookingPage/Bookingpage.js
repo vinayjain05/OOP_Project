@@ -15,35 +15,10 @@ class BookingPage extends Component {
   };
   async componentDidMount() {
     this.props.pageActive(true);
-
-    const loggedInUser = localStorage.getItem("DoctorDetails");
-    let doctorID = null;
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      console.log(foundUser);
-
-      if (typeof this.props.location.doctorDetails !== "undefined") {
-        doctorID = this.props.location.doctorDetails.id;
-        localStorage.setItem(
-          "DoctorDetails",
-          JSON.stringify(this.props.location.doctorDetails)
-        );
-        this.setState({ doctorDetails: this.props.location.doctorDetails });
-      } else {
-        doctorID = foundUser.id;
-        this.setState({ doctorDetails: foundUser });
-      }
-    } else {
-      doctorID = this.props.location.doctorDetails.id;
-      if (this.props.location.doctorDetails)
-        localStorage.setItem(
-          "DoctorDetails",
-          JSON.stringify(this.props.location.doctorDetails)
-        );
-      this.setState({ doctorDetails: this.props.location.doctorDetails });
-    }
+    console.log({ ...this.props.location.state });
+    this.setState({ doctorDetails: { ...this.props.location.state } });
     // await axios
-    //   .post("/doctortt", doctorID)
+    //   .post("/doctortt", this.props.location.state.id)
     //   .then((res) => {
     //     this.setState({slots:res.data})
     //     console.log(res.data)});

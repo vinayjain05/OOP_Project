@@ -4,8 +4,9 @@ import styles from "../../css/PatientDashboard.module.css";
 import Card from "../Doc_Card";
 import PatCard from "../Pat_Card";
 import axios from "axios";
+import { withRouter } from "react-router";
 
-export default class PatientDashboard extends Component {
+class PatientDashboard extends Component {
   state = {
     doctorDetails: Array.from({ length: 6 }, (_, i) => {
       return {
@@ -19,7 +20,8 @@ export default class PatientDashboard extends Component {
     }),
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    console.log(this.props);
     this.props.pageActive(true);
     // await axios
     //   .get("/doctorlist")
@@ -76,3 +78,5 @@ export default class PatientDashboard extends Component {
     );
   }
 }
+
+export default withRouter(PatientDashboard);

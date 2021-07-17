@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home/home";
 import Login from "./components/UserOnboarding/Login";
 import Signup from "./components/UserOnboarding/Signup";
@@ -11,6 +11,7 @@ import SignupDoc from "./components/UserOnboarding/SignupDoc";
 import SignupPat from "./components/UserOnboarding/SignupPat";
 import BookingPage from "./components/BookingPage/Bookingpage";
 import { withRouter } from "react-router";
+import ProtectedRoute from "./Protected.Route";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(true);
@@ -21,7 +22,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Switch>
       <Route path="/" exact component={() => <Home />} />
 
       {/* {currentPage === true ? <Navbar /> : ""} */}
@@ -31,23 +32,20 @@ function App() {
       <Route path="/otp" exact component={() => <Otp />} />
       <Route path="/signupdoc" exact component={() => <SignupDoc />} />
       <Route path="/signuppat" exact component={() => <SignupPat />} />
-      <Route
+      <ProtectedRoute
         path="/patdash"
         exact
-        render={() => (
-          <PatientDashboard
-            {...{
-              name: "Subrakanta Smith",
-              specialization: "NEUROLOGIST",
-              education: "MBBS, MD in Pulmonology",
-              experience: "7 years",
-              userLocation: "Apollo, Bangalore",
-              doctor: false,
-              id: "",
-              pageActive: handleActivePage,
-            }}
-          />
-        )}
+        props={{
+          name: "Subrakanta Smith",
+          specialization: "NEUROLOGIST",
+          education: "MBBS, MD in Pulmonology",
+          experience: "7 years",
+          userLocation: "Apollo, Bangalore",
+          doctor: false,
+          id: "",
+          pageActive: handleActivePage,
+        }}
+        component={PatientDashboard}
       />
       <Route
         path="/docdash"
@@ -84,7 +82,7 @@ function App() {
           />
         )}
       />
-    </Router>
+    </Switch>
   );
 }
 

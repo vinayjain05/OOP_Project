@@ -2,107 +2,111 @@
   box-sizing: border-box;
 }
 .signup {
-  font-size: 12px;    
+  font-size: 12px;
   font-family: Roboto;
-  background: rgba(202,239,251,1);
+  background: rgba(202, 239, 251, 1);
   width: 100%;
   display: flex;
   justify-content: center;
   height: 100vh;
 }
 .bgbox {
-  width: 40%; 
+  width: 40%;
   min-height: 80%;
   margin: 1.8vw;
-  background: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 1);
   border-radius: 2vw;
   padding: 1vw;
-  box-shadow: 0.8vw 0.8vw 0.8vw rgba(11,57,84,1);
+  box-shadow: 0.8vw 0.8vw 0.8vw rgba(11, 57, 84, 1);
 }
-.logo{
+.logo {
   height: 2.5vw;
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
-.heading{
-  color: rgba(11,57,84,1);
+.heading {
+  color: rgba(11, 57, 84, 1);
   padding-top: 0.5vw;
   font-weight: Bold;
   font-size: 2vw;
   text-align: center;
 }
-.descr{
-  color: rgba(0,0,0,1);
+.descr {
+  color: rgba(0, 0, 0, 1);
   padding-top: 0.7vw;
-  padding-left: 1vw;    
+  padding-left: 1vw;
   padding-right: 1vw;
   font-weight: Thin;
   font-size: 1.2vw;
   text-align: center;
 }
-.form{
-}
-.form div{
+/* .form {
+} */
+.form div {
   display: flex;
   justify-content: center;
 }
-.form input{
-  background-color: #EDEFF2;
+.form input {
+  background-color: #edeff2;
   border: none;
   padding: 1vw;
   margin: 0.2vw;
   border-radius: 5vw;
 }
 .form input:focus {
-  background-color: #CAF0Fc;
+  background-color: #caf0fc;
   outline: none;
 }
-.form button{
+.form button {
   border-radius: 5vw;
-  border:2vw;
+  border: 2vw;
   margin-left: 1vw;
   margin-right: 1vw;
   margin-top: 0.5vw;
-  background-color: #CAF0Fc;
+  background-color: #caf0fc;
   font-size: 1vw;
+  cursor: pointer;
+  /* font-weight: 600; */
 }
-.or{
-  color: rgba(0,0,0,1);
+
+.form button:hover {
+  transition: 0.1s all ease-in;
+  transform: scale(1.1);
+}
+.or {
+  color: rgba(0, 0, 0, 1);
   font-weight: Thin;
   text-align: center;
 }
-.google{
+.google {
   margin-top: 0.8vw;
   margin-left: 12vw;
   margin-right: 12vw;
   display: block;
-  border-radius:1vw;
+  border-radius: 1vw;
   padding: 0;
 }
-.google img{
+.google img {
   width: 100%;
   height: 100%;
-
 }
 
-.google a{
+.google a {
   background-color: white;
-  
 }
-.back{
+.back {
   color: rgb(153, 143, 143);
   float: left;
 }
-.facebook{
+.facebook {
   margin-top: 0.8vw;
   margin-left: 12vw;
   margin-right: 12vw;
   display: block;
-  border-radius:1vw;
+  border-radius: 1vw;
   padding: 0;
 }
-.facebook img{
+.facebook img {
   width: 100%;
-
 }

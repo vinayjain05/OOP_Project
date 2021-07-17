@@ -1,7 +1,6 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import ReactDOM from "react-dom";
 import styles from "../../css/Login.module.css";
 import logo from "../../svg/logo.png";
 
@@ -47,7 +46,7 @@ export default class Login extends Component {
                   <input
                     type="text"
                     name="username"
-                    autocomplete="off"
+                    autoComplete="off"
                     pattern="[0-9a-zA-Z]{6,}"
                     title="Minimum six characters of only numbers and letters"
                     value={this.state.username}
@@ -59,7 +58,7 @@ export default class Login extends Component {
                   <input
                     type="password"
                     name="password"
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                     value={this.state.password}
                     onChange={this.handlePasswordChange}

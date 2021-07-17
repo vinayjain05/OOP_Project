@@ -11,7 +11,21 @@ class Card extends Component {
       : "";
   }
 
-  handleDoctorSelect = () => {};
+  handleDoctorSelect = () => {
+    let doctorDetails = {
+      name: this.props.name,
+      specialization: this.props.specialization,
+      education: this.props.education,
+      experience: this.props.experience,
+      userLocation: this.props.userLocation,
+      id: this.props.id,
+    };
+
+    this.props.history.push({
+      pathname: "/booking",
+      state: doctorDetails,
+    });
+  };
   render() {
     return (
       <React.Fragment>
@@ -37,23 +51,7 @@ class Card extends Component {
                     className={styles.bookaptbtn}
                     onClick={this.handleDoctorSelect}
                   >
-                    <p>
-                      <Link
-                        to={{
-                          pathname: "/booking",
-                          doctorDetails: {
-                            name: this.props.name,
-                            specialization: this.props.specialization,
-                            education: this.props.education,
-                            experience: this.props.experience,
-                            userLocation: this.props.userLocation,
-                            id: this.props.id,
-                          },
-                        }}
-                      >
-                        Book Appointment
-                      </Link>
-                    </p>
+                    <p>Book Appointment</p>
                   </button>
                 </div>
               ) : (
