@@ -9,10 +9,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #212c35;
+  background: #b0bfcc;
   color: white;
   align-items: center;
-  box-shadow: 8px 5px 18px -5px rgba(138, 62, 62, 0.75);
+  box-shadow: 8px 5px 18px -5px #000;
 }
 .card{
     height: 50%;
@@ -34,26 +34,24 @@
   font-size: 1.3vw;
   
 }
-  .text{
-    text-align: center;
-    padding-left: 4vw;
-    padding-top: 4vw;
+  .aptTab{    
+    
 }
 .heading{
     text-align: center;
     padding-top: 2vw;
     width: 100%;
+    background-color: #CAF0Fc;
 }
 .subheading{
-    padding-top: 1vw;
+    padding-top: 1vw; 
     text-align: center;
     width: 100%;
-    border-radius: 5vw;
-    box-shadow: 0vw 0.8vw 1vw rgb(99, 102, 104);
+    box-shadow: 0 10px 10px -5px #000;
+    background-color: #CAF0Fc;
 }
 .subheading div{
     padding: 0.3vw;
-    margin-bottom: -0vw;
 }
 
 .doccard {

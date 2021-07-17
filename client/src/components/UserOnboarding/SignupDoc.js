@@ -9,13 +9,31 @@ export default class SignupDoc extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      email: "",
-      phone:"",
-      password: ""
+      specialization: "",
+      yearsofexperience: "",
+      education:"",
+      hospital: "",
+      hospitaladdress: ""
     };
-    
   }
+
+  handleSpecializationChange = evt => {
+    this.setState({ specialization: evt.target.value });
+  }; 
+  handleYearsChange = evt => {
+    this.setState({ yearsofexperience: evt.target.value });
+  };
+  handlePhoneChange = evt => {
+    this.setState({ education: evt.target.value });
+  };
+  handleHosChange = evt => {
+    this.setState({ hospital: evt.target.value });
+  };
+  handleSubmit = () => {
+    const { username,email, phone, password } = this.state;
+    alert(` ${username} ${email } ${ phone} ${password}`);
+  };
+  
   render() {
     return (
       <React.Fragment>
@@ -41,12 +59,14 @@ export default class SignupDoc extends Component {
                 </div>
                 <div>
                   <input
-                    type="number"
+                    type="text"
                     class={styles.years}
                     name="years"
                     placeholder="Years of experience"
                     required
-                  />
+                    pattern="[0-9]{2}"
+                    title="Please enter years of experience between 0-99"
+                    />
                 </div>
                 <div>
                   <input
@@ -76,10 +96,8 @@ export default class SignupDoc extends Component {
                   />
                 </div>
                 <div>
-                  <button type="submit">
-                    <Link to="/patdash" className={styles.button}>
+                  <button type="submit" >
                       Sign up
-                    </Link>
                   </button>
                 </div>
               </form>

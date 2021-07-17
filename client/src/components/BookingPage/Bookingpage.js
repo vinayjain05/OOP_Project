@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "../../css/bookingpage.module.css";
 import Timetable from "../Timetable";
-import Card from "../Card";
+import Card from "../Doc_Card";
 
 export default class BookingPage extends Component {
   state = {

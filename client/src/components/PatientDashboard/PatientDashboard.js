@@ -1,7 +1,9 @@
 import React from "react";
 import { Component } from "react";
 import styles from "../../css/PatientDashboard.module.css";
-import Card from "../Card";
+import Card from "../Doc_Card";
+import PatCard from "../Pat_Card";
+
 
 
 export default class PatientDashboard extends Component {
@@ -17,7 +19,7 @@ export default class PatientDashboard extends Component {
 
         <div className={styles.docDashboard}>
           <div className={styles.patInfo}>
-            <div className={styles.card}><Card {...this.props} /></div>
+            <div className={styles.card}><PatCard {...this.props} /></div>
             <div className={styles.appInfo}>
             <div className={styles.appheading}> Appointments</div>
           </div>

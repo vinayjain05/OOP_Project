@@ -41,7 +41,7 @@ function App() {
               education: "MBBS, MD in Pulmonology",
               experience: "7 years",
               location: "Apollo, Bangalore",
-              doctor: true,
+              doctor: false,
               pageActive: handleActivePage,
               appointment: "date"
             }}

@@ -75,6 +75,7 @@ export default class Signup extends Component {
                     name="phone"
                     pattern="[0-9]{10}"
                     placeholder="Phone Number"
+                    title="Please enter valid 10-digit phone number"
                     required
                     value={this.state.phone}
                     onChange={this.handlePhoneChange}

@@ -23,7 +23,10 @@ export default class SignupPat extends Component {
                     type="text"
                     className={styles.gender}
                     name="gender"
-                    placeholder="Gender(dropdown)"
+                    placeholder="Gender" 
+                    pattern="M|F|m|f"
+                    title="Please enter M or F"
+                    required
                   />
                 </div>
                 <div>
@@ -32,6 +35,9 @@ export default class SignupPat extends Component {
                     className={styles.age}
                     name="age"
                     placeholder="Age"
+                    pattern="[0-9]{2}"
+                    title="Please enter valid age" 
+                    required                   
                   />
                 </div>
                 <div>
@@ -40,6 +46,7 @@ export default class SignupPat extends Component {
                     className={styles.add}
                     name="add"
                     placeholder="Address"
+                    required
                   />
                 </div>
                 <div>
@@ -48,13 +55,12 @@ export default class SignupPat extends Component {
                     className={styles.hist}
                     name="hist"
                     placeholder="Medical history"
+                    required
                   />
                 </div>
                 <div>
-                  <button>
-                    <Link to="/patdash" className={styles.button}>
+                  <button className={styles.button} >
                       Patient
-                    </Link>
                   </button>
                 </div>
               </form>

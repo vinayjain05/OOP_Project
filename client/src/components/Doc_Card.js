@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "../css/card.module.css";
+import styles from "../css/doccard.module.css";
 
 export default class Card extends Component {
   componentDidMount() {
