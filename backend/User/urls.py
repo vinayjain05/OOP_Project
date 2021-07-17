@@ -1,3 +1,4 @@
+
 from django.db import router
 from rest_framework import routers, urlpatterns
 from .api import UserViewSet,DocViewSet,PatViewSet,SlotViewSet

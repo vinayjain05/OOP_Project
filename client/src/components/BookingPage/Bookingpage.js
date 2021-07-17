@@ -3,17 +3,71 @@ import styles from "../../css/bookingpage.module.css";
 import Timetable from "../Timetable";
 import Card from "../Card";
 import BookingModal from "./Bookingmodal";
+import { withRouter } from "react-router";
+import axios from "axios";
 
-export default class BookingPage extends Component {
+class BookingPage extends Component {
   state = {
     consultationSelect: false,
     slots: new Array(48).fill(0),
     amount: null,
     active: false,
   };
-  componentDidMount() {
+  async componentDidMount() {
     this.props.pageActive(true);
+
+    const loggedInUser = localStorage.getItem("DoctorDetails");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      console.log(foundUser);
+
+      if (typeof this.props.location.doctorDetails !== "undefined") {
+        // await axios
+        //   .post("/doctortt", this.props.location.doctorDetails.id)
+        //   .then((res) => {
+        //     this.setState({slots:res.data})
+        //     console.log(res.data)});
+        localStorage.setItem(
+          "DoctorDetails",
+          JSON.stringify(this.props.location.doctorDetails)
+        );
+        this.setState({ doctorDetails: this.props.location.doctorDetails });
+      } else {
+        // await axios
+        //   .post("/doctortt", foundUser.id)
+        //   .then((res) => {
+        //     this.setState({slots:res.data})
+        //     console.log(res.data)});
+        this.setState({ doctorDetails: foundUser });
+      }
+    } else {
+      // await axios
+      //   .post("/doctortt", this.props.location.doctorDetails.id)
+      //   .then((res) => {
+      //     this.setState({slots:res.data})
+      //     console.log(res.data)});
+
+      if (this.props.location.doctorDetails)
+        localStorage.setItem(
+          "DoctorDetails",
+          JSON.stringify(this.props.location.doctorDetails)
+        );
+      this.setState({ doctorDetails: this.props.location.doctorDetails });
+    }
   }
+
+  // componentDidCatch(error, info) {
+  //   // Display fallback UI
+  //   // You can also log the error to an error reporting service
+
+  //   const loggedInUser = localStorage.getItem("DoctorDetails");
+  //   const foundUser = JSON.parse(loggedInUser);
+  //   this.setState({ doctorDetails: foundUser });
+  //   console.log(error, info);
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(this.props.match);
+  // }
   componentWillUnmount() {
     this.props.pageActive(false);
   }
@@ -92,7 +146,7 @@ export default class BookingPage extends Component {
       <React.Fragment>
         <div className={styles.bookingDashboard}>
           <div className={styles.docInfo}>
-            <Card {...this.props} />
+            <Card {...this.state.doctorDetails} {...this.props} />
             <div className={styles.bookaptBtn}>
               <button
                 id="videoconsultation"
@@ -122,7 +176,10 @@ export default class BookingPage extends Component {
             </div>
           </div>
           <div className={styles.aptTab}>
-            <Timetable timeslots={this.handleTimeSlots} />
+            <Timetable
+              busySlots={this.state.slots}
+              timeslots={this.handleTimeSlots}
+            />
             <div className={styles.refInfo}>
               <div className={styles.colorLegends}>
                 <div></div>
@@ -148,3 +205,5 @@ export default class BookingPage extends Component {
     );
   }
 }
+
+export default withRouter(BookingPage);

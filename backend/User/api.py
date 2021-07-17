@@ -1,11 +1,11 @@
-from .models import BookedSlot, User
+from .models import BookedSlot, Users
 from .models import Doctor
 from .models import Patient
 from rest_framework import viewsets,permissions
 from .serializers import UserSerializer,DocSerializer,PatSerializer,SlotSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset=User.objects.all()
+    queryset=Users.objects.all()
     permission_classes=[
         permissions.AllowAny
     ]

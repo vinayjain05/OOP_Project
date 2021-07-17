@@ -69,7 +69,7 @@
 
 .bookingModalContainer .bookingDetails .bookingInfo div:nth-child(1) {
   font-size: 1.5vw;
-  left: -5%;
+  left: -2%;
   top: 5%;
   font-weight: bold;
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import { Component } from "react";
-import ReactDOM from "react-dom";
 import logo from "../../svg/logo.png";
 import { Link } from "react-router-dom";
 import styles from "../../css/SignupDoc.module.css";
@@ -23,15 +22,23 @@ export default class SignupDoc extends Component {
   handleYearsChange = evt => {
     this.setState({ yearsofexperience: evt.target.value });
   };
-  handlePhoneChange = evt => {
+  handleEducationChange = evt => {
     this.setState({ education: evt.target.value });
   };
-  handleHosChange = evt => {
+  handleHosptialChange = evt => {
     this.setState({ hospital: evt.target.value });
   };
+  
+    handleHosptialAddressChange = evt => {
+    this.setState({ hospitaladdress: evt.target.value });
+  };
   handleSubmit = () => {
-    const { username,email, phone, password } = this.state;
-    alert(` ${username} ${email } ${ phone} ${password}`);
+    const {  specialization,
+    yearsofexperience ,
+    education,
+    hospital,
+    hospitaladdress} = this.state;
+    //alert(` ${specialization} ${yearsofexperience } ${education} ${hospital} ${hospitaladdress}`);
   };
   
   render() {
@@ -47,7 +54,7 @@ export default class SignupDoc extends Component {
               Create your ScheDoc Account as a Doctor{" "}
             </div>
             <div>
-              <form class={styles.form}>
+              <form class={styles.form}  onSubmit={this.handleSubmit}>
                 <div>
                   <input
                     type="text"
@@ -55,6 +62,8 @@ export default class SignupDoc extends Component {
                     name="hospital"
                     placeholder="Specialization"
                     required
+                    value={this.state.specialization}
+                    onChange={this.handleSpecializationChange} 
                   />
                 </div>
                 <div>
@@ -66,6 +75,8 @@ export default class SignupDoc extends Component {
                     required
                     pattern="[0-9]{2}"
                     title="Please enter years of experience between 0-99"
+                    value={this.state.yearsofexperience}
+                    onChange={this.handleYearsChange}
                     />
                 </div>
                 <div>
@@ -75,6 +86,9 @@ export default class SignupDoc extends Component {
                     name="edu"
                     placeholder="Highest Level of Education"
                     required
+                    value={this.state.education}
+                    onChange={this.handleEducationChange}
+
                   />
                 </div>
                 <div>
@@ -84,6 +98,9 @@ export default class SignupDoc extends Component {
                     name="hospital"
                     placeholder="Hospital"
                     required
+                    value={this.state.hospital}
+                    onChange={this.handleHosptialChange}
+
                   />
                 </div>
                 <div>
@@ -93,14 +110,23 @@ export default class SignupDoc extends Component {
                     name="hospitaladd"
                     placeholder="Hospital Address"
                     required
+                    value={this.state.hospitaladdress}
+                    onChange={this.handleHosptialAddressChange}
+
                   />
                 </div>
                 <div>
-                  <button type="submit" >
+                  <button type="submit" onClick= {this.submitForm} >
                       Sign up
                   </button>
                 </div>
               </form>
+              <div className={styles.back}>
+              {" "}
+              <Link to="/signup" className={styles.button}>
+                &lt;Back
+              </Link>
+            </div>
             </div>
             
           </div>

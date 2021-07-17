@@ -46,8 +46,14 @@ export default class Timetable extends Component {
         });
         // console.log(newdate);
       });
-    let currh = new Date().getHours() !== 0 ? new Date().getHours() % 12 : 0;
-    currh = currh === 0 ? 12 : currh;
+
+    this.props.busySlots.map((slot) => {
+      document.getElementById(String(slot)).classList.remove(styles.normal);
+      document.getElementById(String(slot)).classList.add(styles.busy);
+    });
+    this.setState({ slots: this.props.busySlots });
+    // let currh = new Date().getHours() !== 0 ? new Date().getHours() % 12 : 0;
+    // currh = currh === 0 ? 12 : currh;
     // let timebtns = document
     //   .getElementsByClassName(styles.timeBtn)
     //   .forEach((timebtn) => {
@@ -59,19 +65,21 @@ export default class Timetable extends Component {
     // console.log(event.target);
 
     // if (event.target.classList.contains(styles.active)) {
-    let slots = [...this.state.slots];
-    slots[event.target.id] = !slots[event.target.id];
+    if (event.target.classList.contains(styles.normal)) {
+      let slots = [...this.state.slots];
+      slots[event.target.id] = !slots[event.target.id];
 
-    this.props.timeslots(slots);
-    // slots[]
-    // }
-    let val = event.target.classList.contains(styles.active)
-      ? [event.target.classList.remove(styles.active)]
-      : [event.target.classList.add(styles.active)];
+      this.props.timeslots(slots);
+      // slots[]
+      // }
+      let val = event.target.classList.contains(styles.active)
+        ? [event.target.classList.remove(styles.active)]
+        : [event.target.classList.add(styles.active)];
 
-    this.setState({
-      slots: slots,
-    });
+      this.setState({
+        slots: slots,
+      });
+    }
 
     // event.target.style.backgroundColor =
     //   event.target.style.backgroundColor === "#EEEE00" ? "#39FF39" : "#EEEE00";
@@ -122,7 +130,7 @@ export default class Timetable extends Component {
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
                       id={j}
-                      className={styles.timeBtn}
+                      className={`${styles.timeBtn} ${styles.normal}`}
                     >
                       {i + ":00 - " + i + ":15"}
                     </button>
@@ -131,7 +139,7 @@ export default class Timetable extends Component {
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
                       id={j + 1}
-                      className={styles.timeBtn}
+                      className={`${styles.timeBtn} ${styles.normal}`}
                     >
                       {i + ":15 - " + i + ":30"}
                     </button>
@@ -140,7 +148,7 @@ export default class Timetable extends Component {
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
                       id={j + 2}
-                      className={styles.timeBtn}
+                      className={`${styles.timeBtn} ${styles.normal}`}
                     >
                       {i + ":30 - " + i + ":45"}
                     </button>
@@ -149,7 +157,7 @@ export default class Timetable extends Component {
                       onMouseLeave={this.handleMouseLeave}
                       onClick={this.handleSlotSelect}
                       id={j + 3}
-                      className={styles.timeBtn}
+                      className={`${styles.timeBtn} ${styles.normal}`}
                     >
                       {i + ":45 - " + String(parseInt(i + 1)) + ":00"}
                     </button>

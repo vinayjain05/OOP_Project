@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'User.apps.UserConfig',
+    'User',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres', 
     'corsheaders',
     'rest_framework',
+    
     
 ]
 
@@ -83,7 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'Schedoc',
+        'NAME': 'SD',
 
         'USER': 'postgres',
 

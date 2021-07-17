@@ -3,10 +3,31 @@ import { Component } from "react";
 import styles from "../../css/PatientDashboard.module.css";
 import Card from "../Doc_Card";
 import PatCard from "../Pat_Card";
+import axios from "axios";
 
 export default class PatientDashboard extends Component {
+  state = {
+    doctorDetails: Array.from({ length: 6 }, (_, i) => {
+      return {
+        name: "Subrakanta Smith",
+        specialization: "NEUROLOGIST",
+        education: "MBBS, MD in Pulmonology",
+        experience: "7 years",
+        userLocation: "Apollo, Bangalore",
+        id: "1",
+      };
+    }),
+  };
+
   componentDidMount() {
     this.props.pageActive(true);
+    // await axios
+    //   .get("/doctorlist")
+    //   .then((res) => {
+    //     this.setState({doctorDetails:res.data})
+    //     console.log(res.data)});
+
+    // console.log(this.state.doctorDetails);
   }
   componentWillUnmount() {
     this.props.pageActive(false);
@@ -41,24 +62,13 @@ export default class PatientDashboard extends Component {
               </div>
             </div>
             <div className={styles.doccard}>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
+              {this.state.doctorDetails.map((doctorDetail, j) => {
+                return (
+                  <div className={styles.docInfo} key={j}>
+                    <Card {...doctorDetail} />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
