@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "../../css/doctorDashboard.module.css";
 import Timetable from "../Timetable";
 import Card from "../Card";
-
+import axios from "axios";
 export default class DoctorDashboard extends Component {
   state = {
     changeAvailability: false,
@@ -10,8 +10,13 @@ export default class DoctorDashboard extends Component {
     slots: new Array(48).fill(0),
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.pageActive(true);
+    // await axios
+    //   .post("/doctortt", this.props.location.doctorDetails.id)
+    //   .then((res) => {
+    //     this.setState({slots:res.data,originalSlots:res.data})
+    //     console.log(res.data)});
   }
   componentWillUnmount() {
     this.props.pageActive(false);
@@ -52,7 +57,10 @@ export default class DoctorDashboard extends Component {
             </div>
           </div>
           <div className={styles.aptTab}>
-            <Timetable timeslots={this.handleTimeSlots} />
+            <Timetable
+              busySlots={this.state.slots}
+              timeslots={this.handleTimeSlots}
+            />
             <div className={styles.refInfo}>
               <div className={styles.changeAvailability}>
                 <button

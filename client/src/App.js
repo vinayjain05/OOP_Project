@@ -10,6 +10,7 @@ import Otp from "./components/UserOnboarding/Otp";
 import SignupDoc from "./components/UserOnboarding/SignupDoc";
 import SignupPat from "./components/UserOnboarding/SignupPat";
 import BookingPage from "./components/BookingPage/Bookingpage";
+import { withRouter } from "react-router";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(true);
@@ -33,7 +34,7 @@ function App() {
       <Route
         path="/patdash"
         exact
-        component={() => (
+        render={() => (
           <PatientDashboard
             {...{
               name: "Subrakanta Smith",
@@ -51,7 +52,7 @@ function App() {
       <Route
         path="/docdash"
         exact
-        component={() => (
+        render={() => (
           <DoctorDashboard
             {...{
               name: "Subrakanta Smith",
@@ -72,11 +73,11 @@ function App() {
         render={() => (
           <BookingPage
             {...{
-              name: "Subrakanta Smith",
-              specialization: "NEUROLOGIST",
-              education: "MBBS, MD in Pulmonology",
-              experience: "7 years",
-              userLocation: "Apollo, Bangalore",
+              // name: "Subrakanta Smith",
+              // specialization: "NEUROLOGIST",
+              // education: "MBBS, MD in Pulmonology",
+              // experience: "7 years",
+              // userLocation: "Apollo, Bangalore",
               doctor: true,
               pageActive: handleActivePage,
             }}
@@ -87,4 +88,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
