@@ -30,7 +30,7 @@ export default class Signup extends Component {
   };
   handleSubmit = () => {
     const { username,email, phone, password } = this.state;
-    alert(` ${username} ${email } ${ phone} ${password}`);
+    //alert(` ${username} ${email } ${ phone} ${password}`);
   };
 
   render() {

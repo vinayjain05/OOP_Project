@@ -8,11 +8,12 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 100vh;
 }
 .bgbox {
   width: 40%; 
-  min-height: 80%;
-  margin: 1.8vw;
+  min-height: 60%;
+  margin: 6vw;
   background: rgba(255,255,255,1);
   border-radius: 2vw;
   padding: 1vw;

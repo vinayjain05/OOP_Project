@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   background: #28373d;
-  box-shadow: -10px 5px 23px 15px black;
+  box-shadow: -10px 5px 22px -8px black;
   border-radius: 2vw;
 }
 
@@ -68,9 +68,9 @@
 }
 
 .profileCard .info div .bookaptbtn {
-border-radius: 2vw;
-margin-top: 1vw;
-padding: 1vw;
+  border-radius: 2vw;
+  margin-top: 1vw;
+  padding: 1vw;
 }
 
 .profileCard .info div .bookaptbtn:hover {

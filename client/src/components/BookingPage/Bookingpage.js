@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import styles from "../../css/bookingpage.module.css";
 import Timetable from "../Timetable";
-import Card from "../Doc_Card";
+import Card from "../Card";
+import BookingModal from "./Bookingmodal";
 
 export default class BookingPage extends Component {
   state = {
     consultationSelect: false,
     slots: new Array(48).fill(0),
+    amount: null,
+    active: false,
   };
   componentDidMount() {
     this.props.pageActive(true);
@@ -14,6 +17,26 @@ export default class BookingPage extends Component {
   componentWillUnmount() {
     this.props.pageActive(false);
   }
+
+  handleBooking = () => {
+    let slots = [];
+    this.state.slots.forEach((x, index) => {
+      if (x == 1) {
+        slots.push(index);
+      }
+    });
+    let consultType =
+      this.state.consultationSelect === "videoconsultation" ? true : false;
+    let amountType = consultType ? 500 : 1000;
+    this.setState({ amount: slots.length * amountType, active: true });
+
+    let bookingDetails = {
+      doctorID: "",
+      consultationType: consultType,
+      slots: slots,
+    };
+    console.log(bookingDetails);
+  };
 
   handleConsultationClick = (event) => {
     let val = this.state.consultationSelect
@@ -59,8 +82,10 @@ export default class BookingPage extends Component {
           ]
         : ""
       : "";
-
     this.setState({ slots: slots });
+  };
+  handleModalActive = (active) => {
+    this.setState({ active: active });
   };
   render() {
     return (
@@ -83,13 +108,17 @@ export default class BookingPage extends Component {
               >
                 In-Person Consultation
               </button>
-              <button id="bookbtn" className={styles.bookbtn}>
+              <button
+                id="bookbtn"
+                className={styles.bookbtn}
+                onClick={this.handleBooking}
+              >
                 Book Appointment
               </button>
             </div>
             <div id="mandateinfo" className={styles.madateinfo}>
               <span>&#8727;</span>
-              <p>Please select the type of consultation and a Book a Slot</p>
+              <p>Please select the type of consultation and choose a slot</p>
             </div>
           </div>
           <div className={styles.aptTab}>
@@ -101,15 +130,20 @@ export default class BookingPage extends Component {
               </div>
               <div className={styles.colorLegends}>
                 <div></div>
-                <span>Unavailable</span>
+                <span>In progress(unconfirmed)</span>
               </div>
               <div className={styles.colorLegends}>
                 <div></div>
-                <span>Appointment Scheduled</span>
+                <span>Doctor Busy</span>
               </div>
             </div>
           </div>
         </div>
+        <BookingModal
+          active={this.state.active}
+          modalActive={this.handleModalActive}
+          amount={this.state.amount}
+        />
       </React.Fragment>
     );
   }
