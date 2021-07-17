@@ -40,8 +40,9 @@ function App() {
               specialization: "NEUROLOGIST",
               education: "MBBS, MD in Pulmonology",
               experience: "7 years",
-              location: "Apollo, Bangalore",
+              userLocation: "Apollo, Bangalore",
               doctor: false,
+              id: "",
               pageActive: handleActivePage,
             }}
           />
@@ -57,8 +58,9 @@ function App() {
               specialization: "NEUROLOGIST",
               education: "MBBS, MD in Pulmonology",
               experience: "7 years",
-              location: "Apollo, Bangalore",
+              userLocation: "Apollo, Bangalore",
               doctor: true,
+              id: "",
               pageActive: handleActivePage,
             }}
           />
@@ -67,14 +69,14 @@ function App() {
       <Route
         path="/booking"
         exact
-        component={() => (
+        render={() => (
           <BookingPage
             {...{
               name: "Subrakanta Smith",
               specialization: "NEUROLOGIST",
               education: "MBBS, MD in Pulmonology",
               experience: "7 years",
-              location: "Apollo, Bangalore",
+              userLocation: "Apollo, Bangalore",
               doctor: true,
               pageActive: handleActivePage,
             }}

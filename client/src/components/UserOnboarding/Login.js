@@ -25,7 +25,7 @@ export default class Login extends Component {
 
   handleSubmit = () => {
     const { username, password } = this.state;
-    alert(`Signed up with username: ${username} password: ${password}`);
+   // alert(`Signed up with username: ${username} password: ${password}`);
   };
   
 

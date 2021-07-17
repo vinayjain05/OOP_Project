@@ -13,6 +13,7 @@ export default class BookingPage extends Component {
   };
   componentDidMount() {
     this.props.pageActive(true);
+    console.log(this.props);
   }
   componentWillUnmount() {
     this.props.pageActive(false);
