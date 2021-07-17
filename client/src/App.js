@@ -1,15 +1,86 @@
-// import logo from './logo.svg';
+import { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home/home";
 import Login from "./components/UserOnboarding/Login";
 import Signup from "./components/UserOnboarding/Signup";
+// import Navbar from "./components/Navbar";
+import PatientDashboard from "./components/PatientDashboard/PatientDashboard";
+import DoctorDashboard from "./components/DoctorDashboard/DoctorDashboard";
+import Otp from "./components/UserOnboarding/Otp";
+import SignupDoc from "./components/UserOnboarding/SignupDoc";
+import SignupPat from "./components/UserOnboarding/SignupPat";
+import BookingPage from "./components/BookingPage/Bookingpage";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(true);
+
+  let handleActivePage = (page) => {
+    setCurrentPage(page);
+    // console.log(page);
+  };
+
   return (
     <Router>
-      <Route path="/" exact component={Home} />
-      <Route path="/login" exact component={Login} />
-      <Route path="/signup" exact component={Signup} />
+      <Route path="/" exact component={() => <Home />} />
+
+      {/* {currentPage === true ? <Navbar /> : ""} */}
+
+      <Route path="/login" exact component={() => <Login />} />
+      <Route path="/signup" exact component={() => <Signup />} />
+      <Route path="/otp" exact component={() => <Otp />} />
+      <Route path="/signupdoc" exact component={() => <SignupDoc />} />
+      <Route path="/signuppat" exact component={() => <SignupPat />} />
+      <Route
+        path="/patdash"
+        exact
+        component={() => (
+          <PatientDashboard
+            {...{
+              name: "Subrakanta Smith",
+              specialization: "NEUROLOGIST",
+              education: "MBBS, MD in Pulmonology",
+              experience: "7 years",
+              location: "Apollo, Bangalore",
+              doctor: false,
+              pageActive: handleActivePage,
+            }}
+          />
+        )}
+      />
+      <Route
+        path="/docdash"
+        exact
+        component={() => (
+          <DoctorDashboard
+            {...{
+              name: "Subrakanta Smith",
+              specialization: "NEUROLOGIST",
+              education: "MBBS, MD in Pulmonology",
+              experience: "7 years",
+              location: "Apollo, Bangalore",
+              doctor: true,
+              pageActive: handleActivePage,
+            }}
+          />
+        )}
+      />
+      <Route
+        path="/booking"
+        exact
+        component={() => (
+          <BookingPage
+            {...{
+              name: "Subrakanta Smith",
+              specialization: "NEUROLOGIST",
+              education: "MBBS, MD in Pulmonology",
+              experience: "7 years",
+              location: "Apollo, Bangalore",
+              doctor: true,
+              pageActive: handleActivePage,
+            }}
+          />
+        )}
+      />
     </Router>
   );
 }

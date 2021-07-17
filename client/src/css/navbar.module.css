@@ -1,0 +1,16 @@
+nav {
+  position: absolute;
+  z-index: 10;
+}
+
+nav div {
+  height: 6vh;
+  width: 100vw;
+}
+
+nav div img {
+  position: relative;
+  left: 2%;
+  height: 100%;
+}
+/*# sourceMappingURL=navbar.module.css.map */

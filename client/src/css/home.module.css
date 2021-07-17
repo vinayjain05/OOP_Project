@@ -1,6 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Handlee&family=Special+Elite&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@keyframes slotClickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +21,12 @@
 
 body {
   overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  border: none;
+  padding: 0.75vw;
 }
 
 .homeContainer {
@@ -53,7 +71,7 @@ body {
   align-items: center;
   left: 25vw;
   border-radius: 8vw 8vw 0 0;
-  background: #2e3b5f;
+  background: linear-gradient(black, #093470);
   position: relative;
 }
 
@@ -78,33 +96,30 @@ body {
   width: 100%;
 }
 
-.homeContainer .board .dias .loginButtons button {
+.homeContainer .board .dias .loginButtons a {
+  text-decoration: none;
+  color: white;
+}
+
+.homeContainer .board .dias .loginButtons a:nth-child(1) {
+  margin-right: 5vw;
+}
+
+.homeContainer .board .dias .loginButtons a button {
   background: white;
-  padding: 0.8vw;
+  padding: 0.6vw;
   border-radius: 1vw;
-  width: 20%;
+  width: 10vw;
   font-size: 1.3vw;
   font-weight: bold;
   border: 0.3vw solid white;
   cursor: pointer;
 }
 
-.homeContainer .board .dias .loginButtons button:nth-child(1) {
-  margin-right: 6vw;
-}
-
-.homeContainer .board .dias .loginButtons button:hover {
+.homeContainer .board .dias .loginButtons a button:hover {
   background: #2e3b5f;
-  transition: all 0.1s ease-in-out;
-}
-
-.homeContainer .board .dias .loginButtons button:hover a {
   color: white;
-}
-
-.homeContainer .board .dias .loginButtons button a {
-  text-decoration: none;
-  color: black;
+  transition: all 0.1s ease-in-out;
 }
 
 .homeContainer .board .curtain {

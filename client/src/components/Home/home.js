@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ReactComponent as HomePicture } from "../../svg/homedocs.svg";
-import { ReactComponent as Door } from "../../svg/door1.svg";
+// import { ReactComponent as Door } from "../../svg/door1.svg";
 import styles from "../../css/home.module.css";
 import { Link } from "react-router-dom";
 
@@ -21,16 +21,16 @@ export default class Home extends Component {
                 <span>We are here for you!</span>
               </div>
               <div className={styles.loginButtons}>
-                <button>
-                  <Link to="/signup" className={styles.signupbtn}>
-                    Sign up
-                  </Link>
-                </button>
-                <button>
-                  <Link to="/login" className={styles.loginbtn}>
-                    Login
-                  </Link>
-                </button>
+                <Link to="/signup" className={styles.signupbtn}>
+                  <button>
+                    <p>Sign up</p>
+                  </button>
+                </Link>
+                <Link to="/login" className={styles.loginbtn}>
+                  <button>
+                    <p>Login</p>
+                  </button>
+                </Link>
               </div>
             </div>
             <div className={styles.curtain}></div>

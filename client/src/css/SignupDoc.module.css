@@ -1,124 +1,107 @@
 * {
   box-sizing: border-box;
 }
-body {
-  font-size: 14px;
-}
 .signup {
-  height: 100%;
-  width: 100%;
+  font-size: 12px;    
+  font-family: Roboto;
   background: rgba(202,239,251,1);
-  opacity: 1;
-  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.signupbgbox {
-  width: 40%;
+.bgbox {
+  width: 40%; 
+  min-height: 80%;
+  margin: 1.8vw;
   background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  overflow: hidden;
-  top: 5%;
-  bottom: 5%;
-  left: 30%;
-  border: solid rgba(11,57,84,1);
-  border-width: 15px;
+  border-radius: 2vw;
+  padding: 1vw;
+  box-shadow: 0.8vw 0.8vw 0.8vw rgba(11,57,84,1);
 }
-.signuplogo{
-    height: 30px;
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+.logo{
+  height: 4vw;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 .heading{
   color: rgba(11,57,84,1);
-  position: relative;
-  padding-top: 2%;
-  font-family: Roboto;
+  padding-top: 0.5vw;
   font-weight: Bold;
-  font-size:24px;
-  font-size: 2vw;
-  opacity: 1;
+  font-size: 2.2vw;
   text-align: center;
 }
 .descr{
   color: rgba(0,0,0,1);
-  position: relative;
-  padding-top: 2%;
-  font-family: Roboto;
+  padding-top: 0.7vw;
+  padding-left: 1vw;    
+  padding-right: 1vw;
   font-weight: Thin;
-  font-size:24px;
-  font-size: 1vw;
-  opacity: 1;
+  font-size: 1.2vw;
   text-align: center;
 }
-.signupform{
-  padding-top: 2%;
+.form{
+  padding: 0.8vw;
 }
-.signupform input{
-  position: absolute;
-  left:25%;
-  width: 50%;
+
+.form div{
+  display: flex;
+  justify-content: center;
+}
+.form input{
   background-color: #EDEFF2;
   border: none;
-  padding: 0.7em;
-  padding-left: 1.5em;
-  border-radius: 25px;
-  border: 0;
+  padding: 1vw;
+  margin: 0.2vw;
+  border-radius: 5vw;
 }
-.signupform button{
-  position: absolute;
-  left:40%;
-  width: 20%;
-  border-radius: 25px;
-  padding: 1em;
-  border:0;
-  background-color: #CAF0Fc;
-}
-.signupform input:focus {
+.form input:focus {
   background-color: #CAF0Fc;
   outline: none;
 }
-.signupform .radiobuttons{
-padding-left: 10em;
-}
-
-.signupform .radio{
-width: 15%;
-float:left;
-position: relative;
-}
-.signupor{
-  color: rgba(0,0,0,1);
-  position: relative;
-  padding-top: 12%;
-  padding-bottom: 2%;
-  font-family: Roboto;
-  font-weight: Thin;
-  font-size:24px;
+.form button{
+  border-radius: 5vw;
+  border:0;
+  background-color: #CAF0Fc;
   font-size: 1vw;
-  opacity: 1;
+  margin: 0.3vw;
+
+}
+.or{
+  color: rgba(0,0,0,1);
+  font-weight: Thin;
   text-align: center;
 }
 .google{
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 0.8vw;
+  margin-left: 12vw;
+  margin-right: 12vw;
   display: block;
-  background:#4285f4;
-  color:white;
-  border:none; 
-  padding: 0.8em;
-  border-radius:25px;
+  border-radius:1vw;
+  padding: 0;
 }
 .google img{
-  width:30px; 
-  background:white;
-  border-radius:25px;
+  width: 100%;
+  height: 100%;
+
+}
+
+.google a{
+  background-color: white;
 }
 .back{
   color: rgb(153, 143, 143);
   float: left;
-  position:fixed;
-  bottom: 10%;
-  left: 32%;
+}
+.facebook{
+  margin-top: 0.8vw;
+  margin-left: 12vw;
+  margin-right: 12vw;
+  display: block;
+  border-radius:1vw;
+  padding: 0;
+}
+.facebook img{
+  width: 100%;
+
 }

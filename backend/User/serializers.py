@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
 class DocSerializer(serializers.ModelSerializer):
     class Meta(UserSerializer.Meta):
         model = Doctor
-        fields = UserSerializer.Meta.fields + ('specialization', 'experience','degree','hospitalName','hospitalLocation','bookedSlot','patientID','bookingType')
+        fields = UserSerializer.Meta.fields + ('specialization', 'experience','degree','hospitalName','hospitalLocation')
 
 class PatSerializer(serializers.ModelSerializer):
     class Meta(UserSerializer.Meta):

@@ -3,61 +3,69 @@ import { Component } from "react";
 import ReactDOM from "react-dom";
 import logo from "../../svg/logo.png";
 import styles from "../../css/SignupPat.module.css";
+import { Link } from "react-router-dom";
 
 export default class SignupPat extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={styles.signup}>
-          <div className={styles.signupbgbox}>
-            <div className={styles.signuplogo}>
-              <img src={logo} className={styles.signuplogo} alt="logo" />
+        <div className={styles.signuppat}>
+          <div className={styles.bgbox}>
+            <div className={styles.logo}>
+              <img src={logo} className={styles.logo} alt="logo" />
             </div>
             <div className={styles.heading}>Sign-up</div>
-            <div className={styles.descr}>Create your ScheDoc </div>
+            <div className={styles.descr}>Create your ScheDoc as a Patient</div>
             <div>
-              <form class={styles.signupform}>
-                <input
-                  type="text"
-                  className={styles.gender}
-                  name="gender"
-                  placeholder="Gender(dropdown)"
-                />
-                <br />
-                <br />
-                <input
-                  type="text"
-                  className={styles.age}
-                  name="age"
-                  placeholder="Age"
-                />
-                <br />
-                <br />
-                <input
-                  type="text"
-                  className={styles.add}
-                  name="add"
-                  placeholder="Address"
-                />
-                <br />
-                <br />
-                <input
-                  type="text"
-                  className={styles.hist}
-                  name="hist"
-                  placeholder="Medical history"
-                />
-                <br />
-                <br />
-                <button type="button">Login</button>
+              <form className={styles.form}>
+                <div>
+                  <input
+                    type="text"
+                    className={styles.gender}
+                    name="gender"
+                    placeholder="Gender" 
+                    pattern="M|F|m|f"
+                    title="Please enter M or F"
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    className={styles.age}
+                    name="age"
+                    placeholder="Age"
+                    pattern="[0-9]{2}"
+                    title="Please enter valid age" 
+                    required                   
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    className={styles.add}
+                    name="add"
+                    placeholder="Address"
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    className={styles.hist}
+                    name="hist"
+                    placeholder="Medical history"
+                    required
+                  />
+                </div>
+                <div>
+                  <button className={styles.button} >
+                      Patient
+                  </button>
+                </div>
               </form>
             </div>
-            <div className={styles.signupor}>OR</div>
-            <button type="button" className={styles.google}>
-              {" "}
-              Sign up with google
-            </button>
-            <div className={styles.back}> &lt;Back</div>
+           
           </div>
         </div>
       </React.Fragment>
