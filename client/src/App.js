@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
+import { ProtectedRoute } from "./Protected.Route";
+
 import Home from "./components/Home/home";
 import Login from "./components/UserOnboarding/Login";
 import Signup from "./components/UserOnboarding/Signup";
@@ -20,6 +22,7 @@ function App() {
   };
 
   return (
+  <>
     <Router>
       <Route path="/" exact component={() => <Home />} />
 
@@ -83,6 +86,7 @@ function App() {
         )}
       />
     </Router>
+    </>
   );
 }
 

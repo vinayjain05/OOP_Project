@@ -3,6 +3,7 @@ import { Component } from "react";
 import logo from "../../svg/logo.png";
 import { Link } from "react-router-dom";
 import styles from "../../css/SignupDoc.module.css";
+import auth from "../../Auth";
 
 export default class SignupDoc extends Component {
   constructor() {
@@ -41,7 +42,7 @@ export default class SignupDoc extends Component {
     //alert(` ${specialization} ${yearsofexperience } ${education} ${hospital} ${hospitaladdress}`);
   };
   
-  render() {
+  render(props) {
     return (
       <React.Fragment>
         <div className={styles.signup}>
@@ -116,7 +117,13 @@ export default class SignupDoc extends Component {
                   />
                 </div>
                 <div>
-                  <button type="submit" onClick= {this.submitForm} >
+                  <button type="submit" 
+                  onClick= {this.submitForm}
+                  onClick={() => {
+                    auth.login(() => {
+                      props.history.push("/docdash");
+                    });
+                  }} >
                       Sign up
                   </button>
                 </div>
