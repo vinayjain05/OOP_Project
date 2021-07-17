@@ -36,13 +36,14 @@ function App() {
         component={() => (
           <PatientDashboard
             {...{
-              name: "Subrakanta Smith",
+              name: "Subrakanta Smit",
               specialization: "NEUROLOGIST",
               education: "MBBS, MD in Pulmonology",
               experience: "7 years",
               location: "Apollo, Bangalore",
               doctor: true,
               pageActive: handleActivePage,
+              appointment: "date"
             }}
           />
         )}

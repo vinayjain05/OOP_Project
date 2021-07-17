@@ -10,6 +10,9 @@
 body {
   overflow-x: hidden;
   font-family: "Roboto", sans-serif;
+}button{
+    border: none;
+    padding: 0.75vw;
 }
 
 button {
