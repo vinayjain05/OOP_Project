@@ -34,6 +34,7 @@
   font-size: 1.3vw;
 }
 .aptTab {
+  display: flex;
 }
 .heading {
   text-align: center;
@@ -53,7 +54,6 @@
 .doccard {
   padding-left: 12vw;
   margin-top: 1vw;
-  height: 70vh;
   background-color: white;
   overflow-y: auto;
 }
