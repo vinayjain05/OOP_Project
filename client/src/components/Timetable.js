@@ -47,18 +47,81 @@ export default class Timetable extends Component {
         // console.log(newdate);
       });
 
+    let today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    // let s = today.getSeconds();
+    function checkTime(i) {
+      if (i < 10 && i != 0) {
+        i = "0" + i;
+      }
+      return i;
+    }
+    m = checkTime(m);
+    // h %= 12;
+    // h = checkTime(h);
+
+    // s = checkTime(s);
+    Array.from(document.getElementsByClassName(styles.timeSlots)).forEach(
+      (timeslottab) => {
+        let md = Array.from(
+          timeslottab.getElementsByClassName(styles.timeHead)
+        )[0].innerHTML;
+        Array.from(timeslottab.getElementsByClassName(styles.timeBtn)).forEach(
+          (timebtn) => {
+            let timebtnval = timebtn.innerHTML.split(" -")[0];
+            let timebtnh = timebtnval.split(":")[0];
+            if (md.split(">")[1].split("<")[0].split(" ")[1] == "pm") {
+              timebtnh =
+                parseInt(timebtnval.split(":")[0]) !== 12
+                  ? parseInt(timebtnval.split(":")[0]) + 12
+                  : parseInt(timebtnval.split(":")[0]);
+            } else {
+              timebtnh = checkTime(timebtnh);
+            }
+            let timebtnm = checkTime(timebtnval.split(":")[1]);
+            console.log(
+              timebtnh + ":" + timebtnm,
+              h + ":" + m,
+              timebtnh + ":" + timebtnm < h + ":" + m
+            );
+            let val = "";
+            if (!this.props.isDoctor) {
+              val =
+                timebtnh + ":" + timebtnm <= h + ":" + m
+                  ? [
+                      timebtn.classList.remove(styles.normal),
+                      timebtn.classList.add(styles.timeExceeded),
+                    ]
+                  : "";
+            } else {
+              val =
+                timebtnh + ":" + timebtnm <= h + ":" + m
+                  ? [
+                      timebtn.classList.remove(styles.normal),
+                      timebtn.classList.add(styles.doctordash),
+                    ]
+                  : "";
+            }
+          }
+        );
+        // timebtn.value.split(" -")[0] - currh<0?;
+      }
+    );
     this.props.busySlots.map((slot) => {
-      document.getElementById(String(slot)).classList.remove(styles.normal);
-      document.getElementById(String(slot)).classList.add(styles.busy);
+      if (
+        !document
+          .getElementById(String(slot))
+          .classList.contains(styles.timeExceeded) ||
+        this.props.isDoctor
+      ) {
+        document.getElementById(String(slot)).classList.remove(styles.normal);
+        document.getElementById(String(slot)).classList.add(styles.busy);
+      }
     });
     this.setState({ slots: this.props.busySlots });
     // let currh = new Date().getHours() !== 0 ? new Date().getHours() % 12 : 0;
     // currh = currh === 0 ? 12 : currh;
-    // let timebtns = document
-    //   .getElementsByClassName(styles.timeBtn)
-    //   .forEach((timebtn) => {
-    //     // timebtn.value.split(" -")[0] - currh<0?;
-    //   });
   }
 
   handleSlotSelect = (event) => {

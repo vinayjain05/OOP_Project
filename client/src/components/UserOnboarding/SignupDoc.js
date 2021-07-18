@@ -41,10 +41,10 @@ class SignupDoc extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    let userDetails = { ...this.state, isDoctor: true };
+    let userDetails = { ...this.state };
     console.log(userDetails);
     // await axios
-    //   .post("/registeruser", userDetails)
+    //   .post("/registeruserdoc", userDetails)
     //   .then((res) => {Auth.login(true);
     //     this.setState({slots:res.data})
     //     console.log(res.data)});

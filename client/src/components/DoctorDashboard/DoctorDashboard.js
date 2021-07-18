@@ -60,6 +60,7 @@ export default class DoctorDashboard extends Component {
           </div>
           <div className={styles.aptTab}>
             <Timetable
+              isDoctor={true}
               busySlots={this.state.slots}
               timeslots={this.handleTimeSlots}
             />

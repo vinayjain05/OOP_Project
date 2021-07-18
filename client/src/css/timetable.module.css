@@ -120,7 +120,12 @@
 }
 
 .timetable .timings .timeSlots .timeBtns .timeBtn.busy {
-  background: red;
+  background: red !important;
+}
+
+.timetable .timings .timeSlots .timeBtns .timeBtn.timeExceeded {
+  background: #dadada;
+  color: white;
 }
 
 .timetable .timings .timeSlots .timeBtns .timeBtn.normal {

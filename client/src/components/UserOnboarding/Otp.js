@@ -4,8 +4,17 @@ import { Link } from "react-router-dom";
 import styles from "../../css/otp.module.css";
 import logo from "../../svg/logo.png";
 import axios from "axios";
+import { withRouter } from "react-router";
 
-export default class Otp extends Component {
+class Otp extends Component {
+  state = { frompath: "/login" };
+  componentDidMount() {
+    if (
+      typeof this.props.location.from !== "undefined" &&
+      this.props.location.from.length !== 0
+    )
+      this.setState({ frompath: this.props.location.from });
+  }
   submitForm(e) {
     e.preventDefault();
     // let data=null;
@@ -51,7 +60,7 @@ export default class Otp extends Component {
               </form>
             </div>
             <div className={styles.back}>
-              <Link to="/login" className={styles.button}>
+              <Link to={this.state.frompath} className={styles.button}>
                 &lt;Back
               </Link>
             </div>
@@ -61,3 +70,5 @@ export default class Otp extends Component {
     );
   }
 }
+
+export default withRouter(Otp);

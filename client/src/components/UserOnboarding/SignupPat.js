@@ -35,13 +35,18 @@ class SignupPat extends Component {
   };
   handleSubmit = async (event) => {
     event.preventDefault();
-    let userDetails = { ...this.state, isDoctor: false };
+    let userDetails = { ...this.state };
     console.log(userDetails);
     // await axios
-    //   .post("/registeruser", userDetails)
+    //   .post("/registeruserpat", userDetails.email)
     //   .then((res) => { Auth.login(true);
-    //     this.setState({doctorsDetails:res.data}).catch((err)=>{console.log(err)})
+    //     this.setState({doctorsDetails.otp:res.data.otp}).catch((err)=>{console.log(err)})
     //     console.log(res.data)});
+    this.props.history.push({
+      pathname: "/otp",
+      state: this.state,
+      from: "/signup",
+    });
   };
 
   render() {
