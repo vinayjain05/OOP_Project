@@ -123,6 +123,12 @@
   background: red !important;
 }
 
+.timetable .timings .timeSlots .timeBtns .timeBtn.doctordash.mouseover {
+  transition: 0.1s all ease-in;
+  background: #dadada !important;
+  color: white;
+}
+
 .timetable .timings .timeSlots .timeBtns .timeBtn.timeExceeded {
   background: #dadada;
   color: white;

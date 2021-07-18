@@ -5,6 +5,7 @@ import Card from "../Doc_Card";
 import PatCard from "../Pat_Card";
 import axios from "axios";
 import { withRouter } from "react-router";
+import EditModal from "./EditmodalPat";
 
 class PatientDashboard extends Component {
   state = {
@@ -29,16 +30,43 @@ class PatientDashboard extends Component {
   componentWillUnmount() {
     this.props.pageActive(false);
   }
+
+  handleEdit = () => {
+    this.setState({ active: true });
+
+    let editDetails = {
+      age: this.props.age,
+      address: "",
+      medicalhistory: "",
+    };
+    console.log(editDetails);
+  };
+
+  handleModalActive = (active) => {
+    this.setState({ active: active });
+  };
+
   render() {
     return (
       <React.Fragment>
-        <div className={styles.docDashboard}>
+        <div className={styles.patDashboard}>
           <div className={styles.patInfo}>
             <div className={styles.card}>
               <PatCard {...this.props} />
             </div>
-            <div className={styles.appInfo}>
-              <div className={styles.appheading}> Appointments</div>
+            <div className={styles.appInfo}> Appointments</div>
+            <div className={styles.editProfile}>
+              <button onClick={this.handleEdit}>Edit Profile</button>
+            </div>
+            <div className={styles.delete}>
+              <button type="button" className={styles.delete}>
+                Delete
+              </button>
+            </div>
+            <div className={styles.logout}>
+              <button type="button" className={styles.logout}>
+                Logout
+              </button>
             </div>
           </div>
 
@@ -69,6 +97,11 @@ class PatientDashboard extends Component {
             </div>
           </div>
         </div>
+        <EditModal
+          active={this.state.active}
+          modalActive={this.handleModalActive}
+          amount={this.state.amount}
+        />
       </React.Fragment>
     );
   }
