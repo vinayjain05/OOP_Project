@@ -29,9 +29,9 @@ function App() {
 
       <Route path="/login" exact component={() => <Login />} />
       <Route path="/signup" exact component={() => <Signup />} />
-      <Route path="/otp" exact component={() => <Otp />} />
-      <Route path="/signupdoc" exact component={() => <SignupDoc />} />
-      <Route path="/signuppat" exact component={() => <SignupPat />} />
+      <ProtectedRoute path="/otp" exact component={Otp} />
+      <ProtectedRoute path="/signupdoc" exact component={SignupDoc} />
+      <ProtectedRoute path="/signuppat" exact component={SignupPat} />
       <ProtectedRoute
         path="/patdash"
         exact

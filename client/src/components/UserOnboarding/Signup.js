@@ -4,6 +4,7 @@ import logo from "../../svg/logo.png";
 import styles from "../../css/Signup.module.css";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import Auth from "../../Auth";
 
 class Signup extends Component {
   constructor() {
@@ -14,6 +15,10 @@ class Signup extends Component {
       phone: "",
       password: "",
     };
+  }
+
+  componentDidMount() {
+    Auth.signup(false);
   }
 
   handleUsernameChange = (evt) => {
@@ -37,6 +42,8 @@ class Signup extends Component {
       event.nativeEvent.submitter.name === "doctor"
         ? "/signupdoc"
         : "/signuppat";
+
+    Auth.signup(true);
 
     this.props.history.push({
       pathname: path,

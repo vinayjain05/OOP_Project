@@ -11,11 +11,13 @@ export default class ProtectedRoute extends Component {
           if (!Auth.isAuthenticated()) {
             // console.log({...props})
             return <this.props.component {...this.props.props} />;
+          } else if (Auth.hasSignupDetails()) {
+            return <this.props.component {...this.props.props} />;
           } else {
             return (
               <Redirect
                 to={{
-                  pathname: "/login",
+                  pathname: "/",
                 }}
               />
             );

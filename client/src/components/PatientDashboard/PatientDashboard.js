@@ -23,12 +23,7 @@ class PatientDashboard extends Component {
   componentDidMount() {
     console.log(this.props);
     this.props.pageActive(true);
-    // await axios
-    //   .get("/doctorlist")
-    //   .then((res) => {
-    //     this.setState({doctorDetails:res.data})
-    //     console.log(res.data)});
-
+    // this.setState({data:{...this.props.location.state}})
     // console.log(this.state.doctorDetails);
   }
   componentWillUnmount() {

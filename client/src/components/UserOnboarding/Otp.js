@@ -1,14 +1,27 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import ReactDOM from "react-dom";
 import styles from "../../css/otp.module.css";
 import logo from "../../svg/logo.png";
+import axios from "axios";
 
 export default class Otp extends Component {
   submitForm(e) {
     e.preventDefault();
-    this.props.history.push("/login"); // <--- The page you want to redirect your user to.
+    // let data=null;
+    // await axios
+    //   .post("/loginuser", this.state)
+    //   .then((res) => {Auth.login(true);
+    // data=res.data
+    //     this.setState({slots:res.data}).catch(err=>{
+    // this.props.history.push("/login");
+    // })
+    //     console.log(res.data)});
+    // <--- The page you want to redirect your user to.
+    //  if(data.doctor===true)
+    //   this.props.history.push({pathname:"/docdash", state: data,});
+    // else
+    //   this.props.history.push({pathname:"/patdash", state: data,});
   }
   render() {
     return (

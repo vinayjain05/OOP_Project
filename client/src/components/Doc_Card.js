@@ -11,7 +11,7 @@ class Card extends Component {
       : "";
   }
 
-  handleDoctorSelect = () => {
+  handleDoctorSelect = async () => {
     let doctorDetails = {
       name: this.props.name,
       specialization: this.props.specialization,
@@ -20,6 +20,12 @@ class Card extends Component {
       userLocation: this.props.userLocation,
       id: this.props.id,
     };
+
+    // await axios
+    //   .post("/doctortt", this.props.location.doctorDetails.id)
+    //   .then((res) => {
+    //     this.setState({slots:res.data,originalSlots:res.data})
+    //     console.log(res.data)});
 
     this.props.history.push({
       pathname: "/booking",

@@ -10,13 +10,9 @@ export default class DoctorDashboard extends Component {
     slots: new Array(48).fill(0),
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.props.pageActive(true);
-    // await axios
-    //   .post("/doctortt", this.props.location.doctorDetails.id)
-    //   .then((res) => {
-    //     this.setState({slots:res.data,originalSlots:res.data})
-    //     console.log(res.data)});
+    // this.setState({data:{...this.props.location.state}})
   }
   componentWillUnmount() {
     this.props.pageActive(false);
@@ -40,8 +36,14 @@ export default class DoctorDashboard extends Component {
     this.setState({ slots: slots });
   };
 
-  handleChangeAvailability = () => {
+  handleChangeAvailability = async () => {
     document.getElementById("changeavailabity").classList.remove(styles.active);
+    // await axios
+    //   .post("/doctortt", this.state.slots)
+    //   .then((res) => {
+    //     this.setState({slots:res.data,originalSlots:res.data})
+    //     console.log(res.data)});
+
     this.setState((prevState) => {
       return { originalSlots: prevState.slots };
     });
