@@ -12,7 +12,7 @@ class Signup extends Component {
       username: "",
       email: "",
       phone: "",
-      password: "",
+      password: ""
     };
   }
 
@@ -40,7 +40,7 @@ class Signup extends Component {
 
     this.props.history.push({
       pathname: path,
-      state: this.state,
+      state: this.state
     });
 
     //alert(` ${username} ${email } ${ phone} ${password}`);
@@ -56,6 +56,10 @@ class Signup extends Component {
             </div>
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc Account</div>
+            <div className={styles.warning}>
+              This information cannot be editted later, please make sure your
+              details are correct
+            </div>
             <div>
               <form className={styles.form} onSubmit={this.handleSubmit}>
                 <div>

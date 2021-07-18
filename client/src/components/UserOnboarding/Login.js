@@ -10,7 +10,7 @@ class Login extends Component {
     super();
     this.state = {
       username: "",
-      password: "",
+      password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -32,7 +32,7 @@ class Login extends Component {
     //     console.log(res.data)});
     this.props.history.push({
       pathname: "/otp",
-      state: this.state,
+      state: this.state
     });
     // alert(`Signed up with username: ${username} password: ${password}`);
   };

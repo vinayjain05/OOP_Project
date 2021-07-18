@@ -11,7 +11,7 @@ class BookingPage extends Component {
     consultationSelect: false,
     slots: new Array(48).fill(0),
     amount: null,
-    active: false,
+    active: false
   };
   async componentDidMount() {
     this.props.pageActive(true);
@@ -43,7 +43,7 @@ class BookingPage extends Component {
     let bookingDetails = {
       doctorID: "",
       consultationType: consultType,
-      slots: slots,
+      slots: slots
     };
     console.log(bookingDetails);
   };
@@ -55,11 +55,11 @@ class BookingPage extends Component {
             .getElementById(this.state.consultationSelect)
             .classList.remove(styles.active),
           event.target.classList.add(styles.active),
-          this.setState({ consultationSelect: event.target.id }),
+          this.setState({ consultationSelect: event.target.id })
         ]
       : [
           event.target.classList.add(styles.active),
-          this.setState({ consultationSelect: event.target.id }),
+          this.setState({ consultationSelect: event.target.id })
         ];
     this.handleTimeSlots(this.state.slots);
   };
@@ -75,7 +75,7 @@ class BookingPage extends Component {
             document.getElementById("bookbtn").classList.remove(styles.active),
             document
               .getElementById("mandateinfo")
-              .classList.remove(styles.slotavailable),
+              .classList.remove(styles.slotavailable)
           ]
       : slots.includes(true)
       ? document
@@ -88,7 +88,7 @@ class BookingPage extends Component {
             document.getElementById("bookbtn").classList.add(styles.active),
             document
               .getElementById("mandateinfo")
-              .classList.add(styles.slotavailable),
+              .classList.add(styles.slotavailable)
           ]
         : ""
       : "";

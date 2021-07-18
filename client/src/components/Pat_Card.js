@@ -21,10 +21,12 @@ export default class Card extends Component {
           <div className={styles.info}>
             <div>
               <h3 className={styles.nameHead}>{this.props.name}</h3>
-              <div>{this.props.specialization}</div>
-              <div>{this.props.education}</div>
-              <div>{this.props.experience}</div>
-              <div>{this.props.userLocation}</div>
+              <div>
+                {" "}
+                {this.props.gender}, {this.props.age}
+              </div>
+              <div>{this.props.address}</div>
+              <div>{this.props.medicalhistory}</div>
             </div>
           </div>
         </div>

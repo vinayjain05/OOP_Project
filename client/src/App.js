@@ -36,7 +36,7 @@ function App() {
         path="/patdash"
         exact
         props={{
-          name: "Subrakanta Smith",
+          name: "Subrakanta Patient",
           specialization: "NEUROLOGIST",
           education: "MBBS, MD in Pulmonology",
           experience: "7 years",
@@ -44,7 +44,11 @@ function App() {
           doctor: false,
           id: "",
           pageActive: handleActivePage,
-        }}
+          age: "21",
+          gender: "M",
+          address: "Bangalore",
+          medicalhistory: "diabetes and high bp"
+           }}
         component={PatientDashboard}
       />
       <ProtectedRoute

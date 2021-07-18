@@ -15,7 +15,7 @@ class SignupDoc extends Component {
       yearsofexperience: "",
       education: "",
       hospital: "",
-      hospitaladdress: "",
+      hospitaladdress: ""
     };
   }
 

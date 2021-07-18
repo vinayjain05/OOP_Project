@@ -12,18 +12,18 @@ class PatientDashboard extends Component {
   state = {
     doctorDetails: Array.from({ length: 6 }, (_, i) => {
       return {
-        name: "Subrakanta Smith",
+        name: "Subrakanta Smithdc",
         specialization: "NEUROLOGIST",
         education: "MBBS, MD in Pulmonology",
         experience: "7 years",
         userLocation: "Apollo, Bangalore",
-        id: "1",
+        id: "1"
       };
-    }),
+    })
   };
 
   componentDidMount() {
-    console.log(this.props);
+    console.log(this.props.name);
     this.props.pageActive(true);
     // await axios
     //   .get("/doctorlist")
@@ -36,23 +36,18 @@ class PatientDashboard extends Component {
   componentWillUnmount() {
     this.props.pageActive(false);
   }
-  
+
   handleEdit = () => {
-    let slots = [];
-    
-    let consultType =
-      this.state.consultationSelect === "videoconsultation" ? true : false;
-    let amountType = consultType ? 500 : 1000;
-    this.setState({ amount: slots.length * amountType, active: true });
+    this.setState({ active: true });
 
     let editDetails = {
-      age: "",
-      address:"",
-      medicalhistory: "",
+      age: this.props.age,
+      address: "",
+      medicalhistory: ""
     };
     console.log(editDetails);
   };
-  
+
   handleModalActive = (active) => {
     this.setState({ active: active });
   };
@@ -61,10 +56,23 @@ class PatientDashboard extends Component {
       <React.Fragment>
         <div className={styles.patDashboard}>
           <div className={styles.patInfo}>
-            <div className={styles.card}><PatCard {...this.props} /></div>
+            <div className={styles.card}>
+              <PatCard {...this.props} />
+            </div>
             <div className={styles.appInfo}> Appointments</div>
-            <div className={styles.editProfile}><button onClick={this.handleEdit}>Edit Profile</button></div>
-            
+            <div className={styles.editProfile}>
+              <button onClick={this.handleEdit}>Edit Profile</button>
+            </div>
+            <div className={styles.delete}>
+              <button type="button" className={styles.delete}>
+                Delete
+              </button>
+            </div>
+            <div className={styles.logout}>
+              <button type="button" className={styles.logout}>
+                Logout
+              </button>
+            </div>
           </div>
 
           <div className={styles.aptTab}>

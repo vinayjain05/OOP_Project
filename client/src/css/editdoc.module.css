@@ -30,9 +30,9 @@
 
 .bookingModalContainer .bookingDetails {
   position: relative;
-  top: 20%;
+  top: 10%;
   width: 28%;
-  height: 55%;
+  height: 80%;
   padding: 2vw;
   margin: auto;
   background: white;
@@ -52,30 +52,29 @@
   color: black;
 }
 
-.form{
+.form {
   padding: 0.8vw;
 }
 
-.form div{
+.form div {
   display: flex;
   justify-content: center;
 }
-.form input{
-  background-color: #EDEFF2;
+.form input {
+  background-color: #edeff2;
   border: none;
   padding: 1vw;
   margin: 0.2vw;
   border-radius: 5vw;
 }
 .form input:focus {
-  background-color: #CAF0Fc;
+  background-color: #caf0fc;
   outline: none;
 }
-.form button{
+.form button {
   border-radius: 5vw;
-  border:0;
-  background-color: #CAF0Fc;
+  border: 0;
+  background-color: #caf0fc;
   font-size: 1vw;
   margin: 0.3vw;
-
-}/*# sourceMappingURL=bookingmodal.module.css.map */
+} /*# sourceMappingURL=bookingmodal.module.css.map */

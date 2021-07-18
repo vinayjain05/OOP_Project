@@ -19,8 +19,25 @@
   margin: 5em;
 }
 
+.delete {
+  border-radius: 15px;
+  border:0;
+  background-color: rgb(136, 16, 16);
+  font-size: 1vw;
+  margin: 0.3vw;
+  color: white;
+}
+.logout {
+  border-radius: 15px;
+  background-color: rgb(178, 247, 151);
+  font-size: 1vw;
+  align-items: center;
+  margin: 0.3vw;
+}
+
+
 .editProfile {
-  margin: 5em;
+  margin-top: 1vw;
  
 }
 .editProfile button {

@@ -18,12 +18,12 @@ class Card extends Component {
       education: this.props.education,
       experience: this.props.experience,
       userLocation: this.props.userLocation,
-      id: this.props.id,
+      id: this.props.id
     };
 
     this.props.history.push({
       pathname: "/booking",
-      state: doctorDetails,
+      state: doctorDetails
     });
   };
   render() {

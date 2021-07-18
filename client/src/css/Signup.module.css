@@ -41,6 +41,12 @@
   font-size: 1.2vw;
   text-align: center;
 }
+.warning{
+  font-size: 0.8vw;
+  padding: 1em;
+  color: red;
+  text-align: center;
+}
 /* .form {
 } */
 .form div {
