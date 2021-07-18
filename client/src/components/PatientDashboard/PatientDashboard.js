@@ -3,25 +3,68 @@ import { Component } from "react";
 import styles from "../../css/PatientDashboard.module.css";
 import Card from "../Doc_Card";
 import PatCard from "../Pat_Card";
+import axios from "axios";
 
-export default class PatientDashboard extends Component {
+import EditModal from "./EditmodalPat";
+import { withRouter } from "react-router";
+
+class PatientDashboard extends Component {
+  state = {
+    doctorDetails: Array.from({ length: 6 }, (_, i) => {
+      return {
+        name: "Subrakanta Smith",
+        specialization: "NEUROLOGIST",
+        education: "MBBS, MD in Pulmonology",
+        experience: "7 years",
+        userLocation: "Apollo, Bangalore",
+        id: "1",
+      };
+    }),
+  };
+
   componentDidMount() {
+    console.log(this.props);
     this.props.pageActive(true);
+    // await axios
+    //   .get("/doctorlist")
+    //   .then((res) => {
+    //     this.setState({doctorDetails:res.data})
+    //     console.log(res.data)});
+
+    // console.log(this.state.doctorDetails);
   }
   componentWillUnmount() {
     this.props.pageActive(false);
   }
+  
+  handleEdit = () => {
+    let slots = [];
+    
+    let consultType =
+      this.state.consultationSelect === "videoconsultation" ? true : false;
+    let amountType = consultType ? 500 : 1000;
+    this.setState({ amount: slots.length * amountType, active: true });
+
+    let editDetails = {
+      age: "",
+      address:"",
+      medicalhistory: "",
+    };
+    console.log(editDetails);
+  };
+  
+  handleModalActive = (active) => {
+    this.setState({ active: active });
+  };
   render() {
     return (
       <React.Fragment>
-        <div className={styles.docDashboard}>
+        <div className={styles.patDashboard}>
           <div className={styles.patInfo}>
-            <div className={styles.card}>
-              <PatCard {...this.props} />
-            </div>
-            <div className={styles.appInfo}>
-              <div className={styles.appheading}> Appointments</div>
-            </div>
+            <div className={styles.card}><PatCard {...this.props} /></div>
+            <div className={styles.appInfo}> Appointments</div>
+            <div className={styles.editProfile}><button onClick={this.handleEdit}>Edit Profile</button></div>
+            
           </div>
 
           <div className={styles.aptTab}>
@@ -41,28 +84,24 @@ export default class PatientDashboard extends Component {
               </div>
             </div>
             <div className={styles.doccard}>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
-              <div className={styles.docInfo}>
-                <Card {...this.props} />
-              </div>
+              {this.state.doctorDetails.map((doctorDetail, j) => {
+                return (
+                  <div className={styles.docInfo} key={j}>
+                    <Card {...doctorDetail} />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
+        <EditModal
+          active={this.state.active}
+          modalActive={this.handleModalActive}
+          amount={this.state.amount}
+        />
       </React.Fragment>
     );
   }
 }
+
+export default withRouter(PatientDashboard);

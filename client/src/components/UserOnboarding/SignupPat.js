@@ -3,36 +3,51 @@ import { Component } from "react";
 import logo from "../../svg/logo.png";
 import styles from "../../css/SignupPat.module.css";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
+import axios from "axios";
+import auth from "../../Auth";
 
-export default class SignupPat extends Component {
+class SignupPat extends Component {
   constructor() {
     super();
     this.state = {
       gender: "",
       age: "",
-      address:"",
-      medicalhistory: ""
+      address: "",
+      medicalhistory: "",
     };
   }
 
-  handleGenderChange = evt => {
+  componentDidMount() {
+    this.setState({ ...this.props.location.state });
+  }
+  handleGenderChange = (evt) => {
     this.setState({ gender: evt.target.value });
-  }; 
-  handleAgeChange = evt => {
+  };
+  handleAgeChange = (evt) => {
     this.setState({ age: evt.target.value });
   };
-  handleAddressChange = evt => {
+  handleAddressChange = (evt) => {
     this.setState({ address: evt.target.value });
   };
-  handleMedicalHistoryChange = evt => {
+  handleMedicalHistoryChange = (evt) => {
     this.setState({ medicalhistory: evt.target.value });
   };
-  handleSubmit = () => {
-    const {  gender,age, address,medicalhistory} = this.state;
-  // alert(` ${gender} ${age } ${ address} ${medicalhistory}`);
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    let userDetails = { ...this.state, isDoctor: false };
+    console.log(userDetails);
+    this.props.history.push({
+      pathname: "/patdash",
+      state: this.state,
+    });
+    // await axios
+    //   .post("/registeruser", userDetails)
+    //   .then((res) => { Auth.login(true);
+    //     this.setState({doctorsDetails:res.data}).catch((err)=>{console.log(err)})
+    //     console.log(res.data)});
   };
-
-  render() {
+ render() {
     return (
       <React.Fragment>
         <div className={styles.signuppat}>
@@ -43,18 +58,18 @@ export default class SignupPat extends Component {
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc as a Patient</div>
             <div>
-              <form className={styles.form}  onSubmit={this.handleSubmit}>
+              <form className={styles.form} onSubmit={this.handleSubmit}>
                 <div>
                   <input
                     type="text"
                     className={styles.gender}
                     name="gender"
-                    placeholder="Gender" 
-                    pattern="M|F|m|f"
+                    placeholder="Gender (Male or Female)"
+                    // pattern="M|F|m|f"
                     title="Please enter M or F"
                     required
                     value={this.state.gender}
-                    onChange={this.handleGenderChange} 
+                    onChange={this.handleGenderChange}
                   />
                 </div>
                 <div>
@@ -63,11 +78,11 @@ export default class SignupPat extends Component {
                     className={styles.age}
                     name="age"
                     placeholder="Age"
-                    pattern="[0-9]{2}"
-                    title="Please enter valid age" 
-                    required              
+                    pattern="[0-9]"
+                    title="Please enter valid age"
+                    required
                     value={this.state.age}
-                    onChange={this.handleAgeChange}      
+                    onChange={this.handleAgeChange}
                   />
                 </div>
                 <div>
@@ -78,7 +93,7 @@ export default class SignupPat extends Component {
                     placeholder="Address"
                     required
                     value={this.state.address}
-                    onChange={this.handleAddressChange} 
+                    onChange={this.handleAddressChange}
                   />
                 </div>
                 <div>
@@ -87,28 +102,31 @@ export default class SignupPat extends Component {
                     className={styles.hist}
                     name="hist"
                     placeholder="Medical history"
-                    required
                     value={this.state.medicalhistory}
-                    onChange={this.handleMedicalHistoryChange} 
+                    onChange={this.handleMedicalHistoryChange}
                   />
                 </div>
                 <div>
-                  <button type="submit" className={styles.button} onClick= {this.submitForm}>
-                      Patient
+                  <button
+                    type="submit"
+                    className={styles.button}
+                    onClick={this.submitForm}                   
+                  >
+                    Sign up
                   </button>
                 </div>
               </form>
               <div className={styles.back}>
-              {" "}
-              <Link to="/signup" className={styles.button}>
-                &lt;Back
-              </Link>
+                <Link to="/signup" className={styles.button}>
+                  &lt;Back
+                </Link>
+              </div>
             </div>
-            </div>
-           
           </div>
         </div>
       </React.Fragment>
     );
   }
 }
+
+export default withRouter(SignupPat);

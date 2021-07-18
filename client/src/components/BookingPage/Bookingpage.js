@@ -3,17 +3,27 @@ import styles from "../../css/bookingpage.module.css";
 import Timetable from "../Timetable";
 import Card from "../Card";
 import BookingModal from "./Bookingmodal";
+import { withRouter } from "react-router";
+import axios from "axios";
 
-export default class BookingPage extends Component {
+class BookingPage extends Component {
   state = {
     consultationSelect: false,
     slots: new Array(48).fill(0),
     amount: null,
     active: false,
   };
-  componentDidMount() {
+  async componentDidMount() {
     this.props.pageActive(true);
+    console.log({ ...this.props.location.state });
+    this.setState({ doctorDetails: { ...this.props.location.state } });
+    // await axios
+    //   .post("/doctortt", this.props.location.state.id)
+    //   .then((res) => {
+    //     this.setState({slots:res.data})
+    //     console.log(res.data)});
   }
+
   componentWillUnmount() {
     this.props.pageActive(false);
   }
@@ -92,7 +102,7 @@ export default class BookingPage extends Component {
       <React.Fragment>
         <div className={styles.bookingDashboard}>
           <div className={styles.docInfo}>
-            <Card {...this.props} />
+            <Card {...this.state.doctorDetails} {...this.props} />
             <div className={styles.bookaptBtn}>
               <button
                 id="videoconsultation"
@@ -122,7 +132,10 @@ export default class BookingPage extends Component {
             </div>
           </div>
           <div className={styles.aptTab}>
-            <Timetable timeslots={this.handleTimeSlots} />
+            <Timetable
+              busySlots={this.state.slots}
+              timeslots={this.handleTimeSlots}
+            />
             <div className={styles.refInfo}>
               <div className={styles.colorLegends}>
                 <div></div>
@@ -148,3 +161,5 @@ export default class BookingPage extends Component {
     );
   }
 }
+
+export default withRouter(BookingPage);

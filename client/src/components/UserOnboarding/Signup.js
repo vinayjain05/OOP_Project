@@ -1,40 +1,52 @@
 import React from "react";
 import { Component } from "react";
-import ReactDOM from "react-dom";
 import logo from "../../svg/logo.png";
 import styles from "../../css/Signup.module.css";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
-export default class Signup extends Component {
+class Signup extends Component {
   constructor() {
     super();
     this.state = {
       username: "",
       email: "",
-      phone:"",
-      password: ""
+      phone: "",
+      password: "",
     };
   }
 
-  handleUsernameChange = evt => {
+  handleUsernameChange = (evt) => {
     this.setState({ username: evt.target.value });
-  }; 
-  handleEmailChange = evt => {
+  };
+  handleEmailChange = (evt) => {
     this.setState({ email: evt.target.value });
   };
-  handlePhoneChange = evt => {
+  handlePhoneChange = (evt) => {
     this.setState({ phone: evt.target.value });
   };
-  handlePasswordChange = evt => {
+  handlePasswordChange = (evt) => {
     this.setState({ password: evt.target.value });
   };
-  handleSubmit = () => {
-    const { username,email, phone, password } = this.state;
+  handleSubmit = (event) => {
+    const { username, email, phone, password } = this.state;
+    event.preventDefault();
+    // console.log(this.props.history);
+
+    let path =
+      event.nativeEvent.submitter.name === "doctor"
+        ? "/signupdoc"
+        : "/signuppat";
+
+    this.props.history.push({
+      pathname: path,
+      state: this.state,
+    });
+
     //alert(` ${username} ${email } ${ phone} ${password}`);
   };
 
   render() {
-    
     return (
       <React.Fragment>
         <div className={styles.signup}>
@@ -45,7 +57,7 @@ export default class Signup extends Component {
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc Account</div>
             <div>
-              <form class={styles.form}  onSubmit={this.handleSubmit}>
+              <form className={styles.form} onSubmit={this.handleSubmit}>
                 <div>
                   <input
                     type="text"
@@ -71,7 +83,7 @@ export default class Signup extends Component {
                 <div>
                   <input
                     type="text"
-                    class={styles.phone}
+                    className={styles.phone}
                     name="phone"
                     pattern="[0-9]{10}"
                     placeholder="Phone Number"
@@ -79,7 +91,6 @@ export default class Signup extends Component {
                     required
                     value={this.state.phone}
                     onChange={this.handlePhoneChange}
-
                   />
                 </div>
                 <div>
@@ -92,7 +103,7 @@ export default class Signup extends Component {
                     title="Minimum six characters, at least one uppercase letter, one lowercase letter, one number and one special characte"
                     required
                     value={this.state.password}
-                    onChange={this.handlePasswordChange}                    
+                    onChange={this.handlePasswordChange}
                   />
                 </div>
                 <div>
@@ -107,13 +118,21 @@ export default class Signup extends Component {
                   />
                 </div>
                 <div>
-                  <button type="submit" onClick= {this.submitForm}>
+                  <button
+                    name="doctor"
+                    className={styles.userSelectBtn}
+                    type="submit"
+                    onClick={this.submitForm}
+                  >
                     Doctor
                   </button>
-                  <button type="submit" onClick= {this.submitForm}>
-                    <Link to="/signuppat" className={styles.button}>
-                      Patient
-                    </Link>
+                  <button
+                    name="patient"
+                    type="submit"
+                    className={styles.userSelectBtn}
+                    onClick={this.submitForm}
+                  >
+                    Patient
                   </button>
                 </div>
               </form>
@@ -130,8 +149,7 @@ export default class Signup extends Component {
               </Link>
             </button>
             <div className={styles.back}>
-              {" "}
-              <Link to="/signup" className={styles.button}>
+              <Link to="/" className={styles.button}>
                 &lt;Back
               </Link>
             </div>
@@ -141,3 +159,5 @@ export default class Signup extends Component {
     );
   }
 }
+
+export default withRouter(Signup);

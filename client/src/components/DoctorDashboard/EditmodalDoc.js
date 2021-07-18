@@ -1,69 +1,28 @@
-import React from "react";
-import { Component } from "react";
-import logo from "../../svg/logo.png";
-import { Link } from "react-router-dom";
-import styles from "../../css/SignupDoc.module.css";
-import Auth from "../../Auth";
-import { withRouter } from "react-router";
-import axios from "axios";
+import React, { Component } from "react";
+import styles from "../../css/editdoc.module.css";
 
-class SignupDoc extends Component {
-  constructor() {
-    super();
-    this.state = {
-      specialization: "",
-      yearsofexperience: "",
-      education: "",
-      hospital: "",
-      hospitaladdress: "",
-    };
+export default class EditModal extends Component {
+  state = {};
+  componentDidUpdate(prevProps, prevState) {
+    let val =
+      this.props.active !== prevProps.active
+        ? document.getElementById("editmodal").classList.add(styles.active)
+        : "";
   }
 
-  componentDidMount() {
-    this.setState({ ...this.props.location.state });
-  }
-
-  handleSpecializationChange = (evt) => {
-    this.setState({ specialization: evt.target.value });
-  };
-  handleYearsChange = (evt) => {
-    this.setState({ yearsofexperience: evt.target.value });
-  };
-  handleEducationChange = (evt) => {
-    this.setState({ education: evt.target.value });
-  };
-  handleHosptialChange = (evt) => {
-    this.setState({ hospital: evt.target.value });
-  };
-
-  handleHosptialAddressChange = (evt) => {
-    this.setState({ hospitaladdress: evt.target.value });
-  };
-  handleSubmit = (event) => {
-    event.preventDefault();
-    let userDetails = { ...this.state, isDoctor: true };
-    console.log(userDetails);
-    // await axios
-    //   .post("/registeruser", userDetails)
-    //   .then((res) => {Auth.login(true);
-    //     this.setState({slots:res.data})
-    //     console.log(res.data)});
+  handleCloseModal = () => {
+    document.getElementById("editmodal").classList.remove(styles.active);
+    this.props.modalActive(false);
   };
 
   render() {
     return (
       <React.Fragment>
-        <div className={styles.signup}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
-              <img src={logo} className={styles.logo} alt="logo" />
-            </div>
-            <div className={styles.heading}>Sign-up</div>
-            <div className={styles.descr}>
-              Create your ScheDoc Account as a Doctor{" "}
-            </div>
-            <div>
-              <form className={styles.form} onSubmit={this.handleSubmit}>
+        <div id="editmodal" className={styles.bookingModalContainer}>
+          <div className={styles.bookingDetails}>
+            <span className={styles.closebtn} onClick={this.handleCloseModal}>
+              &times;
+            </span> <form className={styles.form} onSubmit={this.handleSubmit}>
                 <div>
                   <input
                     type="text"
@@ -123,21 +82,13 @@ class SignupDoc extends Component {
                 </div>
                 <div>
                   <button type="submit" onClick={this.submitForm}>
-                    Sign up
+                    Edit Profile
                   </button>
                 </div>
               </form>
-              <div className={styles.back}>
-                <Link to="/signup" className={styles.button}>
-                  &lt;Back
-                </Link>
-              </div>
             </div>
           </div>
-        </div>
       </React.Fragment>
     );
   }
 }
-
-export default withRouter(SignupDoc);

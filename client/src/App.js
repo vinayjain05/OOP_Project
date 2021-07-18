@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
-import { ProtectedRoute } from "./Protected.Route";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home/home";
 import Login from "./components/UserOnboarding/Login";
 import Signup from "./components/UserOnboarding/Signup";
@@ -12,6 +10,8 @@ import Otp from "./components/UserOnboarding/Otp";
 import SignupDoc from "./components/UserOnboarding/SignupDoc";
 import SignupPat from "./components/UserOnboarding/SignupPat";
 import BookingPage from "./components/BookingPage/Bookingpage";
+import { withRouter } from "react-router";
+import ProtectedRoute from "./Protected.Route";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(true);
@@ -22,8 +22,7 @@ function App() {
   };
 
   return (
-  <>
-    <Router>
+    <Switch>
       <Route path="/" exact component={() => <Home />} />
 
       {/* {currentPage === true ? <Navbar /> : ""} */}
@@ -33,61 +32,47 @@ function App() {
       <Route path="/otp" exact component={() => <Otp />} />
       <Route path="/signupdoc" exact component={() => <SignupDoc />} />
       <Route path="/signuppat" exact component={() => <SignupPat />} />
-      <Route
+      <ProtectedRoute
         path="/patdash"
         exact
-        component={() => (
-          <PatientDashboard
-            {...{
-              name: "Subrakanta Smit",
-              specialization: "NEUROLOGIST",
-              education: "MBBS, MD in Pulmonology",
-              experience: "7 years",
-              location: "Apollo, Bangalore",
-              doctor: false,
-              pageActive: handleActivePage,
-              appointment: "date"
-            }}
-          />
-        )}
+        props={{
+          name: "Subrakanta Smith",
+          specialization: "NEUROLOGIST",
+          education: "MBBS, MD in Pulmonology",
+          experience: "7 years",
+          userLocation: "Apollo, Bangalore",
+          doctor: false,
+          id: "",
+          pageActive: handleActivePage,
+        }}
+        component={PatientDashboard}
       />
-      <Route
+      <ProtectedRoute
         path="/docdash"
         exact
-        component={() => (
-          <DoctorDashboard
-            {...{
-              name: "Subrakanta Smith",
-              specialization: "NEUROLOGIST",
-              education: "MBBS, MD in Pulmonology",
-              experience: "7 years",
-              location: "Apollo, Bangalore",
-              doctor: true,
-              pageActive: handleActivePage,
-            }}
-          />
-        )}
+        props={{
+          name: "Subrakanta Smith",
+          specialization: "NEUROLOGIST",
+          education: "MBBS, MD in Pulmonology",
+          experience: "7 years",
+          userLocation: "Apollo, Bangalore",
+          doctor: true,
+          id: "",
+          pageActive: handleActivePage,
+        }}
+        component={DoctorDashboard}
       />
-      <Route
+      <ProtectedRoute
         path="/booking"
         exact
-        component={() => (
-          <BookingPage
-            {...{
-              name: "Subrakanta Smith",
-              specialization: "NEUROLOGIST",
-              education: "MBBS, MD in Pulmonology",
-              experience: "7 years",
-              location: "Apollo, Bangalore",
-              doctor: true,
-              pageActive: handleActivePage,
-            }}
-          />
-        )}
+        props={{
+          doctor: true,
+          pageActive: handleActivePage,
+        }}
+        component={BookingPage}
       />
-    </Router>
-    </>
+    </Switch>
   );
 }
 
-export default App;
+export default withRouter(App);

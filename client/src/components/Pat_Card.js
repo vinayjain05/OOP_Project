@@ -11,7 +11,7 @@ export default class Card extends Component {
     return (
       <React.Fragment>
         <div id="profile-card" className={styles.profileCard}>
-        <div className={styles.image}>
+          <div className={styles.image}>
             <img
               src="https://picsum.photos/200"
               className={styles.cardImage}
@@ -24,7 +24,7 @@ export default class Card extends Component {
               <div>{this.props.specialization}</div>
               <div>{this.props.education}</div>
               <div>{this.props.experience}</div>
-              <div>{this.props.location}</div>
+              <div>{this.props.userLocation}</div>
             </div>
           </div>
         </div>
