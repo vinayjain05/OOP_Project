@@ -49,11 +49,19 @@ class Login extends Component {
     return (
       <React.Fragment>
         <div className={styles.login}>
-        <div className={styles.logo}>
-              <img src={logo} className={styles.logo} alt="logo" />
-            </div>
+          <div className={styles.logo}>
+            <img
+              src={logo}
+              className={styles.logo}
+              alt="logo"
+              onClick={() => {
+                this.props.history.push({
+                  pathname: "/",
+                });
+              }}
+            />
+          </div>
           <div className={styles.bgbox}>
-            
             <div className={styles.heading}>Login</div>
             <div className={styles.descr}>Sign in to your account</div>
             <div>

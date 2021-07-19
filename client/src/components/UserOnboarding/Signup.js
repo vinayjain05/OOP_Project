@@ -38,27 +38,27 @@ class Signup extends Component {
     const { username, email, phone, password } = this.state;
     event.preventDefault();
     console.log(this.state);
-    await axios
-      .post(
-        "https://oopbackend.herokuapp.com/registeruserpat",
-        {
-          email: email,
-          isLogin: false,
-        },
-        {
-          headers: {
-            "content-type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        Auth.login(true);
-        // this.setState({ doctorsDetails: res.data });
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // await axios
+    //   .post(
+    //     "https://oopbackend.herokuapp.com/registeruserpat",
+    //     {
+    //       email: email,
+    //       isLogin: false,
+    //     },
+    // {
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    // }
+    //   )
+    //   .then((res) => {
+    //     Auth.login(true);
+    //     // this.setState({ doctorsDetails: res.data });
+    //     console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
 
     let path =
       event.nativeEvent.submitter.name === "doctor"
@@ -79,11 +79,19 @@ class Signup extends Component {
     return (
       <React.Fragment>
         <div className={styles.signup}>
-        <div className={styles.logo}>
-              <img src={logo} className={styles.logo} alt="logo" />
-            </div>
+          <div className={styles.logo}>
+            <img
+              src={logo}
+              className={styles.logo}
+              alt="logo"
+              onClick={() => {
+                this.props.history.push({
+                  pathname: "/",
+                });
+              }}
+            />
+          </div>
           <div className={styles.bgbox}>
-            
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc Account</div>
             <div className={styles.warning}>
@@ -183,7 +191,7 @@ class Signup extends Component {
                 <img alt="Facebook sign-in" src="./facebookcircle.png " />
               </Link>
             </button>
-            
+
             <div className={styles.back}>
               <Link to="/" className={styles.button}>
                 &lt;Back

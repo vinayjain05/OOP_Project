@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import axios from "axios";
 import Auth from "../../Auth";
+import Cookies from "js-cookie";
+import CSRFToken from "./Csrftoken";
 
 class SignupPat extends Component {
   constructor() {
@@ -18,8 +20,20 @@ class SignupPat extends Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({ ...this.props.location.state });
+  async componentDidMount() {
+    let csrftoken = "";
+    // await axios
+    //   .get("https://oopbackend.herokuapp.com/csrf_cookie", {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //     csrftoken = res.data.csrfToken;
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    this.setState({ ...this.props.location.state, csrftoken: csrftoken });
   }
   handleGenderChange = (evt) => {
     this.setState({ gender: evt.target.value });
@@ -35,17 +49,32 @@ class SignupPat extends Component {
   };
   handleSubmit = async (event) => {
     event.preventDefault();
-    let userDetails = { ...this.state };
-    console.log(userDetails);
-    // await axios
-    //   .post("/registeruserpat", userDetails.email)
-    //   .then((res) => { Auth.login(true);
-    //     this.setState({doctorsDetails.otp:res.data.otp}).catch((err)=>{console.log(err)})
-    //     console.log(res.data)});
+    axios.defaults.withCredentials = true;
+    // axios.defaults.xsrfCookieName = "csrftoken";
+    // axios.defaults.xsrfHeaderName = "X-CSRFToken";
+    await axios
+      .post(
+        "http://oopbackend.herokuapp.com/otpgenerator/",
+        { email: "parinavputhran@gmail.com", isLogin: false },
+        {
+          headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        Auth.login(true);
+        console.log(res);
+        this.setState({ otp: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     this.props.history.push({
       pathname: "/otp",
       state: this.state,
-      from: "/signup",
+      from: "/signuppat",
     });
   };
 
@@ -53,14 +82,29 @@ class SignupPat extends Component {
     return (
       <React.Fragment>
         <div className={styles.signuppat}>
-        <div className={styles.logo}>
-              <img src={logo} className={styles.logo} alt="logo" />
-            </div>
+          <div className={styles.logo}>
+            <img
+              src={logo}
+              className={styles.logo}
+              alt="logo"
+              onClick={() => {
+                this.props.history.push({
+                  pathname: "/",
+                });
+              }}
+            />
+          </div>
           <div className={styles.bgbox}>
-           <div className={styles.heading}>Sign-up</div>
+            <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc as a Patient</div>
             <div>
-              <form className={styles.form} onSubmit={this.handleSubmit}>
+              <form
+                className={styles.form}
+                onSubmit={this.handleSubmit}
+                // method="post"
+                // action="http://oopbackend.herokuapp.com/otpgenerator"
+              >
+                {/* <CSRFToken /> */}
                 <div>
                   <input
                     type="text"

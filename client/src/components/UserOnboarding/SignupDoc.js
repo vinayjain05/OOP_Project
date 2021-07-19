@@ -39,26 +39,54 @@ class SignupDoc extends Component {
   handleHosptialAddressChange = (evt) => {
     this.setState({ hospitaladdress: evt.target.value });
   };
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     let userDetails = { ...this.state };
     console.log(userDetails);
-    // await axios
-    //   .post("/registeruserdoc", userDetails)
-    //   .then((res) => {Auth.login(true);
-    //     this.setState({slots:res.data})
-    //     console.log(res.data)});
+    await axios
+      .post(
+        "http://oopbackend.herokuapp.com/otpgenerator/",
+        { email: "parinavputhran@gmail.com", isLogin: false },
+        {
+          headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        Auth.login(true);
+        console.log(res);
+        this.setState({ otp: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    this.props.history.push({
+      pathname: "/otp",
+      state: this.state,
+      from: "/signupdoc",
+    });
   };
 
   render() {
     return (
       <React.Fragment>
         <div className={styles.signup}>
-        <div className={styles.logo}>
-              <img src={logo} className={styles.logo} alt="logo" />
-            </div>
+          <div className={styles.logo}>
+            <img
+              src={logo}
+              className={styles.logo}
+              alt="logo"
+              onClick={() => {
+                this.props.history.push({
+                  pathname: "/",
+                });
+              }}
+            />
+          </div>
           <div className={styles.bgbox}>
-           <div className={styles.heading}>Sign-up</div>
+            <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>
               Create your ScheDoc Account as a Doctor{" "}
             </div>
