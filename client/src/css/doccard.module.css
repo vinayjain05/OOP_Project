@@ -7,9 +7,10 @@
   left: 5vw;
   flex-direction: column;
   align-items: center;
-  background: #d4d4d4;
-  box-shadow: -10px 5px 22px -8px black;
-  border-radius: 2vw;
+  background: white; 
+  box-shadow: 01.2vw 01.2vw 1.8vw rgb(46, 64, 103);
+  border-radius: 5vw;
+  padding: 2vw;
 }
 
 .profileCard.patient {
@@ -70,19 +71,22 @@
 
 .profileCard .info div .bookaptbtn {
   border-radius: 2vw;
-  margin-top: 1vw;
+  margin: 1vw;
   padding: 1vw;
   cursor: pointer;
-  background: rgb(39, 64, 85);
   color: white;
   font-weight: bold;
   font-size: 0.82vw;
+  background: rgb(46, 64, 103);
+  border-radius: 1vw;
+  border: 0.3vw solid rgb(46, 64, 103);
+  cursor: pointer;
 }
 
 .profileCard .info div .bookaptbtn:hover {
   transition: 0.1s all ease-in;
   background: white;
-  color: black;
+  color: rgb(46,64,103);
   /* border: 0.2vw solid black; */
   transform: scale(1.1);
 }

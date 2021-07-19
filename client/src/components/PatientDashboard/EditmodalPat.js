@@ -2,17 +2,35 @@ import React, { Component } from "react";
 import styles from "../../css/editpat.module.css";
 
 export default class EditModal extends Component {
-  state = {};
+  state = {
+    name: "",
+    age: "",
+    gender: "",
+    address: "",
+    medicalHistory: "",
+  };
+
+  componentDidMount() {
+    console.log(this.props);
+    this.setState({
+      name: this.props.name,
+      gender: this.props.gender,
+      age: this.props.age,
+      address: this.props.address,
+      medicalHistory: this.props.medicalHistory,
+    });
+  }
+
+  shouldComponentUpdate(prevProps, prevState) {
+    return prevProps.active ? true : false;
+  }
   componentDidUpdate(prevProps, prevState) {
-    let val =
-      this.props.active !== prevProps.active
-        ? document.getElementById("editmodal").classList.add(styles.active)
-        : "";
+    document.getElementById("editmodal").classList.add(styles.active);
   }
 
   handleCloseModal = () => {
     document.getElementById("editmodal").classList.remove(styles.active);
-    this.props.modalActive(false);
+    this.props.modalActive(false, { ...this.state });
   };
   handleAgeChange = (evt) => {
     this.setState({ age: evt.target.value });
@@ -21,14 +39,14 @@ export default class EditModal extends Component {
     this.setState({ address: evt.target.value });
   };
   handleMedicalHistoryChange = (evt) => {
-    this.setState({ medicalhistory: evt.target.value });
+    this.setState({ medicalHistory: evt.target.value });
   };
   handleSubmit = async (event) => {
     event.preventDefault();
-    let userDetails = { ...this.state, isDoctor: false };
-    console.log(userDetails.age);
     document.getElementById("editmodal").classList.remove(styles.active);
     this.props.modalActive(false);
+    // let userDetails = { ...this.state, isDoctor: false };
+    // console.log(userDetails.age);
   };
 
   render() {
@@ -41,43 +59,38 @@ export default class EditModal extends Component {
             </span>
             <form className={styles.form} onSubmit={this.handleSubmit}>
               <div>
+                <label htmlFor="name" className={styles.formLabel}>
+                  Name
+                </label>
                 <input
                   type="text"
-                  className={styles.uname}
-                  name="uname"
+                  className={styles.name}
+                  name="name"
                   disabled
-                  required
-                  value={this.state.username}
-                  onChange={this.handleUsernameChange}
+                  placeholder={this.props.name}
+                  title="Name"
+                  value={this.state.name}
                 />
               </div>
               <div>
-                <input
-                  type="email"
-                  className={styles.email}
-                  name="email"
-                  placeholder="Email"
-                  disabled
-                  required
-                  value={this.state.email}
-                  onChange={this.handleEmailChange}
-                />
-              </div>
-              <div>
+                <label htmlFor="gender" className={styles.formLabel}>
+                  Gender
+                </label>
                 <input
                   type="text"
-                  className={styles.phone}
-                  name="phone"
-                  pattern="[0-9]{10}"
-                  placeholder="Phone Number"
-                  title="Please enter valid 10-digit phone number"
-                  required
+                  className={styles.gender}
+                  name="gender"
                   disabled
-                  value={this.state.phone}
-                  onChange={this.handlePhoneChange}
+                  placeholder={this.props.gender}
+                  title="Gender"
+                  value={this.state.gender}
                 />
               </div>
+
               <div>
+                <label htmlFor="age" className={styles.formLabel}>
+                  Age
+                </label>
                 <input
                   type="number"
                   className={styles.age}
@@ -85,39 +98,41 @@ export default class EditModal extends Component {
                   placeholder={this.props.age}
                   pattern="[0-9]"
                   title="Please enter valid age"
-                  required
-                  value="{this.state.age}"
+                  value={this.state.age}
                   onChange={this.handleAgeChange}
                 />
               </div>
               <div>
+                <label htmlFor="address" className={styles.formLabel}>
+                  Address{" "}
+                </label>
+
                 <input
                   type="text"
-                  className={styles.add}
-                  name="add"
-                  placeholder="Address"
-                  required
+                  className={styles.address}
+                  name="address"
+                  placeholder={this.props.address}
                   value={this.state.address}
                   onChange={this.handleAddressChange}
                 />
               </div>
               <div>
+              <label htmlFor="hist" className={styles.formLabel}>
+                  MedicalHistory
+                </label>
+
                 <input
                   type="text"
-                  className={styles.hist}
+                  className={styles.medicalHistory}
                   name="hist"
-                  placeholder="Medical history"
-                  value={this.state.medicalhistory}
+                  placeholder={this.props.medicalHistory}
+                  value={this.state.medicalHistory}
                   onChange={this.handleMedicalHistoryChange}
                 />
               </div>
               <div>
-                <button
-                  type="submit"
-                  className={styles.button}
-                  onClick={this.submitForm}
-                >
-                  Edit Profile
+                <button type="submit" className={styles.button}>
+                  Confirm
                 </button>
               </div>
             </form>

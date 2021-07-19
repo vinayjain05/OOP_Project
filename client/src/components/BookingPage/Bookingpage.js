@@ -11,7 +11,7 @@ class BookingPage extends Component {
     consultationSelect: false,
     slots: new Array(48).fill(0),
     amount: null,
-    active: false
+    active: false,
   };
   async componentDidMount() {
     this.props.pageActive(true);
@@ -35,17 +35,20 @@ class BookingPage extends Component {
         slots.push(index);
       }
     });
-    let consultType =
-      this.state.consultationSelect === "videoconsultation" ? true : false;
-    let amountType = consultType ? 500 : 1000;
-    this.setState({ amount: slots.length * amountType, active: true });
 
-    let bookingDetails = {
-      doctorID: "",
-      consultationType: consultType,
-      slots: slots
-    };
-    console.log(bookingDetails);
+    if (slots.length !== 0 && this.state.consultationSelect) {
+      let consultType =
+        this.state.consultationSelect === "videoconsultation" ? true : false;
+      let amountType = consultType ? 500 : 1000;
+      this.setState({ amount: slots.length * amountType, active: true });
+
+      let bookingDetails = {
+        doctorID: "",
+        consultationType: consultType,
+        slots: slots,
+      };
+      console.log(bookingDetails);
+    }
   };
 
   handleConsultationClick = (event) => {
@@ -55,11 +58,11 @@ class BookingPage extends Component {
             .getElementById(this.state.consultationSelect)
             .classList.remove(styles.active),
           event.target.classList.add(styles.active),
-          this.setState({ consultationSelect: event.target.id })
+          this.setState({ consultationSelect: event.target.id }),
         ]
       : [
           event.target.classList.add(styles.active),
-          this.setState({ consultationSelect: event.target.id })
+          this.setState({ consultationSelect: event.target.id }),
         ];
     this.handleTimeSlots(this.state.slots);
   };
@@ -75,7 +78,7 @@ class BookingPage extends Component {
             document.getElementById("bookbtn").classList.remove(styles.active),
             document
               .getElementById("mandateinfo")
-              .classList.remove(styles.slotavailable)
+              .classList.remove(styles.slotavailable),
           ]
       : slots.includes(true)
       ? document
@@ -88,7 +91,7 @@ class BookingPage extends Component {
             document.getElementById("bookbtn").classList.add(styles.active),
             document
               .getElementById("mandateinfo")
-              .classList.add(styles.slotavailable)
+              .classList.add(styles.slotavailable),
           ]
         : ""
       : "";
@@ -127,7 +130,6 @@ class BookingPage extends Component {
               </button>
             </div>
             <div id="mandateinfo" className={styles.madateinfo}>
-              <span>&#8727;</span>
               <p>Please select the type of consultation and choose a slot</p>
             </div>
           </div>
@@ -144,6 +146,10 @@ class BookingPage extends Component {
               <div className={styles.colorLegends}>
                 <div></div>
                 <span>In progress(unconfirmed)</span>
+              </div>
+              <div className={styles.colorLegends}>
+                <div></div>
+                <span>Unavailable</span>
               </div>
               <div className={styles.colorLegends}>
                 <div></div>

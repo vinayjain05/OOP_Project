@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import styles from "../../css/Login.module.css";
 import logo from "../../svg/logo.png";
 import { withRouter } from "react-router";
+import axios from "axios";
+import Auth from "../../Auth";
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -25,14 +27,17 @@ class Login extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    // await axios
-    //   .post("/loginuser", this.state)
-    //   .then((res) => {Auth.login(true);
-    //     this.setState({slots:res.data})
-    //     console.log(res.data)});
+
+    let data = { username: this.state.username, isLogin: true };
+    console.log(data);
+    await axios.post("/otpgenerator", data).then((res) => {
+      Auth.login(true);
+      this.setState({ slots: res.data });
+      console.log(res.data);
+    });
     this.props.history.push({
       pathname: "/otp",
-      state: this.state
+      state: this.state,
     });
     // alert(`Signed up with username: ${username} password: ${password}`);
   };
@@ -44,10 +49,11 @@ class Login extends Component {
     return (
       <React.Fragment>
         <div className={styles.login}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
+        <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
+          <div className={styles.bgbox}>
+            
             <div className={styles.heading}>Login</div>
             <div className={styles.descr}>Sign in to your account</div>
             <div>
@@ -57,7 +63,7 @@ class Login extends Component {
                     type="text"
                     name="username"
                     autoComplete="off"
-                    placeholder="Username"
+                    placeholder="Full Name"
                     pattern="[0-9a-zA-Z]{6,}"
                     title="Minimum six characters of only numbers and letters"
                     value={this.state.username}
@@ -91,12 +97,12 @@ class Login extends Component {
             <div className={styles.or}>----------------OR----------------</div>
             <button type="button" className={styles.google}>
               <Link to="/otp" className={styles.button}>
-                <img alt="Google sign-in" src="./google.jfif" />
+                <img alt="Google sign-in" src="./google.jpg" />
               </Link>
             </button>
             <button type="button" className={styles.facebook}>
               <Link to="/otp" className={styles.button}>
-                <img alt="Facebook sign-in" src="./facebook.png " />
+                <img alt="Facebook sign-in" src="./facebookcircle.png " />
               </Link>
             </button>
             <div className={styles.back}>

@@ -15,7 +15,7 @@ class SignupDoc extends Component {
       yearsofexperience: "",
       education: "",
       hospital: "",
-      hospitaladdress: ""
+      hospitaladdress: "",
     };
   }
 
@@ -41,10 +41,10 @@ class SignupDoc extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    let userDetails = { ...this.state, isDoctor: true };
+    let userDetails = { ...this.state };
     console.log(userDetails);
     // await axios
-    //   .post("/registeruser", userDetails)
+    //   .post("/registeruserdoc", userDetails)
     //   .then((res) => {Auth.login(true);
     //     this.setState({slots:res.data})
     //     console.log(res.data)});
@@ -54,11 +54,11 @@ class SignupDoc extends Component {
     return (
       <React.Fragment>
         <div className={styles.signup}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
+        <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
-            <div className={styles.heading}>Sign-up</div>
+          <div className={styles.bgbox}>
+           <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>
               Create your ScheDoc Account as a Doctor{" "}
             </div>

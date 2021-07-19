@@ -11,32 +11,38 @@ class Card extends Component {
       : "";
   }
 
-  handleDoctorSelect = () => {
+  handleDoctorSelect = async () => {
     let doctorDetails = {
       name: this.props.name,
       specialization: this.props.specialization,
       education: this.props.education,
       experience: this.props.experience,
       userLocation: this.props.userLocation,
-      id: this.props.id
+      id: this.props.id,
     };
+
+    // await axios
+    //   .post("/doctortt", this.props.location.doctorDetails.id)
+    //   .then((res) => {
+    //     this.setState({slots:res.data,originalSlots:res.data})
+    //     console.log(res.data)});
 
     this.props.history.push({
       pathname: "/booking",
-      state: doctorDetails
+      state: doctorDetails,
     });
   };
   render() {
     return (
       <React.Fragment>
         <div id="profile-card" className={styles.profileCard}>
-          <div className={styles.image}>
+          {/*<div className={styles.image}>
             <img
               src="https://picsum.photos/200"
               className={styles.cardImage}
               alt=""
             />
-          </div>
+    </div>*/}
           <div className={styles.info}>
             <div>
               <h3 className={styles.nameHead}>{this.props.name}</h3>

@@ -5,7 +5,7 @@ import styles from "../../css/SignupPat.module.css";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import axios from "axios";
-import auth from "../../Auth";
+import Auth from "../../Auth";
 
 class SignupPat extends Component {
   constructor() {
@@ -35,27 +35,29 @@ class SignupPat extends Component {
   };
   handleSubmit = async (event) => {
     event.preventDefault();
-    let userDetails = { ...this.state, isDoctor: false };
+    let userDetails = { ...this.state };
     console.log(userDetails);
-    this.props.history.push({
-      pathname: "/patdash",
-      state: this.state,
-    });
     // await axios
-    //   .post("/registeruser", userDetails)
+    //   .post("/registeruserpat", userDetails.email)
     //   .then((res) => { Auth.login(true);
-    //     this.setState({doctorsDetails:res.data}).catch((err)=>{console.log(err)})
+    //     this.setState({doctorsDetails.otp:res.data.otp}).catch((err)=>{console.log(err)})
     //     console.log(res.data)});
+    this.props.history.push({
+      pathname: "/otp",
+      state: this.state,
+      from: "/signup",
+    });
   };
- render() {
+
+  render() {
     return (
       <React.Fragment>
         <div className={styles.signuppat}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
+        <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
-            <div className={styles.heading}>Sign-up</div>
+          <div className={styles.bgbox}>
+           <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc as a Patient</div>
             <div>
               <form className={styles.form} onSubmit={this.handleSubmit}>
@@ -110,7 +112,7 @@ class SignupPat extends Component {
                   <button
                     type="submit"
                     className={styles.button}
-                    onClick={this.submitForm}                   
+                    onClick={this.submitForm}
                   >
                     Sign up
                   </button>

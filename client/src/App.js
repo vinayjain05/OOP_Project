@@ -29,26 +29,22 @@ function App() {
 
       <Route path="/login" exact component={() => <Login />} />
       <Route path="/signup" exact component={() => <Signup />} />
-      <Route path="/otp" exact component={() => <Otp />} />
-      <Route path="/signupdoc" exact component={() => <SignupDoc />} />
-      <Route path="/signuppat" exact component={() => <SignupPat />} />
+      <ProtectedRoute path="/otp" exact component={Otp} />
+      <ProtectedRoute path="/signupdoc" exact component={SignupDoc} />
+      <ProtectedRoute path="/signuppat" exact component={SignupPat} />
       <ProtectedRoute
         path="/patdash"
         exact
         props={{
-          name: "Subrakanta Patient",
-          specialization: "NEUROLOGIST",
-          education: "MBBS, MD in Pulmonology",
-          experience: "7 years",
-          userLocation: "Apollo, Bangalore",
+          name: "Subrakanta Smith",
+          age: "25",
+          address: "Bangalore",
+          gender: "Male",
+          medicalHistory: "Medical History",
           doctor: false,
           id: "",
           pageActive: handleActivePage,
-          age: "21",
-          gender: "M",
-          address: "Bangalore",
-          medicalhistory: "diabetes and high bp"
-           }}
+        }}
         component={PatientDashboard}
       />
       <ProtectedRoute
@@ -59,7 +55,7 @@ function App() {
           specialization: "NEUROLOGIST",
           education: "MBBS, MD in Pulmonology",
           experience: "7 years",
-          userLocation: "Apollo, Bangalore",
+          address: "Apollo, Bangalore",
           doctor: true,
           id: "",
           pageActive: handleActivePage,

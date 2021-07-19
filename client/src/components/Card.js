@@ -11,20 +11,20 @@ export default class Card extends Component {
     return (
       <React.Fragment>
         <div id="profile-card" className={styles.profileCard}>
-          <div className={styles.image}>
+          {/*<div className={styles.image}>
             <img
               src="https://picsum.photos/200"
               className={styles.cardImage}
               alt=""
             />
-          </div>
+    </div>*/}
           <div className={styles.info}>
             <div>
               <h3 className={styles.nameHead}>{this.props.name}</h3>
               <div>{this.props.specialization}</div>
               <div>{this.props.education}</div>
               <div>{this.props.experience}</div>
-              <div>{this.props.userLocation}</div>
+              <div>{this.props.address}</div>
               {!this.props.doctor ? (
                 <div>
                   <button className={styles.bookaptbtn}>

@@ -1,14 +1,15 @@
 .profileCard {
   position: relative;
   top: 8vh;
-  height: 40%;
-  width: 75%;
+  width: 16.5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #28373d;
-  box-shadow: -10px 5px 23px 15px black;
-  border-radius: 2vw;
+  box-shadow: 0.5vw 0.5vw 0.5vw black;
+  background: white;
+  border-radius: 5vw;
+  padding: 2vw;
+  color:rgb(46,64,103) ;
 }
 
 .profileCard.patient {
@@ -41,7 +42,7 @@
   top: 2%;
   border-radius: 7vw 7vw 0 0;
   width: 16vw;
-  height: 40vh;
+  height: 25vh;
   font-family: "Roboto", sans-serif;
 }
 

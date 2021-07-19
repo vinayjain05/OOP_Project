@@ -1,6 +1,11 @@
 class Auth {
   constructor() {
     this.authenticated = false;
+    this.signupDetails = false;
+  }
+
+  signup(signupDetails) {
+    this.signupDetails = signupDetails;
   }
 
   login(authenticated) {
@@ -15,6 +20,10 @@ class Auth {
 
   isAuthenticated() {
     return this.authenticated;
+  }
+
+  hasSignupDetails() {
+    return this.signupDetails;
   }
 }
 

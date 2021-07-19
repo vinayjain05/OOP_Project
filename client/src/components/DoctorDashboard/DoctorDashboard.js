@@ -3,6 +3,9 @@ import styles from "../../css/doctorDashboard.module.css";
 import Timetable from "../Timetable";
 import Card from "../Card";
 import axios from "axios";
+import EditModal from "./EditmodalDoc";
+import Auth from "../../Auth";
+
 export default class DoctorDashboard extends Component {
   state = {
     changeAvailability: false,
@@ -10,13 +13,10 @@ export default class DoctorDashboard extends Component {
     slots: new Array(48).fill(0),
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.props.pageActive(true);
-    // await axios
-    //   .post("/doctortt", this.props.location.doctorDetails.id)
-    //   .then((res) => {
-    //     this.setState({slots:res.data,originalSlots:res.data})
-    //     console.log(res.data)});
+    this.setState({ ...this.props });
+    // this.setState({data:{...this.props.location.state}})
   }
   componentWillUnmount() {
     this.props.pageActive(false);
@@ -40,24 +40,71 @@ export default class DoctorDashboard extends Component {
     this.setState({ slots: slots });
   };
 
-  handleChangeAvailability = () => {
+  handleChangeAvailability = async () => {
     document.getElementById("changeavailabity").classList.remove(styles.active);
+    // await axios
+    //   .post("/doctortt", this.state.slots)
+    //   .then((res) => {
+    //     this.setState({slots:res.data,originalSlots:res.data})
+    //     console.log(res.data)});
+
     this.setState((prevState) => {
       return { originalSlots: prevState.slots };
     });
   };
+
+  handleEdit = () => {
+    this.setState({ active: true });
+  };
+
+  handleModalActive = (active) => {};
+
   render() {
     return (
       <React.Fragment>
         <div className={styles.docDashboard}>
           <div className={styles.docInfo}>
             <Card {...this.props} />
-            <div className={styles.editProfile}>
-              <button>Edit Profile</button>
+            <div className={styles.modifyBtn}>
+              <div className={styles.editProfile}>
+                <button onClick={this.handleEdit}>Edit Profile</button>
+              </div>
+              <div className={styles.delete}>
+                <button
+                  type="button"
+                  className={styles.deleteBtn}
+                  onClick={() => {
+                    Auth.logout();
+                    this.props.history.push({
+                      pathname: "/",
+                    });
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+              <div className={styles.logout}>
+                <button
+                  type="button"
+                  className={styles.logoutBtn}
+                  onClick={() => {
+                    Auth.logout();
+                    this.props.history.push({
+                      pathname: "/",
+                    });
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
+            {/* <div className={styles.editProfile}>
+              <button>Edit Profile</button>
+            </div> */}
           </div>
           <div className={styles.aptTab}>
             <Timetable
+              isDoctor={true}
               busySlots={this.state.slots}
               timeslots={this.handleTimeSlots}
             />
@@ -85,6 +132,11 @@ export default class DoctorDashboard extends Component {
             </div>
           </div>
         </div>
+        <EditModal
+          active={this.state.active}
+          modalActive={this.handleModalActive}
+          {...this.state}
+        />
       </React.Fragment>
     );
   }

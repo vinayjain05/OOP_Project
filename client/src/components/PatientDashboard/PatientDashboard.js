@@ -4,33 +4,28 @@ import styles from "../../css/PatientDashboard.module.css";
 import Card from "../Doc_Card";
 import PatCard from "../Pat_Card";
 import axios from "axios";
-
-import EditModal from "./EditmodalPat";
 import { withRouter } from "react-router";
+import EditModal from "./EditmodalPat";
+import Auth from "../../Auth";
 
 class PatientDashboard extends Component {
   state = {
     doctorDetails: Array.from({ length: 6 }, (_, i) => {
       return {
-        name: "Subrakanta Smithdc",
+        name: "Subrakanta Smith",
         specialization: "NEUROLOGIST",
         education: "MBBS, MD in Pulmonology",
         experience: "7 years",
         userLocation: "Apollo, Bangalore",
-        id: "1"
+        id: "1",
       };
-    })
+    }),
   };
 
   componentDidMount() {
-    console.log(this.props.name);
+    console.log(this.props);
     this.props.pageActive(true);
-    // await axios
-    //   .get("/doctorlist")
-    //   .then((res) => {
-    //     this.setState({doctorDetails:res.data})
-    //     console.log(res.data)});
-
+    this.setState({ ...this.props });
     // console.log(this.state.doctorDetails);
   }
   componentWillUnmount() {
@@ -39,39 +34,58 @@ class PatientDashboard extends Component {
 
   handleEdit = () => {
     this.setState({ active: true });
-
-    let editDetails = {
-      age: this.props.age,
-      address: "",
-      medicalhistory: ""
-    };
-    console.log(editDetails);
+    // let editDetails = {
+    //   age: this.props.age,
+    //   address: "",
+    //   medicalhistory: "",
+    // };
+    // console.log(editDetails);
   };
 
-  handleModalActive = (active) => {
-    this.setState({ active: active });
-  };
+  handleModalActive = (active) => {};
+
   render() {
     return (
       <React.Fragment>
         <div className={styles.patDashboard}>
           <div className={styles.patInfo}>
             <div className={styles.card}>
-              <PatCard {...this.props} />
+              <PatCard {...this.state} />
             </div>
-            <div className={styles.appInfo}> Appointments</div>
-            <div className={styles.editProfile}>
-              <button onClick={this.handleEdit}>Edit Profile</button>
-            </div>
-            <div className={styles.delete}>
-              <button type="button" className={styles.delete}>
-                Delete
-              </button>
-            </div>
-            <div className={styles.logout}>
-              <button type="button" className={styles.logout}>
-                Logout
-              </button>
+            <div className={styles.appInfo}><div> Appointments:</div>
+            <div className={styles.time}>5:30-6:30 Doctor</div></div>
+            <div className={styles.modifyBtn}>
+              <div className={styles.editProfile}>
+                <button onClick={this.handleEdit}>Edit Profile</button>
+              </div>
+              <div className={styles.delete}>
+                <button
+                  type="button"
+                  className={styles.deleteBtn}
+                  onClick={() => {
+                    Auth.logout();
+                    this.props.history.push({
+                      pathname: "/",
+                    });
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+              <div className={styles.logout}>
+                <button
+                  type="button"
+                  className={styles.logoutBtn}
+                  onClick={() => {
+                    Auth.logout();
+                    this.props.history.push({
+                      pathname: "/",
+                    });
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           </div>
 
@@ -105,7 +119,7 @@ class PatientDashboard extends Component {
         <EditModal
           active={this.state.active}
           modalActive={this.handleModalActive}
-          amount={this.state.amount}
+          {...this.state}
         />
       </React.Fragment>
     );

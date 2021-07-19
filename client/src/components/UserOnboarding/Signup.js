@@ -4,6 +4,8 @@ import logo from "../../svg/logo.png";
 import styles from "../../css/Signup.module.css";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import Auth from "../../Auth";
+import axios from "axios";
 
 class Signup extends Component {
   constructor() {
@@ -12,8 +14,12 @@ class Signup extends Component {
       username: "",
       email: "",
       phone: "",
-      password: ""
+      password: "",
     };
+  }
+
+  componentDidMount() {
+    Auth.signup(false);
   }
 
   handleUsernameChange = (evt) => {
@@ -28,19 +34,42 @@ class Signup extends Component {
   handlePasswordChange = (evt) => {
     this.setState({ password: evt.target.value });
   };
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     const { username, email, phone, password } = this.state;
     event.preventDefault();
-    // console.log(this.props.history);
+    console.log(this.state);
+    await axios
+      .post(
+        "https://oopbackend.herokuapp.com/registeruserpat",
+        {
+          email: email,
+          isLogin: false,
+        },
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        Auth.login(true);
+        // this.setState({ doctorsDetails: res.data });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     let path =
       event.nativeEvent.submitter.name === "doctor"
         ? "/signupdoc"
         : "/signuppat";
 
+    Auth.signup(true);
+
     this.props.history.push({
       pathname: path,
-      state: this.state
+      state: this.state,
     });
 
     //alert(` ${username} ${email } ${ phone} ${password}`);
@@ -50,10 +79,11 @@ class Signup extends Component {
     return (
       <React.Fragment>
         <div className={styles.signup}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
+        <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
+          <div className={styles.bgbox}>
+            
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc Account</div>
             <div className={styles.warning}>
@@ -67,7 +97,7 @@ class Signup extends Component {
                     type="text"
                     className={styles.uname}
                     name="uname"
-                    placeholder="Username"
+                    placeholder="Full Name"
                     required
                     value={this.state.username}
                     onChange={this.handleUsernameChange}
@@ -86,7 +116,7 @@ class Signup extends Component {
                 </div>
                 <div>
                   <input
-                    type="text"
+                    type="number"
                     className={styles.phone}
                     name="phone"
                     pattern="[0-9]{10}"
@@ -141,17 +171,19 @@ class Signup extends Component {
                 </div>
               </form>
             </div>
+
             <div className={styles.or}>----------------OR----------------</div>
             <button type="button" className={styles.google}>
               <Link to="/otp" className={styles.button}>
-                <img alt="Google sign-in" src="./google.jfif" />
+                <img alt="Google sign-in" src="./google.jpg" />
               </Link>
             </button>
             <button type="button" className={styles.facebook}>
               <Link to="/otp" className={styles.button}>
-                <img alt="Facebook sign-in" src="./facebook.png " />
+                <img alt="Facebook sign-in" src="./facebookcircle.png " />
               </Link>
             </button>
+            
             <div className={styles.back}>
               <Link to="/" className={styles.button}>
                 &lt;Back
