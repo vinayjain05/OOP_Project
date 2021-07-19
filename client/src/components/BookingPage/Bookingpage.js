@@ -35,17 +35,20 @@ class BookingPage extends Component {
         slots.push(index);
       }
     });
-    let consultType =
-      this.state.consultationSelect === "videoconsultation" ? true : false;
-    let amountType = consultType ? 500 : 1000;
-    this.setState({ amount: slots.length * amountType, active: true });
 
-    let bookingDetails = {
-      doctorID: "",
-      consultationType: consultType,
-      slots: slots,
-    };
-    console.log(bookingDetails);
+    if (slots.length !== 0 && this.state.consultationSelect) {
+      let consultType =
+        this.state.consultationSelect === "videoconsultation" ? true : false;
+      let amountType = consultType ? 500 : 1000;
+      this.setState({ amount: slots.length * amountType, active: true });
+
+      let bookingDetails = {
+        doctorID: "",
+        consultationType: consultType,
+        slots: slots,
+      };
+      console.log(bookingDetails);
+    }
   };
 
   handleConsultationClick = (event) => {
@@ -144,6 +147,10 @@ class BookingPage extends Component {
               <div className={styles.colorLegends}>
                 <div></div>
                 <span>In progress(unconfirmed)</span>
+              </div>
+              <div className={styles.colorLegends}>
+                <div></div>
+                <span>Unavailable</span>
               </div>
               <div className={styles.colorLegends}>
                 <div></div>

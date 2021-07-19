@@ -6,6 +6,7 @@ import PatCard from "../Pat_Card";
 import axios from "axios";
 import { withRouter } from "react-router";
 import EditModal from "./EditmodalPat";
+import Auth from "../../Auth";
 
 class PatientDashboard extends Component {
   state = {
@@ -24,7 +25,7 @@ class PatientDashboard extends Component {
   componentDidMount() {
     console.log(this.props);
     this.props.pageActive(true);
-    // this.setState({data:{...this.props.location.state}})
+    this.setState({ ...this.props });
     // console.log(this.state.doctorDetails);
   }
   componentWillUnmount() {
@@ -33,18 +34,15 @@ class PatientDashboard extends Component {
 
   handleEdit = () => {
     this.setState({ active: true });
-
-    let editDetails = {
-      age: this.props.age,
-      address: "",
-      medicalhistory: "",
-    };
-    console.log(editDetails);
+    // let editDetails = {
+    //   age: this.props.age,
+    //   address: "",
+    //   medicalhistory: "",
+    // };
+    // console.log(editDetails);
   };
 
-  handleModalActive = (active) => {
-    this.setState({ active: active });
-  };
+  handleModalActive = (active) => {};
 
   render() {
     return (
@@ -52,21 +50,41 @@ class PatientDashboard extends Component {
         <div className={styles.patDashboard}>
           <div className={styles.patInfo}>
             <div className={styles.card}>
-              <PatCard {...this.props} />
+              <PatCard {...this.state} />
             </div>
             <div className={styles.appInfo}> Appointments</div>
-            <div className={styles.editProfile}>
-              <button onClick={this.handleEdit}>Edit Profile</button>
-            </div>
-            <div className={styles.delete}>
-              <button type="button" className={styles.delete}>
-                Delete
-              </button>
-            </div>
-            <div className={styles.logout}>
-              <button type="button" className={styles.logout}>
-                Logout
-              </button>
+            <div className={styles.modifyBtn}>
+              <div className={styles.editProfile}>
+                <button onClick={this.handleEdit}>Edit Profile</button>
+              </div>
+              <div className={styles.delete}>
+                <button
+                  type="button"
+                  className={styles.deleteBtn}
+                  onClick={() => {
+                    Auth.logout();
+                    this.props.history.push({
+                      pathname: "/",
+                    });
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+              <div className={styles.logout}>
+                <button
+                  type="button"
+                  className={styles.logoutBtn}
+                  onClick={() => {
+                    Auth.logout();
+                    this.props.history.push({
+                      pathname: "/",
+                    });
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           </div>
 
@@ -100,7 +118,7 @@ class PatientDashboard extends Component {
         <EditModal
           active={this.state.active}
           modalActive={this.handleModalActive}
-          amount={this.state.amount}
+          {...this.state}
         />
       </React.Fragment>
     );

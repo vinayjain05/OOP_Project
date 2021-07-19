@@ -123,34 +123,36 @@
 
 .bookingDashboard .aptTab .refInfo {
   position: relative;
-  top: 9%;
+  top: 6%;
   flex: 0.05;
   display: flex;
   justify-content: space-evenly;
   width: 35%;
-  left: 50vw;
+  left: 48vw;
 }
 
 .bookingDashboard .aptTab .refInfo .colorLegends:nth-child(1) div {
   background: #39ff39;
   height: 1vh;
-  margin-right: 0.2vw;
 }
 
 .bookingDashboard .aptTab .refInfo .colorLegends:nth-child(2) div {
   background: #eeee00;
   height: 1vh;
-  margin-right: 0.2vw;
 }
 
 .bookingDashboard .aptTab .refInfo .colorLegends:nth-child(3) div {
+  background: #cccccc;
+  height: 1vh;
+}
+
+.bookingDashboard .aptTab .refInfo .colorLegends:nth-child(4) div {
   background: red;
   height: 1vh;
-  margin-right: 0.2vw;
 }
 
 .bookingDashboard .aptTab .refInfo .colorLegends span {
-  margin-right: 2vw;
+  margin: 0.2vw;
   font-weight: bold;
   font-size: 0.8vw;
 }

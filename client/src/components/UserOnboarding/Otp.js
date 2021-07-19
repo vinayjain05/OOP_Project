@@ -18,8 +18,9 @@ class Otp extends Component {
   submitForm(e) {
     e.preventDefault();
     // let data=null;
+    console.log(this.state);
     // await axios
-    //   .post("/loginuser", this.state)
+    //   .post("/otpgenrator", this.state)
     //   .then((res) => {Auth.login(true);
     // data=res.data
     //     this.setState({slots:res.data}).catch(err=>{

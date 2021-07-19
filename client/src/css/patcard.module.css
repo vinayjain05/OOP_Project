@@ -1,6 +1,6 @@
 .profileCard {
   position: relative;
-  top: 8vh;
+  /* top: 8vh; */
   width: 16.5vw;
   display: flex;
   flex-direction: column;

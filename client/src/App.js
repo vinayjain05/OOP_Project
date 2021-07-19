@@ -37,10 +37,10 @@ function App() {
         exact
         props={{
           name: "Subrakanta Smith",
-          specialization: "NEUROLOGIST",
-          education: "MBBS, MD in Pulmonology",
-          experience: "7 years",
-          userLocation: "Apollo, Bangalore",
+          age: "25",
+          address: "Bangalore",
+          gender: "Male",
+          medicalHistory: "Medical History",
           doctor: false,
           id: "",
           pageActive: handleActivePage,
@@ -55,7 +55,7 @@ function App() {
           specialization: "NEUROLOGIST",
           education: "MBBS, MD in Pulmonology",
           experience: "7 years",
-          userLocation: "Apollo, Bangalore",
+          address: "Apollo, Bangalore",
           doctor: true,
           id: "",
           pageActive: handleActivePage,

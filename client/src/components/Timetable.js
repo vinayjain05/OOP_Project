@@ -51,15 +51,15 @@ export default class Timetable extends Component {
     let h = today.getHours();
     let m = today.getMinutes();
     // let s = today.getSeconds();
-    function checkTime(i) {
-      if (i < 10 && i != 0) {
+    function checkTime(i, md = "am") {
+      if (i < 10 && (i != 0 || md == "am") && i !== "00") {
         i = "0" + i;
       }
       return i;
     }
-    m = checkTime(m);
+    m = checkTime(m, "am");
     // h %= 12;
-    // h = checkTime(h);
+    h = checkTime(h, "am");
 
     // s = checkTime(s);
     Array.from(document.getElementsByClassName(styles.timeSlots)).forEach(
@@ -80,11 +80,11 @@ export default class Timetable extends Component {
               timebtnh = checkTime(timebtnh);
             }
             let timebtnm = checkTime(timebtnval.split(":")[1]);
-            console.log(
-              timebtnh + ":" + timebtnm,
-              h + ":" + m,
-              timebtnh + ":" + timebtnm < h + ":" + m
-            );
+            // console.log(
+            //   timebtnh + ":" + timebtnm,
+            //   h + ":" + m,
+            //   timebtnh + ":" + timebtnm < h + ":" + m
+            // );
             let val = "";
             if (!this.props.isDoctor) {
               val =

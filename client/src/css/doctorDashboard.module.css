@@ -30,12 +30,24 @@
   box-shadow: 8px 5px 18px -5px rgba(138, 62, 62, 0.75);
 }
 
-.docDashboard .docInfo .editProfile {
+.docDashboard .docInfo .modifyBtn {
+  display: flex;
   position: relative;
-  top: 15%;
+  top: 20%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 38%;
 }
 
-.docDashboard .docInfo .editProfile button {
+.docDashboard .docInfo .modifyBtn .editProfile {
+  position: relative;
+  left: 35%;
+  flex: 0 1 100%;
+}
+
+.docDashboard .docInfo .modifyBtn button {
   background: #0c5572;
   color: white;
   font-weight: bold;
@@ -45,7 +57,7 @@
   cursor: pointer;
 }
 
-.docDashboard .docInfo .editProfile button:active {
+.docDashboard .docInfo .modifyBtn button:active {
   animation-name: slotClickAnimation;
   animation-duration: 0.1s;
   animation-iteration-count: 1;
@@ -53,11 +65,24 @@
   animation-timing-function: ease-in;
 }
 
-.docDashboard .docInfo .editProfile button:hover {
+.docDashboard .docInfo .modifyBtn button:hover {
   transition: 0.08s all ease-in;
   background: white;
   transform: scale(1.08);
   color: black;
+}
+
+.docDashboard .docInfo .modifyBtn .delete,
+.docDashboard .docInfo .modifyBtn .logout {
+  position: relative;
+  flex: 1 0 50%;
+  left: 15%;
+  top: 18%;
+}
+
+.docDashboard .docInfo .modifyBtn .delete button,
+.docDashboard .docInfo .modifyBtn .logout button {
+  font-size: 0.8vw;
 }
 
 .docDashboard .aptTab {

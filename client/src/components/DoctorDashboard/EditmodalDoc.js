@@ -1,23 +1,23 @@
 import React, { Component } from "react";
-import styles from "../../css/editpat.module.css";
+import styles from "../../css/editdoc.module.css";
 
 export default class EditModal extends Component {
   state = {
     name: "",
-    age: "",
-    gender: "",
+    specialization: "",
+    education: "",
     address: "",
-    medicalHistory: "",
+    experience: "",
   };
 
   componentDidMount() {
     console.log(this.props);
     this.setState({
       name: this.props.name,
-      gender: this.props.gender,
-      age: this.props.age,
+      specialization: this.props.specialization,
+      education: this.props.education,
       address: this.props.address,
-      medicalHistory: this.props.medicalHistory,
+      experience: this.props.experience,
     });
   }
 
@@ -32,14 +32,17 @@ export default class EditModal extends Component {
     document.getElementById("editmodal").classList.remove(styles.active);
     this.props.modalActive(false, { ...this.state });
   };
-  handleAgeChange = (evt) => {
-    this.setState({ age: evt.target.value });
+  handleSpecializationChange = (evt) => {
+    this.setState({ specialization: evt.target.value });
   };
   handleAddressChange = (evt) => {
     this.setState({ address: evt.target.value });
   };
-  handleMedicalHistoryChange = (evt) => {
-    this.setState({ medicalHistory: evt.target.value });
+  handleExperienceChange = (evt) => {
+    this.setState({ experience: evt.target.value });
+  };
+  handleEducationChange = (evt) => {
+    this.setState({ education: evt.target.value });
   };
   handleSubmit = async (event) => {
     event.preventDefault();
@@ -74,37 +77,37 @@ export default class EditModal extends Component {
               </div>
               <div>
                 <label htmlFor="gender" className={styles.formLabel}>
-                  Gender
+                  Specialization
                 </label>
                 <input
                   type="text"
                   className={styles.gender}
                   name="gender"
-                  disabled
-                  placeholder={this.props.gender}
+                  placeholder={this.props.specialization}
                   title="Gender"
-                  value={this.state.gender}
+                  value={this.state.specialization}
+                  onClick={this.handleSpecializationChange}
                 />
               </div>
 
               <div>
                 <label htmlFor="age" className={styles.formLabel}>
-                  Age
+                  Education
                 </label>
                 <input
                   type="number"
                   className={styles.age}
                   name="age"
-                  placeholder={this.props.age}
+                  placeholder={this.props.education}
                   pattern="[0-9]"
                   title="Please enter valid age"
-                  value={this.state.age}
-                  onChange={this.handleAgeChange}
+                  value={this.state.education}
+                  onChange={this.handleEducationChange}
                 />
               </div>
               <div>
                 <label htmlFor="address" className={styles.formLabel}>
-                  Address{" "}
+                  Address
                 </label>
 
                 <input
@@ -118,16 +121,16 @@ export default class EditModal extends Component {
               </div>
               <div>
                 <label htmlFor="hist" className={styles.formLabel}>
-                  Medical History
+                  Experience
                 </label>
 
                 <input
                   type="text"
                   className={styles.medicalHistory}
                   name="hist"
-                  placeholder={this.props.medicalHistory}
-                  value={this.state.medicalHistory}
-                  onChange={this.handleMedicalHistoryChange}
+                  placeholder={this.props.experience}
+                  value={this.state.experience}
+                  onChange={this.handleExperienceChange}
                 />
               </div>
               <div>

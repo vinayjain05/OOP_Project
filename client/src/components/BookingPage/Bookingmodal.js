@@ -3,11 +3,13 @@ import styles from "../../css/bookingmodal.module.css";
 
 export default class BookingModal extends Component {
   state = {};
+
+  shouldComponentUpdate(prevProps, prevState) {
+    return prevProps.active ? true : false;
+  }
+
   componentDidUpdate(prevProps, prevState) {
-    let val =
-      this.props.active !== prevProps.active
-        ? document.getElementById("bookingmodal").classList.add(styles.active)
-        : "";
+    document.getElementById("bookingmodal").classList.add(styles.active);
   }
 
   handleMessage = (event) => {
