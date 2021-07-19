@@ -19,6 +19,7 @@
 .appInfo {
   position: relative;
   top: -5%;
+  margin-bottom: -2vw;
 }
 .appInfo div{
   padding: 0.2vw;
@@ -28,19 +29,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
   height: 20%;
   flex-wrap: wrap;
 }
-
-.delete,
-.logout {
+.reschedule,.cancel {
   position: relative;
+  border-radius: 1vw;
   flex: 1 0 50%;
-  left: 12%;
-  top: 10vh;
-  /* margin-right: 0.1vw; */
+  top: -4vh;
+  left: 5vh;
 }
-.deleteBtn {
+.reschedulebtn, .cancelbtn{  
   font-size: 0.85vw;
   /* margin: 0.3vw; */
   /* align-self: center; */
@@ -48,6 +48,7 @@
   text-align: center;
   position: relative;
   top: -1vh;
+  left: -3vh;
   font-weight: bold;
   padding: 1vw;
   border-radius: 1vw;
@@ -55,13 +56,52 @@
   background: rgba(227,247,255,1);
   border: 0.3vw solid rgba(227,247,255,1);
   color: rgb(46,64,103);
+  width: 80%;
+
 }
+.reschedulebtn:hover,
+.cancelbtn:hover {
+  transition: 0.08s all ease-in;
+  background: rgb(46,64,103);
+  transform: scale(1.08);
+  color: rgba(227,247,255,1);
+}
+
+.delete,
+.logout {
+  position: relative;
+  flex: 1 0 50%;
+  left: 12%;
+  top: 2vh;
+  /* margin-right: 0.1vw; */
+}
+
+.deleteBtn{
+  font-size: 0.85vw;
+  /* margin: 0.3vw; */
+  /* align-self: center; */
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  left: -3vh;
+  font-weight: bold;
+  padding: 1vw;
+  border-radius: 1vw;
+  cursor: pointer;  
+  background: rgba(227,247,255,1);
+  border: 0.3vw solid rgba(227,247,255,1);
+  color: rgb(46,64,103);
+  width: 80%;
+}
+
 .logoutBtn {
   /* align-items: center; */
   /* margin: 0.3vw; */
   text-align: center;
   position: relative;
   top: -1vh;
+  left: -4vh;
   font-weight: bold;
   padding: 1vw;
   font-size: 0.85vw;
@@ -69,6 +109,7 @@
   cursor: pointer;  
   background: rgba(227,247,255,1);
   border: 0.3vw solid rgba(227,247,255,1);
+  width: 80%;
   color: rgb(46,64,103);
 }
 
