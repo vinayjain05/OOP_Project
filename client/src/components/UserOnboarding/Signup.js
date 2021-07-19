@@ -87,7 +87,7 @@ class Signup extends Component {
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc Account</div>
             <div className={styles.warning}>
-              This information cannot be editted later, please make sure your
+              This information cannot be edited later, please make sure your
               details are correct
             </div>
             <div>
