@@ -88,14 +88,14 @@
   text-align: center;
 }
 .google {
-  margin-left: 8vw;
+  margin-left: 9vw;
   margin-right: 2vw;
   background: white;
   border-radius: 10em;
   padding: 2px;
-  width: 4vw;
+  width: 3.2vw;
   float: left;
-  height: 4vw;
+  height: 3.2vw;
 }
 .google:hover {
   background: rgb(46, 64, 103);
@@ -112,9 +112,9 @@
   display: block;
   background: white;
   border-radius: 10em;
-  width: 4vw;
+  width: 3.2vw;
   padding: 2px;
-  height: 4vw;
+  height: 3.2vw;
 }
 .facebook:hover {
   background: rgb(46, 64, 103);

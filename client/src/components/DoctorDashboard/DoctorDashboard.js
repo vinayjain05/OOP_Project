@@ -5,8 +5,9 @@ import Card from "../Card";
 import axios from "axios";
 import EditModal from "./EditmodalDoc";
 import Auth from "../../Auth";
+import { withRouter } from "react-router";
 
-export default class DoctorDashboard extends Component {
+class DoctorDashboard extends Component {
   state = {
     changeAvailability: false,
     originalSlots: new Array(48).fill(0),
@@ -141,3 +142,5 @@ export default class DoctorDashboard extends Component {
     );
   }
 }
+
+export default withRouter(DoctorDashboard);
