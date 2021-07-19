@@ -52,7 +52,8 @@ class PatientDashboard extends Component {
             <div className={styles.card}>
               <PatCard {...this.state} />
             </div>
-            <div className={styles.appInfo}> Appointments</div>
+            <div className={styles.appInfo}><div> Appointments:</div>
+            <div className={styles.time}>5:30-6:30 Doctor</div></div>
             <div className={styles.modifyBtn}>
               <div className={styles.editProfile}>
                 <button onClick={this.handleEdit}>Edit Profile</button>

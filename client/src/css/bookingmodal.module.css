@@ -78,9 +78,10 @@
   position: relative;
   width: 70%;
   height: 35%;
-  background: #dce5e9;
-  box-shadow: 0px 5px 18px -5px rgba(13, 42, 87, 0.75);
+  background: #edeff2;
+  padding: 1vw;
   border-radius: 1vw;
+  margin: 1vw;
 }
 
 .bookingModalContainer .bookingDetails .bookingInfo div:nth-child(2) .message {
@@ -92,26 +93,30 @@
   width: 95%;
   height: 100%;
   border: none;
-  font-weight: bold;
 }
 
 .bookingModalContainer .bookingDetails .bookingInfo div:nth-child(3) button {
-  color: white;
+
+  background: rgb(46, 64, 103);
   border-radius: 1vw;
+  width: 15vw;
   font-weight: bold;
+  border: 0.3vw solid rgb(46, 64, 103);
+  cursor: pointer;
+  color: #fff;
 }
 
-.bookingModalContainer .bookingDetails .bookingInfo div:nth-child(3) button.active {
-  background: #212c35;
+.bookingModalContainer .bookingDetails .bookingInfo div:nth-child(3) button{
+  background: rgb(46, 64, 103);
   transition: 0.1s all ease-in;
   cursor: pointer;
 }
 
-.bookingModalContainer .bookingDetails .bookingInfo div:nth-child(3) button.active:hover {
+.bookingModalContainer .bookingDetails .bookingInfo div:nth-child(3) button:hover {
   transition: 0.1s all ease-in;
-  background: black;
   transform: scale(1.08);
-  color: white;
+  background: #fff;
+  color: rgb(46,64,103);
 }
 
 .bookingModalContainer .bookingDetails .bookingInfo div:nth-child(3) button.active:active {

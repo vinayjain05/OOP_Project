@@ -49,11 +49,10 @@ class Login extends Component {
     return (
       <React.Fragment>
         <div className={styles.login}>
-        <div className={styles.logo}>
+          <div className={styles.bgbox}>
+            <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
-          <div className={styles.bgbox}>
-            
             <div className={styles.heading}>Login</div>
             <div className={styles.descr}>Sign in to your account</div>
             <div>
@@ -97,12 +96,12 @@ class Login extends Component {
             <div className={styles.or}>----------------OR----------------</div>
             <button type="button" className={styles.google}>
               <Link to="/otp" className={styles.button}>
-                <img alt="Google sign-in" src="./google.jpg" />
+                <img alt="Google sign-in" src="./google.jfif" />
               </Link>
             </button>
             <button type="button" className={styles.facebook}>
               <Link to="/otp" className={styles.button}>
-                <img alt="Facebook sign-in" src="./facebookcircle.png " />
+                <img alt="Facebook sign-in" src="./facebook.png " />
               </Link>
             </button>
             <div className={styles.back}>

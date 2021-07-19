@@ -4,7 +4,7 @@
 .signup {
   font-size: 12px;    
   font-family: Roboto;
-  background: rgba(202,239,251,1);
+  background: rgba(227,247,255,1);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -12,21 +12,23 @@
 }
 .bgbox {
   width: 40%; 
-  min-height: 60%;
-  margin: 4.5vw;
+  min-height: 50%;
+  margin: 5.5vw;
   background: rgba(255,255,255,1);
-  border-radius: 2vw;
-  padding: 1vw;
-  box-shadow: 0.8vw 0.8vw 0.8vw rgba(11,57,84,1);
+  border-radius: 5vw;
+  padding: 2vw;  
+  box-shadow: 01.2vw 01.2vw 1.8vw rgb(46, 64, 103);
 }
-.logo{
+.logo {
   height: 4vw;
-  margin-left: auto;
-  margin-right: auto;
   display: block;
+  position: absolute;
+  left: 2%;
+  top: 2%;
+  z-index: 3;
 }
 .heading{
-  color: rgba(11,57,84,1);
+  color: rgb(46,64,103);
   padding-top: 0.5vw;
   font-weight: Bold;
   font-size: 2.2vw;
@@ -57,17 +59,28 @@
   border-radius: 5vw;
 }
 .form input:focus {
-  background-color: #CAF0Fc;
+  background-color: rgba(227,247,255,1);
   outline: none;
 }
-.form button{
-  border-radius: 5vw;
-  border:0;
-  background-color: #CAF0Fc;
-  font-size: 1vw;
-  margin: 0.3vw;
-
+.form button {
+  background: rgb(46, 64, 103);
+  padding: 0.6vw;
+  border-radius: 1vw;
+  width: 10vw;
+  font-size: 1.2vw;
+  font-weight: bold;
+  border: 0.3vw solid rgb(46, 64, 103);
+  cursor: pointer;
+  color: #fff;
+  margin-top: 1vw;
 }
+
+.form button:hover {
+  background: #fff;
+  color: rgb(46, 64, 103);
+  transition: all 0.1s ease-in-out;
+}
+
 .or{
   color: rgba(0,0,0,1);
   font-weight: Thin;

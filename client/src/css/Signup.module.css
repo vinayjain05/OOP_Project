@@ -4,26 +4,29 @@
 .signup {
   font-size: 12px;
   font-family: Roboto;
-  background: rgba(202, 239, 251, 1);
+  background: rgba(227,247,255,1);
   width: 100%;
   display: flex;
   justify-content: center;
   height: 100vh;
 }
 .bgbox {
-  width: 40%;
+  width: 35%;
   min-height: 80%;
-  margin: 1.8vw;
+  margin: 3vw;
   background: rgba(255, 255, 255, 1);
-  border-radius: 2vw;
-  padding: 1vw;
-  box-shadow: 0.8vw 0.8vw 0.8vw rgba(11, 57, 84, 1);
+  border-radius: 5vw;
+  padding: 2vw;
+  padding-top: 1vw;
+  box-shadow: 01.2vw 01.2vw 1.8vw rgb(46,64,103);
 }
-.logo {
-  height: 2.5vw;
-  margin-left: auto;
-  margin-right: auto;
+.logo{
+  height: 4vw;
   display: block;
+  position: absolute;
+  left:2%;
+  top: 2%;
+  z-index: 3;
 }
 .heading {
   color: rgba(11, 57, 84, 1);
@@ -61,58 +64,67 @@
   border-radius: 5vw;
 }
 .form input:focus {
-  background-color: #caf0fc;
+  background-color: rgba(227,247,255,1);
   outline: none;
 }
 .form button {
-  border-radius: 5vw;
-  border: 2vw;
-  margin-left: 1vw;
-  margin-right: 1vw;
-  margin-top: 0.5vw;
-  background-color: #caf0fc;
-  font-size: 1vw;
+  background: rgb(46, 64, 103);
+  padding: 0.6vw;
+  border-radius: 1vw;
+  width: 6vw;
+  font-size: 1.2vw;
+  font-weight: bold;
+  border: 0.3vw solid rgb(46, 64, 103);
   cursor: pointer;
-  /* font-weight: 600; */
+  color: #fff;
+  margin: 0.5vw;
+
 }
 
 .form button:hover {
-  transition: 0.1s all ease-in;
-  transform: scale(1.1);
+  background: #fff;
+  color: rgb(46, 64, 103);
+  transition: all 0.1s ease-in-out;
 }
+
 .or {
   color: rgba(0, 0, 0, 1);
   font-weight: Thin;
   text-align: center;
 }
 .google {
-  margin-top: 0.8vw;
-  margin-left: 12vw;
-  margin-right: 12vw;
-  display: block;
-  border-radius: 1vw;
-  padding: 0;
+  margin-left: 10.75vw;
+  margin-right: 2vw;
+  background: white;
+  border-radius:10em;
+  padding:2px;
+  width: 4vw;
+  float: left;
+  height: 4vw;
+}
+.google:hover{
+  background: rgb(46, 64, 103);
 }
 .google img {
+  border-radius: 20em;
   width: 100%;
-  height: 100%;
-}
-
-.google a {
-  background-color: white;
 }
 .back {
   color: rgb(153, 143, 143);
   float: left;
 }
-.facebook {
-  margin-top: 0.8vw;
-  margin-left: 12vw;
-  margin-right: 12vw;
-  display: block;
-  border-radius: 1vw;
-  padding: 0;
+  .facebook {
+    display: block;
+    background: white;
+    border-radius:10em;
+    width: 4vw;
+    padding: 2px;
+    height: 4vw;
+  } 
+.facebook:hover{
+  background: rgb(46, 64, 103);
 }
 .facebook img {
-  width: 100%;
+  border-radius: 20em;
+  height: 100%;
 }

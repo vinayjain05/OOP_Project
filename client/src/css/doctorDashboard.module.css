@@ -24,10 +24,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #212c35;
+  background: rgb(46,64,103);
   color: white;
+  box-shadow: 8px 5px 18px -5px #000;
   align-items: center;
-  box-shadow: 8px 5px 18px -5px rgba(138, 62, 62, 0.75);
 }
 
 .docDashboard .docInfo .modifyBtn {
@@ -48,13 +48,15 @@
 }
 
 .docDashboard .docInfo .modifyBtn button {
-  background: #0c5572;
-  color: white;
+  background: rgba(227,247,255,1);
+  color:rgb(46,64,103);
   font-weight: bold;
   padding: 1vw;
   font-size: 0.9vw;
   border-radius: 1vw;
   cursor: pointer;
+  border: 0.3vw solid rgba(227,247,255,1);
+
 }
 
 .docDashboard .docInfo .modifyBtn button:active {
@@ -67,9 +69,9 @@
 
 .docDashboard .docInfo .modifyBtn button:hover {
   transition: 0.08s all ease-in;
-  background: white;
+  background: rgb(46,64,103);
   transform: scale(1.08);
-  color: black;
+  color:rgba(227,247,255,1);
 }
 
 .docDashboard .docInfo .modifyBtn .delete,
@@ -78,17 +80,15 @@
   flex: 1 0 50%;
   left: 15%;
   top: 18%;
-}
-
-.docDashboard .docInfo .modifyBtn .delete button,
-.docDashboard .docInfo .modifyBtn .logout button {
   font-size: 0.8vw;
+  
 }
 
 .docDashboard .aptTab {
   display: flex;
   flex: 0.78;
   flex-direction: column;
+  background: rgba(227,247,255,1);
 }
 
 .docDashboard .aptTab .refInfo {
@@ -119,7 +119,7 @@
 .docDashboard .aptTab .refInfo .changeAvailability button.active {
   cursor: pointer;
   transition: 0.1s all ease-in;
-  background: #212c35;
+  background:rgb(46,64,103) ;
 }
 
 .docDashboard .aptTab .refInfo .changeAvailability button.active:active {
@@ -142,7 +142,7 @@
 }
 
 .docDashboard .aptTab .refInfo .colorLegends:nth-child(2) div {
-  background: #39ff39;
+  background: #32cd32;
   height: 1vh;
   margin-right: 0.5vw;
 }
@@ -165,3 +165,4 @@
   font-size: 0.8vw;
 }
 /*# sourceMappingURL=doctorDashboard.module.css.map */
+

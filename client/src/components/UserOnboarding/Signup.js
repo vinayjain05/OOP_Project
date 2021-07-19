@@ -79,12 +79,17 @@ class Signup extends Component {
     return (
       <React.Fragment>
         <div className={styles.signup}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
+        <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
+          <div className={styles.bgbox}>
+            
             <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc Account</div>
+            <div className={styles.warning}>
+              This information cannot be editted later, please make sure your
+              details are correct
+            </div>
             <div>
               <form className={styles.form} onSubmit={this.handleSubmit}>
                 <div>
@@ -170,18 +175,15 @@ class Signup extends Component {
             <div className={styles.or}>----------------OR----------------</div>
             <button type="button" className={styles.google}>
               <Link to="/otp" className={styles.button}>
-                <img alt="Google sign-in" src="./google.jfif" />
+                <img alt="Google sign-in" src="./google.jpg" />
               </Link>
             </button>
             <button type="button" className={styles.facebook}>
               <Link to="/otp" className={styles.button}>
-                <img alt="Facebook sign-in" src="./facebook.png " />
+                <img alt="Facebook sign-in" src="./facebookcircle.png " />
               </Link>
             </button>
-            <div className={styles.warning}>
-              This information cannot be editted later, please make sure your
-              details are correct
-            </div>
+            
             <div className={styles.back}>
               <Link to="/" className={styles.button}>
                 &lt;Back

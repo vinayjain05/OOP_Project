@@ -78,22 +78,22 @@
   outline: none;
 }
 .form button {
-  position: relative;
-  border-radius: 2vw;
-  background: rgb(8, 29, 54);
-  color: white;
-  font-size: 0.85vw;
-  top: 3vh;
-  margin: 0.3vw;
-  cursor: pointer;
+  background: rgb(46, 64, 103);
+  padding: 0.6vw;
+  border-radius: 1vw;
+  width: 10vw;
+  font-size: 1vw;
   font-weight: bold;
-} /*# sourceMappingURL=bookingmodal.module.css.map */
+  border: 0.3vw solid rgb(46, 64, 103);
+  cursor: pointer;
+  color: #fff;
+  margin-top: 1vw;
+}
 
 .form button:hover {
-  transition: 0.1s all ease-in;
-  transform: scale(1.1);
-  background: #caf0fc;
-  color: black;
+  background: #fff;
+  color: rgb(46, 64, 103);
+  transition: all 0.1s ease-in-out;
 }
 .form .formLabel {
   position: relative;

@@ -37,10 +37,11 @@ class Otp extends Component {
     return (
       <React.Fragment>
         <div className={styles.otp}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
+        <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
+          <div className={styles.bgbox}>
+            
             <div className={styles.heading}>OTP</div>
             <div className={styles.descr}>
               Please enter OTP recieved on the registered mobile number

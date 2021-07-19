@@ -53,11 +53,11 @@ class SignupPat extends Component {
     return (
       <React.Fragment>
         <div className={styles.signuppat}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
+        <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
-            <div className={styles.heading}>Sign-up</div>
+          <div className={styles.bgbox}>
+           <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>Create your ScheDoc as a Patient</div>
             <div>
               <form className={styles.form} onSubmit={this.handleSubmit}>

@@ -117,8 +117,8 @@ export default class EditModal extends Component {
                 />
               </div>
               <div>
-                <label htmlFor="hist" className={styles.formLabel}>
-                  Medical History
+              <label htmlFor="hist" className={styles.formLabel}>
+                  MedicalHistory
                 </label>
 
                 <input

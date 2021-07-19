@@ -2,6 +2,7 @@
   display: flex;
   width: 100vw;
   height: 100vh;
+  background: white;
 }
 
 .patInfo {
@@ -9,7 +10,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #212c35;
+  background: rgb(46,64,103);
   color: white;
   align-items: center;
   justify-content: space-evenly;
@@ -19,14 +20,16 @@
   position: relative;
   top: -5%;
 }
+.appInfo div{
+  padding: 0.2vw;
+}
 
 .modifyBtn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
   height: 20%;
+  flex-wrap: wrap;
 }
 
 .delete,
@@ -38,33 +41,43 @@
   /* margin-right: 0.1vw; */
 }
 .deleteBtn {
-  position: relative;
-  border-radius: 1vw;
-  background-color: #0c5572;
   font-size: 0.85vw;
   /* margin: 0.3vw; */
-  color: white;
-  text-align: center;
   /* align-self: center; */
   cursor: pointer;
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  font-weight: bold;
+  padding: 1vw;
+  border-radius: 1vw;
+  cursor: pointer;  
+  background: rgba(227,247,255,1);
+  border: 0.3vw solid rgba(227,247,255,1);
+  color: rgb(46,64,103);
 }
 .logoutBtn {
-  border-radius: 1vw;
-  background-color: #0c5572;
-  font-size: 0.85vw;
-  color: white;
   /* align-items: center; */
   /* margin: 0.3vw; */
   text-align: center;
-  cursor: pointer;
+  position: relative;
+  top: -1vh;
+  font-weight: bold;
+  padding: 1vw;
+  font-size: 0.85vw;
+  border-radius: 1vw;
+  cursor: pointer;  
+  background: rgba(227,247,255,1);
+  border: 0.3vw solid rgba(227,247,255,1);
+  color: rgb(46,64,103);
 }
 
 .logoutBtn:hover,
 .deleteBtn:hover {
   transition: 0.08s all ease-in;
-  background: white;
+  background: rgb(46,64,103);
   transform: scale(1.08);
-  color: black;
+  color: rgba(227,247,255,1);
 }
 
 .editProfile {
@@ -76,13 +89,15 @@
 .editProfile button {
   position: relative;
   top: -1vh;
-  background: #0c5572;
-  color: white;
   font-weight: bold;
   padding: 1vw;
   font-size: 0.9vw;
   border-radius: 1vw;
-  cursor: pointer;
+  cursor: pointer;  
+  background: rgba(227,247,255,1);
+  border: 0.3vw solid rgba(227,247,255,1);
+  color: rgb(46,64,103);
+  font-weight: bold;
 }
 
 .editProfile button:active {
@@ -94,9 +109,9 @@
 }
 .editProfile button:hover {
   transition: 0.08s all ease-in;
-  background: white;
+  background: rgb(46,64,103);
   transform: scale(1.08);
-  color: black;
+  color: rgba(227,247,255,1);
 }
 
 .aptTab {
@@ -115,9 +130,8 @@
   padding-top: 1vw;
   text-align: center;
   width: 100%;
-  box-shadow: 0 20px 40px -15px rgb(73, 68, 68);
+  box-shadow: 0 10px 8px -5px #000000;
   z-index: 10;
-  border-radius: 0 0 1vw 1vw;
 }
 .subheading div {
   padding: 0.3vw;
@@ -130,9 +144,11 @@
 .docInfo {
   width: 33%;
   padding-top: 3vw;
+  padding-bottom: 3vw;
   /* padding-right: 3vw; */
   flex-direction: column;
   display: inline-block;
+  background:rgba(227,247,255,1);
   align-items: center;
 }
 

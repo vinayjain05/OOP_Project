@@ -54,11 +54,11 @@ class SignupDoc extends Component {
     return (
       <React.Fragment>
         <div className={styles.signup}>
-          <div className={styles.bgbox}>
-            <div className={styles.logo}>
+        <div className={styles.logo}>
               <img src={logo} className={styles.logo} alt="logo" />
             </div>
-            <div className={styles.heading}>Sign-up</div>
+          <div className={styles.bgbox}>
+           <div className={styles.heading}>Sign-up</div>
             <div className={styles.descr}>
               Create your ScheDoc Account as a Doctor{" "}
             </div>

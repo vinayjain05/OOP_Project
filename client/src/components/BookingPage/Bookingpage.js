@@ -130,7 +130,6 @@ class BookingPage extends Component {
               </button>
             </div>
             <div id="mandateinfo" className={styles.madateinfo}>
-              <span>&#8727;</span>
               <p>Please select the type of consultation and choose a slot</p>
             </div>
           </div>
