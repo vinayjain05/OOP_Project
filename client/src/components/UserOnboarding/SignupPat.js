@@ -17,6 +17,7 @@ class SignupPat extends Component {
       age: "",
       address: "",
       medicalhistory: "",
+      isDoctor: false,
     };
   }
 
@@ -64,18 +65,18 @@ class SignupPat extends Component {
         }
       )
       .then((res) => {
-        Auth.login(true);
-        console.log(res);
-        this.setState({ otp: res.data });
+        // Auth.login(true);
+        Auth.signup(true);
+        // this.setState({ otp: res.data });
+        this.props.history.push({
+          pathname: "/otp",
+          state: { ...this.state, otp: res.data },
+          from: "/signup",
+        });
       })
       .catch((err) => {
         console.log(err);
       });
-    this.props.history.push({
-      pathname: "/otp",
-      state: this.state,
-      from: "/signuppat",
-    });
   };
 
   render() {

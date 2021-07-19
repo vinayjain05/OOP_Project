@@ -16,6 +16,7 @@ class SignupDoc extends Component {
       education: "",
       hospital: "",
       hospitaladdress: "",
+      isDoctor: true,
     };
   }
 
@@ -65,7 +66,7 @@ class SignupDoc extends Component {
     this.props.history.push({
       pathname: "/otp",
       state: this.state,
-      from: "/signupdoc",
+      from: "/signup",
     });
   };
 

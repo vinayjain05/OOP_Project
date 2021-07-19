@@ -30,11 +30,11 @@ class Login extends Component {
 
     let data = { username: this.state.username, isLogin: true };
     console.log(data);
-    await axios.post("/otpgenerator", data).then((res) => {
-      Auth.login(true);
-      this.setState({ slots: res.data });
-      console.log(res.data);
-    });
+    // await axios.post("/otpgenerator", data).then((res) => {
+    //   Auth.login(true);
+    //   this.setState({ slots: res.data });
+    //   console.log(res.data);
+    // });
     this.props.history.push({
       pathname: "/otp",
       state: this.state,
