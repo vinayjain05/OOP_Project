@@ -170,26 +170,45 @@ class Otp extends Component {
           otpauth: true,
         };
 
-        await axios
-          .post("https://oopbackend.herokuapp.com/loginuser/", userDetails, {
-            headers: {
-              accept: "application/json",
-              "content-type": "application/json",
-            },
-          })
-          .then((res) => {
-            console.log(res, "otp login");
-            let dashpathname = "";
+        console.log(userDetails);
 
-            if (res.data.isDoctor) dashpathname = "/docdash";
-            else dashpathname = "/patdash";
-            Auth.login(true);
-            this.props.history.push({
-              pathname: dashpathname,
-              state: { ...this.state },
-            });
+        await axios
+          .post(
+            "http://oopbackend.herokuapp.com/docsingle",
+            {
+              userName: userDetails.username,
+            },
+            {
+              headers: {
+                accept: "application/json",
+                "content-type": "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res);
           })
           .catch((err) => console.log(err));
+        // await axios
+        //   .post("http://oopbackend.herokuapp.com/loginuser/", userDetails, {
+        // headers: {
+        //   accept: "application/json",
+        //   "content-type": "application/json",
+        // },
+        //   })
+        //   .then((res) => {
+        //     console.log(res, "otp login");
+        //     let dashpathname = "";
+
+        //     if (res.data.isDoctor) dashpathname = "/docdash";
+        //     else dashpathname = "/patdash";
+        //     // Auth.login(true);
+        //     this.props.history.push({
+        //       pathname: dashpathname,
+        //       state: { ...this.state },
+        //     });
+        //   })
+        //   .catch((err) => console.log(err, "here"));
       }
     } else {
       alert(`Incorrect OTP`);

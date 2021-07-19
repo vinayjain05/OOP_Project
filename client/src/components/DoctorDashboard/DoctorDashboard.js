@@ -68,7 +68,9 @@ class DoctorDashboard extends Component {
     this.setState({ active: true });
   };
 
-  handleModalActive = (active) => {};
+  handleModalActive = (active) => {
+    this.setState({ active: active });
+  };
 
   render() {
     return (

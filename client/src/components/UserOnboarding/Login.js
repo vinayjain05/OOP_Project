@@ -44,7 +44,7 @@ class Login extends Component {
       )
       .then((res) => {
         // Auth.login(true);
-        Auth.login(true);
+        // Auth.login(true);
         // this.setState({ otp: res.data });
 
         console.log(res, "here");
@@ -108,7 +108,7 @@ class Login extends Component {
                     name="username"
                     autoComplete="off"
                     placeholder="Full Name"
-                    pattern="[0-9a-zA-Z]{6,}"
+                    pattern="[0-9a-zA-Z]{4,}"
                     title="Minimum six characters of only numbers and letters"
                     value={this.state.username}
                     required

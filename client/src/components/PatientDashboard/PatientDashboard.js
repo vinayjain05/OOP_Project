@@ -56,8 +56,9 @@ class PatientDashboard extends Component {
     // console.log(editDetails);
   };
 
-  handleModalActive = (active) => {};
-
+  handleModalActive = (active) => {
+    this.setState({ active: active });
+  };
   render() {
     return (
       <React.Fragment>
