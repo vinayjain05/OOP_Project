@@ -55,7 +55,7 @@ class PatientDashboard extends Component {
             </div>
             <div className={styles.appInfo}>
               <div> Appointments:</div>
-              <div className={styles.time}>5:30-6:30 Doctor</div>
+              {/* <div className={styles.time}>5:30-6:30 Doctor</div> */}
             </div>
             <div className={styles.modifyBtn}>
               <div className={styles.reschedule}>
@@ -63,11 +63,11 @@ class PatientDashboard extends Component {
                   Reschedule
                 </button>
               </div>
-              <div className={styles.cancel}>
+              {/* <div className={styles.cancel}>
                 <button type="button" className={styles.cancelbtn}>
                   Delete appointment
                 </button>
-              </div>
+              </div> */}
               <div className={styles.editProfile}>
                 <button onClick={this.handleEdit}>Edit Profile</button>
               </div>
@@ -78,7 +78,7 @@ class PatientDashboard extends Component {
                   onClick={() => {
                     Auth.logout();
                     this.props.history.push({
-                      pathname: "",
+                      pathname: "/",
                     });
                   }}
                 >
@@ -92,7 +92,7 @@ class PatientDashboard extends Component {
                   onClick={() => {
                     Auth.logout();
                     this.props.history.push({
-                      pathname: "",
+                      pathname: "/",
                     });
                   }}
                 >
