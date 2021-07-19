@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: rgb(46,64,103);
+  background: rgb(46, 64, 103);
   color: white;
   align-items: center;
   justify-content: space-evenly;
@@ -19,8 +19,9 @@
 .appInfo {
   position: relative;
   top: -5%;
+  margin-bottom: -2vw;
 }
-.appInfo div{
+.appInfo div {
   padding: 0.2vw;
 }
 
@@ -28,8 +29,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
   height: 20%;
   flex-wrap: wrap;
+}
+.reschedule,
+.cancel {
+  position: relative;
+  border-radius: 1vw;
+  flex: 1 0 50%;
+  top: -4vh;
+  left: 5vh;
+}
+.reschedulebtn,
+.cancelbtn {
+  font-size: 0.85vw;
+  /* margin: 0.3vw; */
+  /* align-self: center; */
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  left: -3vh;
+  font-weight: bold;
+  padding: 1vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
+  width: 80%;
+}
+.reschedulebtn:hover,
+.cancelbtn:hover {
+  transition: 0.08s all ease-in;
+  background: rgb(46, 64, 103);
+  transform: scale(1.08);
+  color: rgba(227, 247, 255, 1);
 }
 
 .delete,
@@ -37,9 +73,10 @@
   position: relative;
   flex: 1 0 50%;
   left: 12%;
-  top: 10vh;
+  top: 2vh;
   /* margin-right: 0.1vw; */
 }
+
 .deleteBtn {
   font-size: 0.85vw;
   /* margin: 0.3vw; */
@@ -48,36 +85,41 @@
   text-align: center;
   position: relative;
   top: -1vh;
+  left: -3vh;
   font-weight: bold;
   padding: 1vw;
   border-radius: 1vw;
-  cursor: pointer;  
-  background: rgba(227,247,255,1);
-  border: 0.3vw solid rgba(227,247,255,1);
-  color: rgb(46,64,103);
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
+  width: 80%;
 }
+
 .logoutBtn {
   /* align-items: center; */
   /* margin: 0.3vw; */
   text-align: center;
   position: relative;
   top: -1vh;
+  left: -4vh;
   font-weight: bold;
   padding: 1vw;
   font-size: 0.85vw;
   border-radius: 1vw;
-  cursor: pointer;  
-  background: rgba(227,247,255,1);
-  border: 0.3vw solid rgba(227,247,255,1);
-  color: rgb(46,64,103);
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  width: 80%;
+  color: rgb(46, 64, 103);
 }
 
 .logoutBtn:hover,
 .deleteBtn:hover {
   transition: 0.08s all ease-in;
-  background: rgb(46,64,103);
+  background: rgb(46, 64, 103);
   transform: scale(1.08);
-  color: rgba(227,247,255,1);
+  color: rgba(227, 247, 255, 1);
 }
 
 .editProfile {
@@ -93,10 +135,10 @@
   padding: 1vw;
   font-size: 0.9vw;
   border-radius: 1vw;
-  cursor: pointer;  
-  background: rgba(227,247,255,1);
-  border: 0.3vw solid rgba(227,247,255,1);
-  color: rgb(46,64,103);
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
   font-weight: bold;
 }
 
@@ -109,9 +151,9 @@
 }
 .editProfile button:hover {
   transition: 0.08s all ease-in;
-  background: rgb(46,64,103);
+  background: rgb(46, 64, 103);
   transform: scale(1.08);
-  color: rgba(227,247,255,1);
+  color: rgba(227, 247, 255, 1);
 }
 
 .aptTab {
@@ -148,7 +190,415 @@
   /* padding-right: 3vw; */
   flex-direction: column;
   display: inline-block;
-  background:rgba(227,247,255,1);
+  background: rgba(227, 247, 255, 1);
+  align-items: center;
+}
+
+.doccard::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.doccard {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.patDashboard {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}
+
+.patInfo {
+  flex: 0.22;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: rgb(46, 64, 103);
+  color: white;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 8px 5px 18px -5px #000;
+}
+.appInfo {
+  position: relative;
+  top: -5%;
+  margin-bottom: -2vw;
+}
+.appInfo div {
+  padding: 0.2vw;
+}
+
+.modifyBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 20%;
+  flex-wrap: wrap;
+}
+.reschedule,
+.cancel {
+  position: relative;
+  border-radius: 1vw;
+  flex: 1 0 50%;
+  top: -4vh;
+  left: 5vh;
+}
+.reschedulebtn,
+.cancelbtn {
+  font-size: 0.85vw;
+  /* margin: 0.3vw; */
+  /* align-self: center; */
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  left: -3vh;
+  font-weight: bold;
+  padding: 1vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
+  width: 80%;
+}
+.reschedulebtn:hover,
+.cancelbtn:hover {
+  transition: 0.08s all ease-in;
+  background: rgb(46, 64, 103);
+  transform: scale(1.08);
+  color: rgba(227, 247, 255, 1);
+}
+
+.delete,
+.logout {
+  position: relative;
+  flex: 1 0 50%;
+  left: 12%;
+  top: 2vh;
+  /* margin-right: 0.1vw; */
+}
+
+.deleteBtn {
+  font-size: 0.85vw;
+  /* margin: 0.3vw; */
+  /* align-self: center; */
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  left: -3vh;
+  font-weight: bold;
+  padding: 1vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
+  width: 80%;
+}
+
+.logoutBtn {
+  /* align-items: center; */
+  /* margin: 0.3vw; */
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  left: -4vh;
+  font-weight: bold;
+  padding: 1vw;
+  font-size: 0.85vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  width: 80%;
+  color: rgb(46, 64, 103);
+}
+
+.logoutBtn:hover,
+.deleteBtn:hover {
+  transition: 0.08s all ease-in;
+  background: rgb(46, 64, 103);
+  transform: scale(1.08);
+  color: rgba(227, 247, 255, 1);
+}
+
+.editProfile {
+  position: relative;
+  margin-top: 1vw;
+  flex: 0 1 100%;
+  left: 35%;
+}
+.editProfile button {
+  position: relative;
+  top: -1vh;
+  font-weight: bold;
+  padding: 1vw;
+  font-size: 0.9vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
+  font-weight: bold;
+}
+
+.editProfile button:active {
+  animation-name: slotClickAnimation;
+  animation-duration: 0.1s;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-timing-function: ease-in;
+}
+.editProfile button:hover {
+  transition: 0.08s all ease-in;
+  background: rgb(46, 64, 103);
+  transform: scale(1.08);
+  color: rgba(227, 247, 255, 1);
+}
+
+.aptTab {
+  display: flex;
+  flex: 0.78;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.heading {
+  text-align: center;
+  padding-top: 2vw;
+  width: 100%;
+}
+.subheading {
+  padding-top: 1vw;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 10px 8px -5px #000000;
+  z-index: 10;
+}
+.subheading div {
+  padding: 0.3vw;
+}
+
+.doccard {
+  background-color: white;
+  overflow-y: auto;
+}
+.docInfo {
+  width: 33%;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+  /* padding-right: 3vw; */
+  flex-direction: column;
+  display: inline-block;
+  background: rgba(227, 247, 255, 1);
+  align-items: center;
+}
+
+.doccard::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.doccard {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.patDashboard {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}
+
+.patInfo {
+  flex: 0.22;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: rgb(46, 64, 103);
+  color: white;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 8px 5px 18px -5px #000;
+}
+.appInfo {
+  position: relative;
+  top: -5%;
+  margin-bottom: -2vw;
+}
+.appInfo div {
+  padding: 0.2vw;
+}
+
+.modifyBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 20%;
+  flex-wrap: wrap;
+}
+.reschedule,
+.cancel {
+  position: relative;
+  border-radius: 1vw;
+  flex: 1 0 50%;
+  top: -4vh;
+  left: 5vh;
+}
+.reschedulebtn,
+.cancelbtn {
+  font-size: 0.85vw;
+  /* margin: 0.3vw; */
+  /* align-self: center; */
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  left: -3vh;
+  font-weight: bold;
+  padding: 1vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
+  width: 80%;
+}
+.reschedulebtn:hover,
+.cancelbtn:hover {
+  transition: 0.08s all ease-in;
+  background: rgb(46, 64, 103);
+  transform: scale(1.08);
+  color: rgba(227, 247, 255, 1);
+}
+
+.delete,
+.logout {
+  position: relative;
+  flex: 1 0 50%;
+  left: 12%;
+  top: 2vh;
+  /* margin-right: 0.1vw; */
+}
+
+.deleteBtn {
+  font-size: 0.85vw;
+  /* margin: 0.3vw; */
+  /* align-self: center; */
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  left: -3vh;
+  font-weight: bold;
+  padding: 1vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
+  width: 80%;
+}
+
+.logoutBtn {
+  /* align-items: center; */
+  /* margin: 0.3vw; */
+  text-align: center;
+  position: relative;
+  top: -1vh;
+  left: -4vh;
+  font-weight: bold;
+  padding: 1vw;
+  font-size: 0.85vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  width: 80%;
+  color: rgb(46, 64, 103);
+}
+
+.logoutBtn:hover,
+.deleteBtn:hover {
+  transition: 0.08s all ease-in;
+  background: rgb(46, 64, 103);
+  transform: scale(1.08);
+  color: rgba(227, 247, 255, 1);
+}
+
+.editProfile {
+  position: relative;
+  margin-top: 1vw;
+  flex: 0 1 100%;
+  left: 35%;
+}
+.editProfile button {
+  position: relative;
+  top: -1vh;
+  font-weight: bold;
+  padding: 1vw;
+  font-size: 0.9vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  background: rgba(227, 247, 255, 1);
+  border: 0.3vw solid rgba(227, 247, 255, 1);
+  color: rgb(46, 64, 103);
+  font-weight: bold;
+}
+
+.editProfile button:active {
+  animation-name: slotClickAnimation;
+  animation-duration: 0.1s;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-timing-function: ease-in;
+}
+.editProfile button:hover {
+  transition: 0.08s all ease-in;
+  background: rgb(46, 64, 103);
+  transform: scale(1.08);
+  color: rgba(227, 247, 255, 1);
+}
+
+.aptTab {
+  display: flex;
+  flex: 0.78;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.heading {
+  text-align: center;
+  padding-top: 2vw;
+  width: 100%;
+}
+.subheading {
+  padding-top: 1vw;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 10px 8px -5px #000000;
+  z-index: 10;
+}
+.subheading div {
+  padding: 0.3vw;
+}
+
+.doccard {
+  background-color: white;
+  overflow-y: auto;
+}
+.docInfo {
+  width: 33%;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+  /* padding-right: 3vw; */
+  flex-direction: column;
+  display: inline-block;
+  background: rgba(227, 247, 255, 1);
   align-items: center;
 }
 
