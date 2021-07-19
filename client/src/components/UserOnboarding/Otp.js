@@ -21,39 +21,75 @@ class Otp extends Component {
     );
 
     console.log(this.state);
-    if (
-      typeof this.props.location.from !== "undefined" &&
-      this.props.location.from.length !== 0
-    )
-      this.setState({
-        frompath: this.props.location.from,
-        ...this.props.location.state,
-      });
+    // if (
+    //   typeof this.props.location.from !== "undefined" &&
+    //   this.props.location.from.length !== 0
+    // )
+    this.setState({
+      frompath: this.props.location.from ? this.props.location.from : "/",
+      ...this.props.location.state,
+    });
   }
   handleOtpSubmit = async (event) => {
     event.preventDefault();
 
     // let data=null;
 
-    let userDetails = {
+    console.log(this.state);
+
+    let patientDetails = {
       userName: this.state.username,
       name: this.state.username,
       email: this.state.email,
       mobile: this.state.phone,
-      isDoctor: false,
+      isDoctor: this.state.isDoctor,
       age: this.state.age,
       gender: this.state.gender,
       address: this.state.address,
       medicalHistory: this.state.medicalhistory,
     };
+    let doctorDetails = {
+      userName: this.state.username,
+      name: this.state.username,
+      email: this.state.email,
+      mobile: this.state.phone,
+      isDoctor: this.state.isDoctor,
+      specialization: this.state.specialization,
+      experience: this.state.yearsofexperience,
+      degree: this.state.education,
+      hospitalName: this.state.hospital,
+      hospitalLocation: this.state.hospitaladdress,
+    };
+
+    // let doctorDetails = {
+    //   userName: "doc123",
+    //   name: "Steven",
+    //   email: "steven@g.com",
+    //   mobile: "0124456789",
+    //   isDoctor: true,
+    //   specialization: "ENT",
+    //   experience: "15 years",
+    //   degree: "MD",
+    //   hospitalName: "City Hospital",
+    //   hospitalLocation: "Mumbai",
+    // };
 
     let reguser = {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
     };
+    // let reguser = {
+    //   username: "ausygdknasd",
+    //   email: "parinavputhran@gmail.com",
+    //   password: "ausygdknasd@123L",
+    // };
 
-    console.log(userDetails, reguser);
+    console.log({
+      patientDetails: patientDetails,
+      doctorDetails: doctorDetails,
+      registerUser: reguser,
+    });
     if (this.state.enteredOtp == this.state.otp) {
       await axios
         .post("https://oopbackend.herokuapp.com/registeruser/", reguser, {
@@ -65,12 +101,24 @@ class Otp extends Component {
         .then((res) => {
           Auth.login(true);
 
-          let pathname = this.state.isDoctor
-            ? "https://oopbackend.herokuapp.com/registeruserdoc/"
-            : "https://oopbackend.herokuapp.com/registeruserpat/";
-          console.log(res);
+          let pathDetails = this.state.isDoctor
+            ? [
+                "https://oopbackend.herokuapp.com/registeruserdoc/",
+                doctorDetails,
+              ]
+            : [
+                "https://oopbackend.herokuapp.com/registeruserpat/",
+                patientDetails,
+              ];
+
+          console.log(pathDetails[0], pathDetails[1], "here");
           axios
-            .post(pathname, userDetails)
+            .post(pathDetails[0], pathDetails[1], {
+              headers: {
+                accept: "application/json",
+                "content-type": "application/json",
+              },
+            })
             .then((res) => {
               console.log(res, "inside");
               if (this.state.isDoctor) {
@@ -88,7 +136,7 @@ class Otp extends Component {
               }
             })
             .catch((err) => {
-              console.log(err);
+              console.log(err, "outside");
             });
 
           // if (this.state.isDoctor)
