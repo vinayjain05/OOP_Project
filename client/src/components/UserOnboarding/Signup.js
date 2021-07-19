@@ -12,6 +12,7 @@ class Signup extends Component {
     super();
     this.state = {
       username: "",
+      fullname: "",
       email: "",
       phone: "",
       password: "",
@@ -24,6 +25,9 @@ class Signup extends Component {
 
   handleUsernameChange = (evt) => {
     this.setState({ username: evt.target.value });
+  };
+  handleFullNameChange = (evt) => {
+    this.setState({ fullname: evt.target.value });
   };
   handleEmailChange = (evt) => {
     this.setState({ email: evt.target.value });
@@ -103,9 +107,20 @@ class Signup extends Component {
                 <div>
                   <input
                     type="text"
-                    className={styles.uname}
+                    className={styles.fullname}
                     name="uname"
                     placeholder="Full Name"
+                    required
+                    value={this.state.fullname}
+                    onChange={this.handleFullNameChange}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    className={styles.uname}
+                    name="username"
+                    placeholder="Username"
                     required
                     value={this.state.username}
                     onChange={this.handleUsernameChange}

@@ -3,10 +3,10 @@ import { Component } from "react";
 import styles from "../../css/PatientDashboard.module.css";
 import Card from "../Doc_Card";
 import PatCard from "../Pat_Card";
-import axios from "axios";
 import { withRouter } from "react-router";
 import EditModal from "./EditmodalPat";
 import Auth from "../../Auth";
+import axios from "axios";
 
 class PatientDashboard extends Component {
   state = {
@@ -23,10 +23,23 @@ class PatientDashboard extends Component {
     }),
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     console.log(this.props);
     this.props.pageActive(true);
-    this.setState({ ...this.props });
+    let doctorData = [];
+    await axios
+      .get("https://oopbackend.herokuapp.com/registeruserdoc/")
+      .then((res) => {
+        console.log(res, "insidehere");
+        doctorData = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // { ...this.props, doctorDetails: doctorData }
+    this.setState((prevState) => {
+      return doctorData.length !== 0 ? { ...this.props } : { ...this.props };
+    });
     // console.log(this.state.doctorDetails);
   }
   componentWillUnmount() {
@@ -68,9 +81,6 @@ class PatientDashboard extends Component {
                   Delete appointment
                 </button>
               </div> */}
-              <div className={styles.editProfile}>
-                <button onClick={this.handleEdit}>Edit Profile</button>
-              </div>
               <div className={styles.delete}>
                 <button
                   type="button"
@@ -84,6 +94,9 @@ class PatientDashboard extends Component {
                 >
                   Delete Account
                 </button>
+              </div>
+              <div className={styles.editProfile}>
+                <button onClick={this.handleEdit}>Edit Profile</button>
               </div>
               <div className={styles.logout}>
                 <button

@@ -27,19 +27,55 @@ class Login extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
+    await axios
+      .post(
+        "http://oopbackend.herokuapp.com/loginuser/",
+        {
+          username: this.state.username,
+          password: this.state.password,
+          otpauth: false,
+        },
+        {
+          headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        // Auth.login(true);
+        Auth.login(true);
+        // this.setState({ otp: res.data });
 
-    let data = { username: this.state.username, isLogin: true };
-    console.log(data);
-    // await axios.post("/otpgenerator", data).then((res) => {
-    //   Auth.login(true);
-    //   this.setState({ slots: res.data });
-    //   console.log(res.data);
-    // });
-    this.props.history.push({
-      pathname: "/otp",
-      state: this.state,
-    });
-    // alert(`Signed up with username: ${username} password: ${password}`);
+        console.log(res, "here");
+        axios
+          .post(
+            "http://oopbackend.herokuapp.com/otpgenerator/",
+            {
+              username: this.state.username,
+              isLogin: true,
+            },
+            {
+              headers: {
+                accept: "application/json",
+                "content-type": "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res, "login here");
+            this.props.history.push({
+              pathname: "/otp",
+              state: { ...this.state, otp: res.data },
+              from: "/login",
+            });
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(`Incorrect Username or Password`);
+      });
   };
 
   render() {

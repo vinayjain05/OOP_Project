@@ -29,9 +29,10 @@
   position: relative;
   justify-content: space-between;
   align-items: center;
-  top: -5%;
-  height: 20%;
+  top: 5%;
+  height: 30%;
   flex-wrap: wrap;
+  /* border: 1px solid red; */
 }
 
 .reschedule {
@@ -58,9 +59,9 @@
 .delete,
 .logout {
   position: relative;
-  flex: 1 0 50%;
-  left: 12%;
-  top: 10vh;
+  /* flex: 1 0 50%; */
+  /* left: 12%;*/
+  top: 7vh;
   /* left: -1vw; */
   /* margin-right: 0.1vw; */
 }
@@ -71,10 +72,10 @@
   cursor: pointer;
   text-align: center;
   position: relative;
-  top: 4vh;
+  /* top: 4vh; */
   font-weight: bold;
   font-size: 0.85vw;
-  left: -15%;
+  /* left: -15%; */
   border-radius: 1vw;
   cursor: pointer;
   background: black;
@@ -85,10 +86,10 @@
   /* margin: 0.3vw; */
   text-align: center;
   position: relative;
-  top: 4vh;
+  /* top: 4vh; */
   font-weight: bold;
   /* padding: 0.8vw; */
-  left: 15%;
+  left: -15%;
   font-size: 0.85vw;
   border-radius: 1vw;
   cursor: pointer;
@@ -107,15 +108,15 @@
 .editProfile {
   position: relative;
   margin-top: 1vw;
-  flex: 0 1 100%;
-  left: 35%;
-  top: 25%;
+  /* flex: 0 1 100%; */
+  /* left: 35%; */
+  top: 6vh;
 }
 .editProfile button {
   position: relative;
-  top: 8vh;
+  /* top: 8vh; */
   font-weight: bold;
-  left: 5%;
+  left: -5%;
   font-size: 0.9vw;
   border-radius: 1vw;
   cursor: pointer;

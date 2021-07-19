@@ -47,7 +47,7 @@ class SignupDoc extends Component {
     await axios
       .post(
         "http://oopbackend.herokuapp.com/otpgenerator/",
-        { email: "parinavputhran@gmail.com", isLogin: false },
+        { email: this.state.email, isLogin: false },
         {
           headers: {
             accept: "application/json",
@@ -56,18 +56,18 @@ class SignupDoc extends Component {
         }
       )
       .then((res) => {
-        Auth.login(true);
+        Auth.signup(true);
         console.log(res);
-        this.setState({ otp: res.data });
+        this.props.history.push({
+          pathname: "/otp",
+          state: { ...this.state, otp: res.data },
+          from: "/signupdoc",
+        });
+        // this.setState({ otp: res.data });
       })
       .catch((err) => {
         console.log(err);
       });
-    this.props.history.push({
-      pathname: "/otp",
-      state: this.state,
-      from: "/signup",
-    });
   };
 
   render() {

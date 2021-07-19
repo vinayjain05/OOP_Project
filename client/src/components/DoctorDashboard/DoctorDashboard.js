@@ -16,6 +16,16 @@ class DoctorDashboard extends Component {
 
   componentDidMount() {
     this.props.pageActive(true);
+
+    // await axios
+    //   .get("https://oopbackend.herokuapp.com/registeruserdoc/")
+    //   .then((res) => {
+    //     console.log(res, "insidehere");
+    //     doctorData = res.data;
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
     this.setState({ ...this.props });
     // this.setState({data:{...this.props.location.state}})
   }

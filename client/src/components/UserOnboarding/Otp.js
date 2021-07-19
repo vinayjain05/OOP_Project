@@ -36,121 +36,163 @@ class Otp extends Component {
     // let data=null;
 
     console.log(this.state);
-
-    let patientDetails = {
-      userName: this.state.username,
-      name: this.state.username,
-      email: this.state.email,
-      mobile: this.state.phone,
-      isDoctor: this.state.isDoctor,
-      age: this.state.age,
-      gender: this.state.gender,
-      address: this.state.address,
-      medicalHistory: this.state.medicalhistory,
-    };
-    let doctorDetails = {
-      userName: this.state.username,
-      name: this.state.username,
-      email: this.state.email,
-      mobile: this.state.phone,
-      isDoctor: this.state.isDoctor,
-      specialization: this.state.specialization,
-      experience: this.state.yearsofexperience,
-      degree: this.state.education,
-      hospitalName: this.state.hospital,
-      hospitalLocation: this.state.hospitaladdress,
-    };
-
-    // let doctorDetails = {
-    //   userName: "doc123",
-    //   name: "Steven",
-    //   email: "steven@g.com",
-    //   mobile: "0124456789",
-    //   isDoctor: true,
-    //   specialization: "ENT",
-    //   experience: "15 years",
-    //   degree: "MD",
-    //   hospitalName: "City Hospital",
-    //   hospitalLocation: "Mumbai",
-    // };
-
-    let reguser = {
-      username: this.state.username,
-      email: this.state.email,
-      password: this.state.password,
-    };
-    // let reguser = {
-    //   username: "ausygdknasd",
-    //   email: "parinavputhran@gmail.com",
-    //   password: "ausygdknasd@123L",
-    // };
-
-    console.log({
-      patientDetails: patientDetails,
-      doctorDetails: doctorDetails,
-      registerUser: reguser,
-    });
     if (this.state.enteredOtp == this.state.otp) {
-      await axios
-        .post("https://oopbackend.herokuapp.com/registeruser/", reguser, {
-          headers: {
-            accept: "application/json",
-            "content-type": "application/json",
-          },
-        })
-        .then((res) => {
-          Auth.login(true);
+      if (this.state.frompath.includes("/signup")) {
+        let patientDetails = {
+          userName: this.state.username,
+          name: this.state.fullname,
+          email: this.state.email,
+          mobile: this.state.phone,
+          isDoctor: this.state.isDoctor,
+          age: this.state.age,
+          gender: this.state.gender,
+          address: this.state.address,
+          medicalHistory: this.state.medicalhistory,
+        };
+        let doctorDetails = {
+          userName: this.state.username,
+          name: this.state.fullname,
+          email: this.state.email,
+          mobile: this.state.phone,
+          isDoctor: this.state.isDoctor,
+          specialization: this.state.specialization,
+          experience: this.state.yearsofexperience,
+          degree: this.state.education,
+          hospitalName: this.state.hospital,
+          hospitalLocation: this.state.hospitaladdress,
+        };
 
-          let pathDetails = this.state.isDoctor
-            ? [
-                "https://oopbackend.herokuapp.com/registeruserdoc/",
-                doctorDetails,
-              ]
-            : [
-                "https://oopbackend.herokuapp.com/registeruserpat/",
-                patientDetails,
-              ];
+        // let doctorDetails = {
+        //   userName: "doc1jaskldm23",
+        //   name: "Stevajknsdmen",
+        //   email: "steveasdkjmkasdkn@g.com",
+        //   mobile: "0165456789",
+        //   isDoctor: true,
+        //   specialization: "ENT",
+        //   experience: "15 years",
+        //   degree: "MD",
+        //   hospitalName: "City Hospital",
+        //   hospitalLocation: "Mumbai",
+        // };
 
-          console.log(pathDetails[0], pathDetails[1], "here");
-          axios
-            .post(pathDetails[0], pathDetails[1], {
-              headers: {
-                accept: "application/json",
-                "content-type": "application/json",
-              },
-            })
-            .then((res) => {
-              console.log(res, "inside");
-              if (this.state.isDoctor) {
-                // this.setState({ slots: res.data });
-              } else {
-                axios
-                  .get("https://oopbackend.herokuapp.com/registeruserdoc/")
-                  .then((res) => {
-                    console.log(res, "insidehere");
-                    this.setState({ doctorData: res.data });
-                  })
-                  .catch((err) => {
-                    console.log(err);
+        let reguser = {
+          username: this.state.username,
+          email: this.state.email,
+          password: this.state.password,
+        };
+        // let reguser = {
+        //   username: "ausygdkakjsdlmnasd",
+        //   email: "parinavaskjdlkmasdputhran@gmail.com",
+        //   password: "ausygdanksdknasd@123L",
+        // };
+
+        console.log({
+          patientDetails: patientDetails,
+          doctorDetails: doctorDetails,
+          registerUser: reguser,
+        });
+        await axios
+          .post("https://oopbackend.herokuapp.com/registeruser/", reguser, {
+            headers: {
+              accept: "application/json",
+              "content-type": "application/json",
+            },
+          })
+          .then((res) => {
+            Auth.login(true);
+
+            let pathDetails = this.state.isDoctor
+              ? [
+                  "https://oopbackend.herokuapp.com/registeruserdoc/",
+                  doctorDetails,
+                ]
+              : [
+                  "https://oopbackend.herokuapp.com/registeruserpat/",
+                  patientDetails,
+                ];
+
+            console.log(pathDetails[0], pathDetails[1], "here");
+            axios
+              .post(pathDetails[0], pathDetails[1], {
+                headers: {
+                  accept: "application/json",
+                  "content-type": "application/json",
+                },
+              })
+              .then((res) => {
+                console.log(res, "inside");
+                if (this.state.isDoctor) {
+                  // this.setState({ slots: res.data });
+                  Auth.login(true);
+                  this.props.history.push({
+                    pathname: "/docdash",
+                    state: { ...this.state, ...res.data },
                   });
-              }
-            })
-            .catch((err) => {
-              console.log(err, "outside");
-            });
+                } else {
+                  axios
+                    .get("https://oopbackend.herokuapp.com/registeruserdoc/")
+                    .then((res) => {
+                      console.log(res, "insidehere");
+                      Auth.login(true);
+                      this.props.history.push({
+                        pathname: "/patdash",
+                        state: { ...this.state, ...res.data },
+                      });
+                      // this.setState({ doctorData: res.data });
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                }
+              })
+              .catch((err) => {
+                console.log(err, "outside");
+              });
 
-          // if (this.state.isDoctor)
-          //   this.props.history.push({
-          //     pathname: "/docdash",
-          //     state: { ...this.state },
-          //   });
-          // else
-          //   this.props.history.push({
-          //     pathname: "/patdash",
-          //     state: { ...this.state },
-          //   });
-        })
-        .catch((err) => console.log(err, "here"));
+            // if (this.state.isDoctor)
+            //   this.props.history.push({
+            //     pathname: "/docdash",
+            //     state: { ...this.state },
+            //   });
+            // else
+            // this.props.history.push({
+            //   pathname: "/patdash",
+            //   state: { ...this.state },
+            // });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        let userDetails = {
+          username: this.state.username,
+          password: this.state.password,
+          otpauth: true,
+        };
+
+        await axios
+          .post("https://oopbackend.herokuapp.com/loginuser/", userDetails, {
+            headers: {
+              accept: "application/json",
+              "content-type": "application/json",
+            },
+          })
+          .then((res) => {
+            console.log(res, "otp login");
+            let dashpathname = "";
+
+            if (res.data.isDoctor) dashpathname = "/docdash";
+            else dashpathname = "/patdash";
+            Auth.login(true);
+            this.props.history.push({
+              pathname: dashpathname,
+              state: { ...this.state },
+            });
+          })
+          .catch((err) => console.log(err));
+      }
+    } else {
+      alert(`Incorrect OTP`);
     }
   };
 
