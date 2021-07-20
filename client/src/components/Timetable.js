@@ -110,20 +110,21 @@ export default class Timetable extends Component {
     );
 
     console.log(this.props.busySlots, "busy Slots");
-    this.props.busySlots.map((slot) => {
-      console.log("enter", slot);
-      if (
-        !document
-          .getElementById(String(slot))
-          .classList.contains(styles.timeExceeded)
-        //   ||
-        // this.props.isDoctor
-      ) {
+    if (this.props.busySlots.includes(-1)) {
+      this.props.busySlots.map((slot) => {
         console.log("enter", slot);
-        document.getElementById(String(slot)).classList.remove(styles.normal);
-        document.getElementById(String(slot)).classList.add(styles.busy);
-      }
-    });
+        if (
+          !document
+            .getElementById(String(slot))
+            .classList.contains(styles.timeExceeded) &&
+          slot >= 0
+        ) {
+          console.log("enter", slot);
+          document.getElementById(String(slot)).classList.remove(styles.normal);
+          document.getElementById(String(slot)).classList.add(styles.busy);
+        }
+      });
+    }
     this.setState({ slots: this.props.busySlots });
     // let currh = new Date().getHours() !== 0 ? new Date().getHours() % 12 : 0;
     // currh = currh === 0 ? 12 : currh;
