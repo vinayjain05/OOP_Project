@@ -105,11 +105,44 @@ class DoctorDashboard extends Component {
   };
 
   handleEdit = () => {
+    console.log(this.state);
     this.setState({ active: true });
   };
 
-  handleModalActive = (active) => {
-    this.setState({ active: active });
+  handleModalActive = async (active, closeType = "close", stateHere) => {
+    console.log(this.state, "state here");
+    if (closeType === "confirm") {
+      let doctorDetails = {
+        userName: this.state.doctorDetails.username,
+        name: this.state.doctorDetails.name,
+        email: this.state.doctorDetails.email,
+        mobile: this.state.doctorDetails.phone,
+        isDoctor: this.state.doctorDetails.isDoctor,
+        specialization: stateHere.specialization,
+        experience: stateHere.experience,
+        degree: stateHere.education,
+        hospitalName: stateHere.address.split(", ")[0],
+        hospitalLocation: stateHere.address.split(", ")[1],
+      };
+
+      this.setState({ ...doctorDetails });
+      // axios
+      //   .put(
+      //     "https://oopbackend.herokuapp.com/registeruserdoc/",
+      //     doctorDetails,
+      //     {
+      //       headers: {
+      //         accept: "application/json",
+      //         "content-type": "application/json",
+      //       },
+      //     }
+      //   )
+      //   .then((res) => {
+      //     console.log(res);
+      //   });
+    } else {
+      this.setState({ active: active });
+    }
   };
 
   handleBusySlots = (active) => {

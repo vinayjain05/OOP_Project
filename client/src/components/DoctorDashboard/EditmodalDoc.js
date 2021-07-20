@@ -5,20 +5,16 @@ export default class EditModal extends Component {
   state = {
     name: "",
     specialization: "",
-    education: "",
+    degree: "",
     address: "",
     experience: "",
+    // breakhere: true,
   };
 
   componentDidMount() {
-    console.log(this.props);
-    this.setState({
-      name: this.props.name,
-      specialization: this.props.specialization,
-      education: this.props.education,
-      address: this.props.address,
-      experience: this.props.experience,
-    });
+    console.log(this.props, "preasydknsa");
+
+    // console.log(this.props.degree);
   }
 
   shouldComponentUpdate(prevProps, prevState) {
@@ -26,11 +22,22 @@ export default class EditModal extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     document.getElementById("editmodal").classList.add(styles.active);
+    // console.log(this.props);
+    if (prevProps != this.props) {
+      this.setState({
+        name: this.props.location.state.name,
+        specialization: this.props.location.state.specialization,
+        degree: this.props.location.state.degree,
+        address: `${this.props.location.state.hospitalName},${this.props.location.state.hospitalLocation}`,
+        experience: this.props.location.state.experience,
+      });
+    }
   }
 
   handleCloseModal = () => {
     document.getElementById("editmodal").classList.remove(styles.active);
-    this.props.modalActive(false, { ...this.state });
+    this.props.modalActive(false, "close", {});
+    // this.setState({ breakhere: !this.state.breakhere });
   };
   handleSpecializationChange = (evt) => {
     this.setState({ specialization: evt.target.value });
@@ -44,13 +51,14 @@ export default class EditModal extends Component {
   handleExperienceChange = (evt) => {
     this.setState({ experience: evt.target.value });
   };
-  handleEducationChange = (evt) => {
-    this.setState({ education: evt.target.value });
+  handleDegreeChange = (evt) => {
+    this.setState({ degree: evt.target.value });
   };
   handleSubmit = async (event) => {
     event.preventDefault();
     document.getElementById("editmodal").classList.remove(styles.active);
-    this.props.modalActive(false);
+    this.props.modalActive(false, "confirm", this.state);
+    // this.setState({ breakhere: !this.state.breakhere });
     // let userDetails = { ...this.state, isDoctor: false };
     // console.log(userDetails.age);
   };
@@ -73,7 +81,7 @@ export default class EditModal extends Component {
                   className={styles.name}
                   name="name"
                   disabled
-                  placeholder={this.props.name}
+                  placeholder={this.state.name}
                   title="Name"
                   value={this.state.name}
                   onChange={this.handleNameChange}
@@ -87,7 +95,7 @@ export default class EditModal extends Component {
                   type="text"
                   className={styles.gender}
                   name="gender"
-                  placeholder={this.props.specialization}
+                  placeholder={this.state.specialization}
                   title="Gender"
                   value={this.state.specialization}
                   onChange={this.handleSpecializationChange}
@@ -96,29 +104,29 @@ export default class EditModal extends Component {
 
               <div>
                 <label htmlFor="age" className={styles.formLabel}>
-                  Education
+                  Degree
                 </label>
                 <input
                   type="number"
                   className={styles.age}
                   name="age"
-                  placeholder={this.props.education}
+                  placeholder={this.state.degree}
                   pattern="[0-9]"
                   title="Please enter valid age"
-                  value={this.state.education}
-                  onChange={this.handleEducationChange}
+                  value={this.state.degree}
+                  onChange={this.handleDegreeChange}
                 />
               </div>
               <div>
                 <label htmlFor="address" className={styles.formLabel}>
-                  Address
+                  Hospital
                 </label>
 
                 <input
                   type="text"
                   className={styles.address}
                   name="address"
-                  placeholder={this.props.address}
+                  placeholder={this.state.address}
                   value={this.state.address}
                   onChange={this.handleAddressChange}
                 />
@@ -132,7 +140,7 @@ export default class EditModal extends Component {
                   type="text"
                   className={styles.medicalHistory}
                   name="hist"
-                  placeholder={this.props.experience}
+                  placeholder={this.state.experience}
                   value={this.state.experience}
                   onChange={this.handleExperienceChange}
                 />
