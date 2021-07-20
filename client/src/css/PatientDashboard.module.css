@@ -18,10 +18,35 @@
 }
 .appInfo {
   position: relative;
-  top: -5%;
+  top: 7%;
+  /* border: 1px solid red; */
+  box-shadow: 5px 10px 20px -5px #000;
+  border-radius: 1vw;
+  width: 80%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 15;
 }
 .appInfo div {
   padding: 0.2vw;
+}
+
+.appointmentList {
+  overflow-y: auto;
+}
+
+.appointmentList .appointment {
+  position: relative;
+  top: 5%;
+  width: 14vw;
+  height: 20%;
+  text-align: center;
+}
+
+.appointmentList::-webkit-scrollbar {
+  display: none;
 }
 
 .modifyBtn {
@@ -29,7 +54,7 @@
   position: relative;
   justify-content: space-between;
   align-items: center;
-  top: 5%;
+  /* top: 5%; */
   height: 30%;
   flex-wrap: wrap;
   /* border: 1px solid red; */
@@ -42,7 +67,7 @@
   cursor: pointer;
   text-align: center;
   position: relative;
-  /* top: -1vh; */
+  top: 5vh;
   left: 35%;
   /* top: 10vh; */
   background: rgba(227, 247, 255, 1);
@@ -61,7 +86,7 @@
   position: relative;
   /* flex: 1 0 50%; */
   /* left: 12%;*/
-  top: 7vh;
+  top: 5.4vh;
   /* left: -1vw; */
   /* margin-right: 0.1vw; */
 }
@@ -110,7 +135,7 @@
   margin-top: 1vw;
   /* flex: 0 1 100%; */
   /* left: 35%; */
-  top: 6vh;
+  top: 4.3vh;
 }
 .editProfile button {
   position: relative;

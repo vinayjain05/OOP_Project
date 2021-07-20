@@ -167,14 +167,13 @@ class Otp extends Component {
         let userDetails = {
           username: this.state.username,
           password: this.state.password,
-          otpauth: true,
         };
 
         console.log(userDetails);
 
         await axios
           .post(
-            "http://oopbackend.herokuapp.com/docsingle",
+            "http://oopbackend.herokuapp.com/usersingle/",
             {
               userName: userDetails.username,
             },
@@ -186,9 +185,42 @@ class Otp extends Component {
             }
           )
           .then((res) => {
-            console.log(res);
+            // console.log(res.data);
+            let data = JSON.parse(
+              res.data.replace(/'/g, '"').replace("True", "true")
+            );
+            data = data.fields;
+            let isDoctor = data.isDoctor;
+            let userpathname = "patsingle/";
+
+            if (isDoctor) userpathname = "docsingle/";
+
+            axios
+              .post(
+                "http://oopbackend.herokuapp.com/" + userpathname,
+                {
+                  userName: userDetails.username,
+                },
+                {
+                  headers: {
+                    accept: "application/json",
+                    "content-type": "application/json",
+                  },
+                }
+              )
+              .then((res) => {
+                // console.log(res.data);
+                let userData = JSON.parse(res.data.replace(/'/g, '"')).fields;
+                this.props.history.push({
+                  pathname:
+                    userpathname === "docsingle/" ? "/docdash" : "patdash",
+                  state: { ...this.state, ...data, ...userData },
+                });
+              })
+              .catch((err) => console.log(err));
           })
           .catch((err) => console.log(err));
+
         // await axios
         //   .post("http://oopbackend.herokuapp.com/loginuser/", userDetails, {
         // headers: {
@@ -203,10 +235,10 @@ class Otp extends Component {
         //     if (res.data.isDoctor) dashpathname = "/docdash";
         //     else dashpathname = "/patdash";
         //     // Auth.login(true);
-        //     this.props.history.push({
-        //       pathname: dashpathname,
-        //       state: { ...this.state },
-        //     });
+        // this.props.history.push({
+        //   pathname: dashpathname,
+        //   state: { ...this.state },
+        // });
         //   })
         //   .catch((err) => console.log(err, "here"));
       }

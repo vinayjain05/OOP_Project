@@ -21,6 +21,9 @@ class PatientDashboard extends Component {
         appointment: "5:",
       };
     }),
+    appointments: Array.from({ length: 15 }, (_, i) => {
+      return i;
+    }),
   };
 
   async componentDidMount() {
@@ -68,7 +71,14 @@ class PatientDashboard extends Component {
               <PatCard {...this.state} />
             </div>
             <div className={styles.appInfo}>
-              <div> Appointments:</div>
+              <h4>Appointments:</h4>
+              <div className={styles.appointmentList}>
+                {this.state.appointments.map((time) => (
+                  <div className={styles.appointment}>
+                    <span>Appointment No: {time + 1}</span>
+                  </div>
+                ))}
+              </div>
               {/* <div className={styles.time}>5:30-6:30 Doctor</div> */}
             </div>
             <div className={styles.modifyBtn}>
