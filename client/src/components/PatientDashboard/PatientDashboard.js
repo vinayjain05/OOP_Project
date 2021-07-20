@@ -28,7 +28,7 @@ class PatientDashboard extends Component {
   };
 
   async componentDidMount() {
-    console.log(this.props, "props home");
+    console.log(this.props.location.state, "props home");
     this.props.pageActive(true);
     let doctorData = [];
     await axios
@@ -47,10 +47,10 @@ class PatientDashboard extends Component {
     // });
     this.setState((prevState) => {
       return doctorData.length !== 0
-        ? { ...this.props, doctorDetails: doctorData }
-        : { ...this.props };
+        ? { ...this.props.location.state, doctorDetails: doctorData }
+        : { ...this.props.location.state };
     });
-    console.log({ ...this.props, doctorDetails: doctorData });
+    console.log({ ...this.props.location.state, doctorDetails: doctorData });
   }
   componentWillUnmount() {
     this.props.pageActive(false);
@@ -164,7 +164,10 @@ class PatientDashboard extends Component {
               {this.state.doctorDetails.map((doctorDetail, j) => {
                 return (
                   <div className={styles.docInfo} key={j}>
-                    <Card {...doctorDetail} />
+                    <Card
+                      doctorDetails={{ ...doctorDetail }}
+                      patientDetails={{ ...this.state }}
+                    />
                   </div>
                 );
               })}

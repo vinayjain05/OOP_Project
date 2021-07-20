@@ -9,12 +9,12 @@
   background: rgb(185, 197, 223);
   border-radius: 5vw;
   padding: 2vw;
-  color:rgb(46,64,103) ;
+  color: rgb(46, 64, 103);
 }
 
 .profileCard.patient {
-  height: 45%;
-  width: 82%;
+  height: 32%;
+  width: 80%;
 }
 
 .profileCard .image {
@@ -44,6 +44,7 @@
   width: 16vw;
   height: 25vh;
   font-family: "Roboto", sans-serif;
+  /* border: 1px solid red; */
 }
 
 .profileCard .info div {
@@ -62,7 +63,7 @@
 .profileCard .info div div {
   left: 0%;
   top: 1vh;
-  font-size: 0.9vw;
+  font-size: 1vw;
   margin: 0.3vw;
   overflow: hidden;
   font-weight: bold;

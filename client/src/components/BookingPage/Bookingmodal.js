@@ -22,9 +22,12 @@ export default class BookingModal extends Component {
 
   handleCloseModal = () => {
     document.getElementById("bookingmodal").classList.remove(styles.active);
-    this.props.modalActive(false);
+    this.props.modalActive(false, "close");
   };
-  handleProceedPayment = () => {};
+  handleProceedPayment = () => {
+    document.getElementById("bookingmodal").classList.remove(styles.active);
+    this.props.modalActive(false, "payment");
+  };
 
   render() {
     return (
@@ -49,7 +52,7 @@ export default class BookingModal extends Component {
               </div>
               <div>
                 <button id="proceedpayment" onClick={this.handleProceedPayment}>
-                  Proceed to Payment
+                  Confirm
                 </button>
               </div>
             </div>

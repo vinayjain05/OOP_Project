@@ -12,11 +12,38 @@ class BookingPage extends Component {
     slots: new Array(48).fill(0),
     amount: null,
     active: false,
+    busySlotsMarked: false,
   };
   async componentDidMount() {
     this.props.pageActive(true);
     console.log({ ...this.props.location.state });
-    this.setState({ doctorDetails: { ...this.props.location.state } });
+
+    let doctorDetails = { ...this.props.location.state.doctorDetails };
+    let patientDetails = { ...this.props.location.state.patientDetails };
+    let bookingDetails = [];
+    await axios
+      .get("https://oopbackend.herokuapp.com/bookslot/")
+      .then((res) => {
+        // this.setState({slots:res.data,originalSlots:res.data})
+        bookingDetails = res.data;
+        console.log(bookingDetails, "booking slot");
+      })
+      .catch((err) => console.log(err));
+
+    let slots = [...this.state.slots];
+    bookingDetails.map((bookingDetail) => {
+      if (bookingDetail.doc == doctorDetails.userName) {
+        slots[bookingDetail.slot] = -1;
+        // return bookingDetail.slot;
+      }
+    });
+
+    console.log(doctorDetails.userName, slots);
+    this.setState({
+      doctorDetails: doctorDetails,
+      patientDetails: patientDetails,
+      slots: slots,
+    });
     // await axios
     //   .post("/doctortt", this.props.location.state.id)
     //   .then((res) => {
@@ -51,6 +78,9 @@ class BookingPage extends Component {
     }
   };
 
+  // componentDidUpdate() {
+  //   // console.log(this.state.slots, "slots here");
+  // }
   handleConsultationClick = (event) => {
     let val = this.state.consultationSelect
       ? [
@@ -97,8 +127,46 @@ class BookingPage extends Component {
       : "";
     this.setState({ slots: slots });
   };
-  handleModalActive = (active) => {
+  paymentHandler = async (confirmBooking) => {
+    await axios
+      .post("https://oopbackend.herokuapp.com/bookslot/", confirmBooking, {
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+        },
+      })
+      .then((res) => {
+        // this.setState({slots:res.data,originalSlots:res.data})
+        let paymentSuccessDetails = res.data;
+        console.log(paymentSuccessDetails, "payment details");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  handleModalActive = async (active, closeType = "close") => {
     this.setState({ active: active });
+    console.log(this.state.doctorDetails);
+    if (closeType !== "close") {
+      this.state.slots.map((slot, j) => {
+        if (slot) {
+          let confirmBooking = {
+            slot: parseInt(j),
+            doc: this.state.doctorDetails.userName,
+            pat: this.state.patientDetails.userName,
+            type:
+              this.state.consultationSelect === "videoconsultation"
+                ? true
+                : false,
+          };
+          console.log(confirmBooking);
+          this.paymentHandler(confirmBooking);
+        }
+      });
+    }
+  };
+
+  handleBusySlots = (active) => {
+    this.setState({ busySlotsMarked: active, slots: new Array(48).fill(0) });
   };
   render() {
     return (
@@ -137,6 +205,9 @@ class BookingPage extends Component {
             <Timetable
               busySlots={this.state.slots}
               timeslots={this.handleTimeSlots}
+              busySlotsRegisterer={this.state.busySlotsMarked}
+              busySlotsHandler={this.handleBusySlots}
+              path="booking"
             />
             <div className={styles.refInfo}>
               <div className={styles.colorLegends}>

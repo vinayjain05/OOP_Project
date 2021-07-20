@@ -22,10 +22,10 @@ export default class Card extends Component {
             <div>
               <h3 className={styles.nameHead}>{this.props.name}</h3>
               <div>{this.props.specialization}</div>
-              <div>{this.props.education}</div>
+              <div>{this.props.degree}</div>
               <div>{this.props.experience}</div>
               <div>{`${this.props.hospitalName}, ${this.props.hospitalLocation}`}</div>
-              {!this.props.doctor ? (
+              {!this.props.isDoctor ? (
                 <div>
                   <button className={styles.bookaptbtn}>
                     <p>Book Appointment</p>

@@ -107,7 +107,7 @@ class Login extends Component {
                     type="text"
                     name="username"
                     autoComplete="off"
-                    placeholder="Full Name"
+                    placeholder="Username"
                     pattern="[0-9a-zA-Z]{4,}"
                     title="Minimum six characters of only numbers and letters"
                     value={this.state.username}

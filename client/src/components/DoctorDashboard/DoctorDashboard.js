@@ -12,21 +12,37 @@ class DoctorDashboard extends Component {
     changeAvailability: false,
     originalSlots: new Array(48).fill(0),
     slots: new Array(48).fill(0),
+    busySlotsMarked: false,
   };
 
   async componentDidMount() {
     this.props.pageActive(true);
-
+    let doctorData = null;
     await axios
       .get("https://oopbackend.herokuapp.com/bookslot/")
       .then((res) => {
-        let doctorData = res.data;
+        doctorData = res.data;
         console.log(doctorData, "insidehere");
       })
       .catch((err) => {
         console.log(err);
       });
-    this.setState({ ...this.props });
+
+    let doctorDetails = { ...this.props.location.state };
+
+    let slots = [...this.state.slots];
+    doctorData.map((data) => {
+      if (data.doc == doctorDetails.userName) {
+        if (data.pat == "busy") slots[data.slot] = -2;
+        else slots[data.slot] = -1;
+      }
+    });
+    console.log(this.props, doctorDetails, slots, "preps here for");
+    this.setState({
+      ...this.props,
+      doctorDetails: { ...doctorDetails },
+      slots: slots,
+    });
     // this.setState({data:{...this.props.location.state}})
   }
   componentWillUnmount() {
@@ -51,13 +67,37 @@ class DoctorDashboard extends Component {
     this.setState({ slots: slots });
   };
 
+  paymentHandler = async (confirmBooking) => {
+    await axios
+      .post("https://oopbackend.herokuapp.com/bookslot/", confirmBooking, {
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+        },
+      })
+      .then((res) => {
+        // this.setState({slots:res.data,originalSlots:res.data})
+        let paymentSuccessDetails = res.data;
+        console.log(paymentSuccessDetails, "payment details");
+      })
+      .catch((err) => console.log(err));
+  };
+
   handleChangeAvailability = async () => {
     document.getElementById("changeavailabity").classList.remove(styles.active);
-    // await axios
-    //   .post("/doctortt", this.state.slots)
-    //   .then((res) => {
-    //     this.setState({slots:res.data,originalSlots:res.data})
-    //     console.log(res.data)});
+    console.log(this.state.slots);
+    this.state.slots.map((slot, j) => {
+      if (slot) {
+        let confirmBooking = {
+          slot: parseInt(j),
+          doc: this.state.doctorDetails.userName,
+          pat: "busy",
+          type: true,
+        };
+        console.log(confirmBooking);
+        this.paymentHandler(confirmBooking);
+      }
+    });
 
     this.setState((prevState) => {
       return { originalSlots: prevState.slots };
@@ -72,12 +112,16 @@ class DoctorDashboard extends Component {
     this.setState({ active: active });
   };
 
+  handleBusySlots = (active) => {
+    this.setState({ busySlotsMarked: active, slots: new Array(48).fill(0) });
+  };
+
   render() {
     return (
       <React.Fragment>
         <div className={styles.docDashboard}>
           <div className={styles.docInfo}>
-            <Card {...this.props} />
+            <Card {...this.state.doctorDetails} />
             <div className={styles.modifyBtn}>
               <div className={styles.editProfile}>
                 <button onClick={this.handleEdit}>Edit Profile</button>
@@ -120,6 +164,9 @@ class DoctorDashboard extends Component {
               isDoctor={true}
               busySlots={this.state.slots}
               timeslots={this.handleTimeSlots}
+              path="doctor"
+              busySlotsRegisterer={this.state.busySlotsMarked}
+              busySlotsHandler={this.handleBusySlots}
             />
             <div className={styles.refInfo}>
               <div className={styles.changeAvailability}>

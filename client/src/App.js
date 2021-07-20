@@ -36,11 +36,11 @@ function App() {
         path="/patdash"
         exact
         props={{
-          name: "Subrakanta Smith",
-          age: "25",
-          address: "Bangalore",
-          gender: "Male",
-          medicalHistory: "Medical History",
+          // name: "Subrakanta Smith",
+          // age: "25",
+          // address: "Bangalore",
+          // gender: "Male",
+          // medicalHistory: "Medical History",
           doctor: false,
           id: "",
           pageActive: handleActivePage,
@@ -51,12 +51,12 @@ function App() {
         path="/docdash"
         exact
         props={{
-          name: "Subrakanta Smith",
-          specialization: "NEUROLOGIST",
-          education: "MBBS, MD in Pulmonology",
-          experience: "7 years",
-          hospitalName: "Apollo",
-          hospitalLocation: "Bangalore",
+          // name: "Subrakanta Smith",
+          // specialization: "NEUROLOGIST",
+          // education: "MBBS, MD in Pulmonology",
+          // experience: "7 years",
+          // hospitalName: "Apollo",
+          // hospitalLocation: "Bangalore",
           doctor: true,
           id: "",
           pageActive: handleActivePage,

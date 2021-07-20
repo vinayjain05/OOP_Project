@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "../css/doccard.module.css";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import axios from "axios";
 
 class Card extends Component {
   componentDidMount() {
@@ -13,24 +14,39 @@ class Card extends Component {
 
   handleDoctorSelect = async () => {
     let doctorDetails = {
-      name: this.props.name,
-      specialization: this.props.specialization,
-      education: this.props.education,
-      experience: this.props.experience,
-      hospitalName: this.props.hospitalName,
-      hospitalLocation: this.props.hospitalLocation,
-      id: this.props.id,
+      name: this.props.doctorDetails.name,
+      userName: this.props.doctorDetails.userName,
+      specialization: this.props.doctorDetails.specialization,
+      education: this.props.doctorDetails.education,
+      experience: this.props.doctorDetails.experience,
+      hospitalName: this.props.doctorDetails.hospitalName,
+      hospitalLocation: this.props.doctorDetails.hospitalLocation,
+      id: this.props.doctorDetails.id,
     };
 
+    // let bookingDetails = [];
     // await axios
-    //   .post("/doctortt", this.props.location.doctorDetails.id)
+    //   .get("https://oopbackend.herokuapp.com/bookslot/")
     //   .then((res) => {
-    //     this.setState({slots:res.data,originalSlots:res.data})
-    //     console.log(res.data)});
+    //     // this.setState({slots:res.data,originalSlots:res.data})
+    //     bookingDetails = res.data;
+    //     console.log(bookingDetails, "booking slot");
+    //   })
+    //   .catch((err) => console.log(err));
 
+    // let slots = bookingDetails.filter((bookingDetail) => {
+    //   if (bookingDetail.doc == doctorDetails.username)
+    //     return bookingDetail.slot;
+    // });
+
+    // console.log(slots);
     this.props.history.push({
       pathname: "/booking",
-      state: doctorDetails,
+      // state: { ...doctorDetails, slots },
+      state: {
+        doctorDetails: { ...doctorDetails },
+        patientDetails: { ...this.props.patientDetails },
+      },
     });
   };
   render() {
@@ -46,12 +62,14 @@ class Card extends Component {
     </div>*/}
           <div className={styles.info}>
             <div>
-              <h3 className={styles.nameHead}>{this.props.name}</h3>
-              <div>{this.props.specialization}</div>
-              <div>{this.props.education}</div>
-              <div>{this.props.experience}</div>
-              <div>{`${this.props.hospitalName}, ${this.props.hospitalLocation}`}</div>
-              {!this.props.doctor ? (
+              <h3 className={styles.nameHead}>
+                {this.props.doctorDetails.name}
+              </h3>
+              <div>{this.props.doctorDetails.specialization}</div>
+              <div>{this.props.doctorDetails.education}</div>
+              <div>{this.props.doctorDetails.experience}</div>
+              <div>{`${this.props.doctorDetails.hospitalName}, ${this.props.doctorDetails.hospitalLocation}`}</div>
+              {!this.props.patientDetails.doctor ? (
                 <div>
                   <button
                     type="button"

@@ -108,13 +108,18 @@ export default class Timetable extends Component {
         // timebtn.value.split(" -")[0] - currh<0?;
       }
     );
+
+    console.log(this.props.busySlots, "busy Slots");
     this.props.busySlots.map((slot) => {
+      console.log("enter", slot);
       if (
         !document
           .getElementById(String(slot))
-          .classList.contains(styles.timeExceeded) ||
-        this.props.isDoctor
+          .classList.contains(styles.timeExceeded)
+        //   ||
+        // this.props.isDoctor
       ) {
+        console.log("enter", slot);
         document.getElementById(String(slot)).classList.remove(styles.normal);
         document.getElementById(String(slot)).classList.add(styles.busy);
       }
@@ -122,6 +127,48 @@ export default class Timetable extends Component {
     this.setState({ slots: this.props.busySlots });
     // let currh = new Date().getHours() !== 0 ? new Date().getHours() % 12 : 0;
     // currh = currh === 0 ? 12 : currh;
+  }
+
+  componentDidUpdate() {
+    // console.log(this.props, "prepher here");
+    if (this.props.busySlots.includes(-1) && this.props.path == "booking") {
+      this.props.busySlots.map((slot, i) => {
+        // console.log("enterhere", slot, i);
+        if (
+          !document
+            .getElementById(String(i))
+            .classList.contains(styles.timeExceeded) &&
+          slot == -1
+        ) {
+          document.getElementById(String(i)).classList.remove(styles.normal);
+          document.getElementById(String(i)).classList.add(styles.busy);
+        }
+      });
+      this.props.busySlotsHandler(true);
+    }
+    if (this.props.busySlots.includes(-2) && this.props.path == "doctor") {
+      this.props.busySlots.map((slot, i) => {
+        // console.log("enterhere", slot, i);
+        if (
+          !document
+            .getElementById(String(i))
+            .classList.contains(styles.timeExceeded) &&
+          slot == -1
+        ) {
+          document.getElementById(String(i)).classList.remove(styles.normal);
+          document.getElementById(String(i)).classList.add(styles.busy);
+        } else if (
+          !document
+            .getElementById(String(i))
+            .classList.contains(styles.timeExceeded) &&
+          slot == -2
+        ) {
+          document.getElementById(String(i)).classList.add(styles.normal);
+          document.getElementById(String(i)).classList.add(styles.selfbusy);
+        }
+      });
+      this.props.busySlotsHandler(true);
+    }
   }
 
   handleSlotSelect = (event) => {
