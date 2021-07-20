@@ -12,14 +12,14 @@ class PatientDashboard extends Component {
   state = {
     doctorDetails: Array.from({ length: 6 }, (_, i) => {
       return {
-        name: "Subrakanta Smith",
-        specialization: "NEUROLOGIST",
-        education: "MBBS, MD in Pulmonology",
-        experience: "7 years",
-        hospitalName: "Apollo",
-        hospitalLocation: "Bangalore",
-        id: "1",
-        appointment: "5:",
+        // name: "Subrakanta Smith",
+        // specialization: "NEUROLOGIST",
+        // education: "MBBS, MD in Pulmonology",
+        // experience: "7 years",
+        // hospitalName: "Apollo",
+        // hospitalLocation: "Bangalore",
+        // id: "1",
+        // appointment: "5:",
       };
     }),
     appointments: Array.from({ length: 15 }, (_, i) => {
@@ -40,16 +40,17 @@ class PatientDashboard extends Component {
       .catch((err) => {
         console.log(err);
       });
+
     //
-    this.setState((prevState) => {
-      return doctorData.length !== 0 ? { ...this.props } : { ...this.props };
-    });
     // this.setState((prevState) => {
-    //   return doctorData.length !== 0
-    //     ? { ...this.props, doctorDetails: doctorData }
-    //     : { ...this.props };
+    //   return doctorData.length !== 0 ? { ...this.props } : { ...this.props };
     // });
-    // console.log(this.state.doctorDetails);
+    this.setState((prevState) => {
+      return doctorData.length !== 0
+        ? { ...this.props, doctorDetails: doctorData }
+        : { ...this.props };
+    });
+    console.log({ ...this.props, doctorDetails: doctorData });
   }
   componentWillUnmount() {
     this.props.pageActive(false);

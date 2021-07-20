@@ -56,7 +56,7 @@ class Otp extends Component {
           mobile: this.state.phone,
           isDoctor: this.state.isDoctor,
           specialization: this.state.specialization,
-          experience: this.state.yearsofexperience,
+          experience: this.state.experience,
           degree: this.state.education,
           hospitalName: this.state.hospital,
           hospitalLocation: this.state.hospitaladdress,
@@ -192,7 +192,10 @@ class Otp extends Component {
           .then((res) => {
             // console.log(res.data);
             let data = JSON.parse(
-              res.data.replace(/'/g, '"').replace("True", "true")
+              res.data
+                .replace(/'/g, '"')
+                .replace("True", "true")
+                .replace("False", "false")
             );
             data = data.fields;
             let isDoctor = data.isDoctor;

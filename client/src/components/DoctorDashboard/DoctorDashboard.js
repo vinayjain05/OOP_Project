@@ -20,8 +20,8 @@ class DoctorDashboard extends Component {
     await axios
       .get("https://oopbackend.herokuapp.com/bookslot/")
       .then((res) => {
-        console.log(res, "insidehere");
         let doctorData = res.data;
+        console.log(doctorData, "insidehere");
       })
       .catch((err) => {
         console.log(err);

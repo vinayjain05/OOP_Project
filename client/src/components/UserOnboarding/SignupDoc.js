@@ -12,7 +12,7 @@ class SignupDoc extends Component {
     super();
     this.state = {
       specialization: "",
-      yearsofexperience: "",
+      experience: "",
       education: "",
       hospital: "",
       hospitaladdress: "",
@@ -28,17 +28,17 @@ class SignupDoc extends Component {
     this.setState({ specialization: evt.target.value });
   };
   handleYearsChange = (evt) => {
-    this.setState({ yearsofexperience: evt.target.value });
+    this.setState({ experience: evt.target.value });
   };
   handleEducationChange = (evt) => {
     this.setState({ education: evt.target.value });
   };
   handleHosptialChange = (evt) => {
-    this.setState({ hospital: evt.target.value });
+    this.setState({ hospitalName: evt.target.value });
   };
 
   handleHosptialAddressChange = (evt) => {
-    this.setState({ hospitaladdress: evt.target.value });
+    this.setState({ hospitalLocation: evt.target.value });
   };
   handleSubmit = async (event) => {
     event.preventDefault();
@@ -113,7 +113,7 @@ class SignupDoc extends Component {
                     required
                     pattern="[0-9]"
                     title="Please enter years of experience between 0-99"
-                    value={this.state.yearsofexperience}
+                    value={this.state.experience}
                     onChange={this.handleYearsChange}
                   />
                 </div>
@@ -135,7 +135,7 @@ class SignupDoc extends Component {
                     name="hospital"
                     placeholder="Hospital"
                     required
-                    value={this.state.hospital}
+                    value={this.state.hospitalName}
                     onChange={this.handleHosptialChange}
                   />
                 </div>
@@ -146,7 +146,7 @@ class SignupDoc extends Component {
                     name="hospitaladd"
                     placeholder="Hospital Address"
                     required
-                    value={this.state.hospitaladdress}
+                    value={this.state.hospitalLocation}
                     onChange={this.handleHosptialAddressChange}
                   />
                 </div>

@@ -35,6 +35,9 @@ export default class EditModal extends Component {
   handleSpecializationChange = (evt) => {
     this.setState({ specialization: evt.target.value });
   };
+  handleNameChange = (evt) => {
+    this.setState({ name: evt.target.value });
+  };
   handleAddressChange = (evt) => {
     this.setState({ address: evt.target.value });
   };
@@ -73,6 +76,7 @@ export default class EditModal extends Component {
                   placeholder={this.props.name}
                   title="Name"
                   value={this.state.name}
+                  onChange={this.handleNameChange}
                 />
               </div>
               <div>
@@ -86,7 +90,7 @@ export default class EditModal extends Component {
                   placeholder={this.props.specialization}
                   title="Gender"
                   value={this.state.specialization}
-                  onClick={this.handleSpecializationChange}
+                  onChange={this.handleSpecializationChange}
                 />
               </div>
 
