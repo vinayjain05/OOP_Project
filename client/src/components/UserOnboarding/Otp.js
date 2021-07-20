@@ -130,7 +130,12 @@ class Otp extends Component {
                   });
                 } else {
                   axios
-                    .get("https://oopbackend.herokuapp.com/registeruserdoc/")
+                    .get("https://oopbackend.herokuapp.com/registeruserdoc/", {
+                      headers: {
+                        accept: "application/json",
+                        "content-type": "application/json",
+                      },
+                    })
                     .then((res) => {
                       console.log(res, "insidehere");
                       Auth.login(true);

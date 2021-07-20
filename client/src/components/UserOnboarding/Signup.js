@@ -139,12 +139,13 @@ class Signup extends Component {
                 </div>
                 <div>
                   <input
-                    type="number"
+                    type="text"
                     className={styles.phone}
                     name="phone"
-                    pattern="[0-9]{10}"
+                    pattern="[1-9]{1}[0-9]{9}"
                     placeholder="Phone Number"
                     title="Please enter valid 10-digit phone number"
+                    maxlength="10"
                     required
                     value={this.state.phone}
                     onChange={this.handlePhoneChange}

@@ -16,7 +16,8 @@ class PatientDashboard extends Component {
         specialization: "NEUROLOGIST",
         education: "MBBS, MD in Pulmonology",
         experience: "7 years",
-        userLocation: "Apollo, Bangalore",
+        hospitalName: "Apollo",
+        hospitalLocation: "Bangalore",
         id: "1",
         appointment: "5:",
       };
@@ -27,7 +28,7 @@ class PatientDashboard extends Component {
   };
 
   async componentDidMount() {
-    console.log(this.props);
+    console.log(this.props, "props home");
     this.props.pageActive(true);
     let doctorData = [];
     await axios
@@ -39,10 +40,15 @@ class PatientDashboard extends Component {
       .catch((err) => {
         console.log(err);
       });
-    // { ...this.props, doctorDetails: doctorData }
+    //
     this.setState((prevState) => {
       return doctorData.length !== 0 ? { ...this.props } : { ...this.props };
     });
+    // this.setState((prevState) => {
+    //   return doctorData.length !== 0
+    //     ? { ...this.props, doctorDetails: doctorData }
+    //     : { ...this.props };
+    // });
     // console.log(this.state.doctorDetails);
   }
   componentWillUnmount() {
@@ -62,6 +68,17 @@ class PatientDashboard extends Component {
   handleModalActive = (active) => {
     this.setState({ active: active });
   };
+
+  handlePatientDetailsChange = (newDetails) => {
+    console.log(this.state, "props bf");
+    this.setState({
+      age: newDetails.age ? newDetails.age : this.state.age,
+      address: newDetails.address ? newDetails.address : this.state.address,
+      medicalHistory: newDetails.medicalHistory
+        ? newDetails.medicalHistory
+        : this.state.medicalHistory,
+    });
+  };
   render() {
     return (
       <React.Fragment>
@@ -73,8 +90,8 @@ class PatientDashboard extends Component {
             <div className={styles.appInfo}>
               <h4>Appointments:</h4>
               <div className={styles.appointmentList}>
-                {this.state.appointments.map((time) => (
-                  <div className={styles.appointment}>
+                {this.state.appointments.map((time, j) => (
+                  <div className={styles.appointment} key={j}>
                     <span>Appointment No: {time + 1}</span>
                   </div>
                 ))}
@@ -156,6 +173,7 @@ class PatientDashboard extends Component {
         <EditModal
           active={this.state.active}
           modalActive={this.handleModalActive}
+          changePatientDetails={this.handlePatientDetailsChange}
           {...this.state}
         />
       </React.Fragment>

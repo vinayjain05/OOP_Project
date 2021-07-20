@@ -17,7 +17,8 @@ class Card extends Component {
       specialization: this.props.specialization,
       education: this.props.education,
       experience: this.props.experience,
-      userLocation: this.props.userLocation,
+      hospitalName: this.props.hospitalName,
+      hospitalLocation: this.props.hospitalLocation,
       id: this.props.id,
     };
 
@@ -49,7 +50,7 @@ class Card extends Component {
               <div>{this.props.specialization}</div>
               <div>{this.props.education}</div>
               <div>{this.props.experience}</div>
-              <div>{this.props.userLocation}</div>
+              <div>{`${this.props.hospitalName}, ${this.props.hospitalLocation}`}</div>
               {!this.props.doctor ? (
                 <div>
                   <button

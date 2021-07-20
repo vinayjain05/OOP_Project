@@ -11,7 +11,7 @@ export default class EditModal extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
+    console.log(this.props, "props here");
     this.setState({
       name: this.props.name,
       gender: this.props.gender,
@@ -45,6 +45,8 @@ export default class EditModal extends Component {
     event.preventDefault();
     document.getElementById("editmodal").classList.remove(styles.active);
     this.props.modalActive(false);
+    this.props.changePatientDetails(this.state);
+    console.log(this.props, "props exit");
     // let userDetails = { ...this.state, isDoctor: false };
     // console.log(userDetails.age);
   };
@@ -117,7 +119,7 @@ export default class EditModal extends Component {
                 />
               </div>
               <div>
-              <label htmlFor="hist" className={styles.formLabel}>
+                <label htmlFor="hist" className={styles.formLabel}>
                   MedicalHistory
                 </label>
 

@@ -14,18 +14,18 @@ class DoctorDashboard extends Component {
     slots: new Array(48).fill(0),
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.pageActive(true);
 
-    // await axios
-    //   .get("https://oopbackend.herokuapp.com/registeruserdoc/")
-    //   .then((res) => {
-    //     console.log(res, "insidehere");
-    //     doctorData = res.data;
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    await axios
+      .get("https://oopbackend.herokuapp.com/bookslot/")
+      .then((res) => {
+        console.log(res, "insidehere");
+        let doctorData = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     this.setState({ ...this.props });
     // this.setState({data:{...this.props.location.state}})
   }
